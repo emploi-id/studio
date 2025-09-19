@@ -26,8 +26,8 @@ export default function Header() {
       <Link
         href={href}
         className={cn(
-          'text-sm font-medium transition-colors hover:text-primary',
-          isActive ? 'text-primary' : 'text-muted-foreground'
+          'text-sm font-medium transition-colors hover:text-white',
+          isActive ? 'text-white' : 'text-primary-foreground/80'
         )}
       >
         {label}
@@ -36,7 +36,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-primary/20 bg-primary text-primary-foreground">
       <div className="container flex h-14 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
@@ -78,8 +78,8 @@ export default function Header() {
         </div>
 
         <div className="flex flex-1 items-center justify-end space-x-4">
-          <Button variant="ghost">Masuk</Button>
-          <Button>Daftar</Button>
+          <Button variant="ghost" className="hover:bg-white/10">Masuk</Button>
+          <Button variant="secondary" className="text-primary-foreground bg-white/20 hover:bg-white/30">Daftar</Button>
         </div>
       </div>
     </header>
