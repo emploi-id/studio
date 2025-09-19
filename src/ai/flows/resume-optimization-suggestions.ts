@@ -1,11 +1,11 @@
 'use server';
 
 /**
- * @fileOverview Agen AI yang memberikan saran pengoptimalan resume.
+ * @fileOverview An AI agent that provides resume optimization suggestions.
  *
- * - getResumeOptimizationSuggestions - Sebuah fungsi yang menangani proses pengoptimalan resume.
- * - ResumeOptimizationInput - Tipe input untuk fungsi getResumeOptimizationSuggestions.
- * - ResumeOptimizationOutput - Tipe kembalian untuk fungsi getResumeOptimizationSuggestions.
+ * - getResumeOptimizationSuggestions - A function that handles the resume optimization process.
+ * - ResumeOptimizationInput - The input type for the getResumeOptimizationSuggestions function.
+ * - ResumeOptimizationOutput - The return type for the getResumeOptimizationSuggestions function.
  */
 
 import {ai} from '@/ai/genkit';
@@ -14,18 +14,18 @@ import {z} from 'genkit';
 const ResumeOptimizationInputSchema = z.object({
   resumeText: z
     .string()
-    .describe('Konten teks dari resume yang akan dioptimalkan.'),
+    .describe('The text content of the resume to be optimized.'),
   jobDescription: z
     .string()
     .optional()
-    .describe('Deskripsi pekerjaan opsional untuk menyesuaikan resume.'),
+    .describe('An optional job description to tailor the resume for.'),
 });
 export type ResumeOptimizationInput = z.infer<typeof ResumeOptimizationInputSchema>;
 
 const ResumeOptimizationOutputSchema = z.object({
   suggestions: z
     .string()
-    .describe('Saran yang didukung AI tentang cara meningkatkan resume.'),
+    .describe('The AI-powered suggestions on how to improve the resume.'),
 });
 export type ResumeOptimizationOutput = z.infer<typeof ResumeOptimizationOutputSchema>;
 
@@ -39,19 +39,19 @@ const prompt = ai.definePrompt({
   name: 'resumeOptimizationPrompt',
   input: {schema: ResumeOptimizationInputSchema},
   output: {schema: ResumeOptimizationOutputSchema},
-  prompt: `Anda adalah seorang ahli pengoptimal resume. Tinjau resume yang diberikan dan berikan saran untuk perbaikan.
+  prompt: `You are an expert resume optimizer. Review the provided resume and give suggestions for improvement.
 
 Resume:
 {{{resumeText}}}
 
 {{#if jobDescription}}
-Deskripsi pekerjaan:
+Job Description:
 {{{jobDescription}}}
 
-Sesuaikan resume dengan deskripsi pekerjaan ini.
+Tailor the resume for this job description.
 {{/if}}
 
-Berikan saran yang spesifik dan dapat ditindaklanjuti, termasuk pengoptimalan kata kunci, perbaikan format, dan revisi konten.
+Provide specific, actionable suggestions, including keyword optimization, formatting improvements, and content revisions.
 `,
 });
 

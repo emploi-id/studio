@@ -57,7 +57,7 @@ export default function EmployerDetailPage({ params }: Props) {
                         <div className="flex items-center gap-2">
                             <Globe className="h-4 w-4" />
                             <Link href={employer.website} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                                Kunjungi Situs Web
+                                Visit Website
                             </Link>
                         </div>
                     </div>
@@ -69,11 +69,11 @@ export default function EmployerDetailPage({ params }: Props) {
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                 <div className="space-y-8 lg:col-span-2">
                     <div>
-                        <h2 className="font-headline text-2xl font-bold">Tentang {employer.name}</h2>
+                        <h2 className="font-headline text-2xl font-bold">About {employer.name}</h2>
                         <p className="mt-4 text-foreground/80">{employer.about}</p>
                     </div>
                     <div>
-                        <h2 className="font-headline text-2xl font-bold">Budaya Perusahaan</h2>
+                        <h2 className="font-headline text-2xl font-bold">Company Culture</h2>
                         <p className="mt-4 text-foreground/80">{employer.culture}</p>
                     </div>
                 </div>
@@ -81,9 +81,9 @@ export default function EmployerDetailPage({ params }: Props) {
                 <div className="lg:col-span-1">
                     <Card>
                         <CardContent className="p-6">
-                            <h2 className="font-headline text-xl font-bold">Info Kontak</h2>
+                            <h2 className="font-headline text-xl font-bold">Contact Info</h2>
                             <p className="mt-4 text-sm text-foreground/80">
-                                Di sinilah informasi kontak perusahaan akan ditampilkan.
+                                This is where company contact information would go.
                             </p>
                         </CardContent>
                     </Card>
@@ -91,13 +91,13 @@ export default function EmployerDetailPage({ params }: Props) {
             </div>
 
             <div className="mt-16">
-                <h2 className="font-headline text-2xl font-bold">Posisi Terbuka di {employer.name}</h2>
+                <h2 className="font-headline text-2xl font-bold">Open Positions at {employer.name}</h2>
                 {employerJobs.length > 0 ? (
                     <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
                         {employerJobs.map(job => <JobCard key={job.id} job={job} />)}
                     </div>
                 ) : (
-                    <p className="mt-4 text-muted-foreground">Saat ini tidak ada posisi yang terbuka di {employer.name}.</p>
+                    <p className="mt-4 text-muted-foreground">There are currently no open positions at {employer.name}.</p>
                 )}
             </div>
         </div>

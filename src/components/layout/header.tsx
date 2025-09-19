@@ -15,19 +15,19 @@ import { cn } from '@/lib/utils';
 import Logo from '@/components/icons/logo';
 
 const navLinks = [
-  { href: '/', label: 'Beranda' },
-  { href: '/about', label: 'Tentang emploi' },
-  { href: '/jobs', label: 'Cari Kerja' },
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About emploi' },
+  { href: '/jobs', label: 'Job Search' },
   {
-    label: 'Jelajahi Perusahaan',
+    label: 'Employers',
     dropdown: [
-      { href: '/employers', label: 'Jelajahi Perusahaan' },
+      { href: '/employers', label: 'Browse Employers' },
       { href: '/request-talent', label: 'Request Talent' },
       { href: '/career-advise', label: 'Career Advise' },
     ],
   },
-  { href: '/insights', label: 'Pengembangan Karir' },
-  { href: '/post-job', label: 'Posting Lowongan' },
+  { href: '/insights', label: 'Career Development' },
+  { href: '/post-job', label: 'Post a Job' },
 ];
 
 export default function Header() {
@@ -108,7 +108,7 @@ export default function Header() {
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Buka Menu</span>
+                <span className="sr-only">Open Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
@@ -149,13 +149,13 @@ export default function Header() {
 
         <div className="flex flex-1 items-center justify-end space-x-4">
           <Button variant="ghost" className="hover:bg-white/10">
-            Masuk
+            Log In
           </Button>
           <Button
             variant="secondary"
             className="bg-white/20 text-primary-foreground hover:bg-white/30"
           >
-            Daftar
+            Sign Up
           </Button>
         </div>
       </div>

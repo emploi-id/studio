@@ -18,12 +18,12 @@ import {
 } from '@/components/ui/form';
 
 const formSchema = z.object({
-  companyName: z.string().min(2, { message: 'Nama perusahaan harus diisi.' }),
-  contactName: z.string().min(2, { message: 'Nama kontak harus diisi.' }),
-  email: z.string().email({ message: 'Alamat email tidak valid.' }),
+  companyName: z.string().min(2, { message: 'Company name is required.' }),
+  contactName: z.string().min(2, { message: 'Contact name is required.' }),
+  email: z.string().email({ message: 'Invalid email address.' }),
   phone: z.string().optional(),
-  roleTitle: z.string().min(2, { message: 'Judul peran harus diisi.' }),
-  jobDescription: z.string().min(10, { message: 'Deskripsi pekerjaan harus lebih dari 10 karakter.' }),
+  roleTitle: z.string().min(2, { message: 'Role title is required.' }),
+  jobDescription: z.string().min(10, { message: 'Job description must be over 10 characters.' }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -43,7 +43,7 @@ export default function RequestTalentPage() {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
-    alert('Permintaan Anda telah dikirim! Kami akan segera menghubungi Anda.');
+    alert('Your request has been submitted! We will be in touch shortly.');
     form.reset();
   };
 
@@ -53,7 +53,7 @@ export default function RequestTalentPage() {
         <CardHeader>
           <CardTitle className="font-headline text-3xl font-bold">Request Talent</CardTitle>
           <CardDescription>
-            Beri tahu kami siapa yang Anda cari, dan kami akan menghubungkan Anda dengan talenta terbaik.
+            Tell us who you're looking for, and we'll connect you with top talent.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -64,9 +64,9 @@ export default function RequestTalentPage() {
                 name="companyName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nama Perusahaan</FormLabel>
+                    <FormLabel>Company Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Contoh: Innovate Inc." {...field} />
+                      <Input placeholder="e.g. Innovate Inc." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -77,9 +77,9 @@ export default function RequestTalentPage() {
                 name="contactName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nama Kontak</FormLabel>
+                    <FormLabel>Contact Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Contoh: John Doe" {...field} />
+                      <Input placeholder="e.g. John Doe" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -92,7 +92,7 @@ export default function RequestTalentPage() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="contoh@perusahaan.com" {...field} />
+                      <Input type="email" placeholder="e.g. contact@company.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -103,9 +103,9 @@ export default function RequestTalentPage() {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nomor Telepon (Opsional)</FormLabel>
+                    <FormLabel>Phone Number (Optional)</FormLabel>
                     <FormControl>
-                      <Input placeholder="+62 812 3456 7890" {...field} />
+                      <Input placeholder="+1 (555) 123-4567" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -116,9 +116,9 @@ export default function RequestTalentPage() {
                 name="roleTitle"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Posisi yang Dibutuhkan</FormLabel>
+                    <FormLabel>Role Title</FormLabel>
                     <FormControl>
-                      <Input placeholder="Contoh: Senior Software Engineer" {...field} />
+                      <Input placeholder="e.g. Senior Software Engineer" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -129,10 +129,10 @@ export default function RequestTalentPage() {
                 name="jobDescription"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Deskripsi Pekerjaan & Persyaratan</FormLabel>
+                    <FormLabel>Job Description & Requirements</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Jelaskan peran, tanggung jawab, dan kualifikasi yang Anda cari..."
+                        placeholder="Describe the role, responsibilities, and qualifications you're looking for..."
                         className="min-h-[150px]"
                         {...field}
                       />
@@ -142,7 +142,7 @@ export default function RequestTalentPage() {
                 )}
               />
               <Button type="submit" className="w-full">
-                Kirim Permintaan
+                Submit Request
               </Button>
             </form>
           </Form>

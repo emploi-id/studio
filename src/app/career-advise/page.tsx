@@ -3,20 +3,20 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 const careerAdviseData = [
     {
-        title: "Cara Membuat Resume yang Menonjol",
-        content: "Pastikan resume Anda ringkas, jelas, dan disesuaikan dengan pekerjaan yang Anda lamar. Gunakan kata kunci dari deskripsi pekerjaan. Sorot pencapaian Anda dengan angka dan data. Minta orang lain untuk mengoreksi resume Anda untuk menghindari kesalahan ketik."
+        title: "How to Craft a Standout Resume",
+        content: "Keep your resume concise, clear, and tailored to the job you're applying for. Use keywords from the job description. Highlight your achievements with numbers and data. Have someone else proofread it to catch any typos."
     },
     {
-        title: "Kiat Sukses Wawancara Kerja",
-        content: "Lakukan riset tentang perusahaan dan peran yang Anda lamar. Siapkan jawaban untuk pertanyaan umum wawancara. Latih jawaban Anda, tetapi jangan menghafalnya. Siapkan beberapa pertanyaan untuk ditanyakan kepada pewawancara. Berpakaianlah secara profesional dan datang tepat waktu."
+        title: "Tips for Acing Your Job Interview",
+        content: "Research the company and the role. Prepare answers to common interview questions. Practice your answers, but don't memorize them. Have a few questions ready to ask the interviewer. Dress professionally and arrive on time."
     },
     {
-        title: "Membangun Jaringan Secara Efektif",
-        content: "Hadiri acara industri dan webinar. Terhubung dengan para profesional di bidang Anda di LinkedIn. Mintalah obrolan informasional untuk belajar dari orang lain. Tawarkan bantuan kepada orang lain dalam jaringan Anda. Jaga hubungan Anda dengan tetap berhubungan secara teratur."
+        title: "Networking Effectively",
+        content: "Attend industry events and webinars. Connect with professionals in your field on LinkedIn. Ask for informational interviews to learn from others. Offer to help others in your network. Maintain your relationships by staying in touch regularly."
     },
     {
-        title: "Negosiasi Gaji Anda",
-        content: "Lakukan riset tentang standar gaji untuk peran dan lokasi Anda. Ketahui nilai Anda dan bersiaplah untuk mengartikulasikannya. Jangan takut untuk meminta apa yang Anda inginkan, tetapi bersikaplah realistis. Bersiaplah untuk menegosiasikan fasilitas lain seperti waktu liburan atau opsi kerja jarak jauh."
+        title: "Negotiating Your Salary",
+        content: "Research salary benchmarks for your role and location. Know your worth and be prepared to articulate it. Don't be afraid to ask for what you want, but be realistic. Be prepared to negotiate other perks like vacation time or remote work options."
     }
 ];
 
@@ -25,16 +25,16 @@ export default function CareerAdvisePage() {
     <div className="container mx-auto max-w-4xl px-4 py-12">
       <div className="text-center">
         <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Nasihat Karir
+          Career Advise
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Temukan kiat dan wawasan ahli untuk membantu Anda maju dalam karir Anda.
+          Find expert tips and insights to help you advance in your career.
         </p>
       </div>
 
       <Card className="mt-12">
         <CardHeader>
-          <CardTitle>Topik Populer</CardTitle>
+          <CardTitle>Popular Topics</CardTitle>
         </CardHeader>
         <CardContent>
           <Accordion type="single" collapsible className="w-full">

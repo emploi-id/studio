@@ -61,11 +61,11 @@ export default function JobCard({ job }: JobCardProps) {
         </div>
         <div className="flex w-full items-center justify-between">
           <span className="text-xs text-muted-foreground">
-            Diposting {job.postedAt}
+            Posted {job.postedAt}
           </span>
           <Link href={`/jobs/${job.id}`}>
             <Button variant="outline" size="sm">
-              Detail <ArrowRight className="ml-2 h-4 w-4" />
+              Details <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </div>

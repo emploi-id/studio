@@ -6,7 +6,7 @@ export type Job = {
   companyLogo: string;
   location: string;
   category: string;
-  type: 'Penuh waktu' | 'Paruh waktu' | 'Kontrak' | 'Magang';
+  type: 'Full-time' | 'Part-time' | 'Contract' | 'Internship';
   salary?: string;
   description: string;
   longDescription: string;
