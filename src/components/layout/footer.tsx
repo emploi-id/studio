@@ -11,30 +11,30 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-4 md:items-start">
             <Logo />
             <p className="max-w-xs text-center text-sm text-muted-foreground md:text-left">
-              Your AI-powered partner in finding the perfect career match.
+              Mitra bertenaga AI Anda dalam menemukan pasangan karir yang sempurna.
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-center text-sm font-medium md:justify-start">
             <Link href="/about" className="hover:text-primary">
-              About Us
+              Tentang kami
             </Link>
             <Link href="/jobs" className="hover:text-primary">
-              Jobs
+              Pekerjaan
             </Link>
             <Link href="/employers" className="hover:text-primary">
-              Employers
+              Perusahaan
             </Link>
             <Link href="#" className="hover:text-primary">
-              Privacy Policy
+              Kebijakan pribadi
             </Link>
             <Link href="#" className="hover:text-primary">
-              Terms of Service
+              Ketentuan Layanan
             </Link>
           </div>
         </div>
         <div className="mt-8 flex flex-col-reverse items-center justify-between gap-4 border-t pt-8 sm:flex-row">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} EmployMatch. All rights reserved.
+            &copy; {new Date().getFullYear()} EmployMatch. Seluruh hak cipta.
           </p>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" asChild>

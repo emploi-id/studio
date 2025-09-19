@@ -22,7 +22,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center">
           <h1 className="font-headline text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-            About EmployMatch
+            Tentang EmployMatch
           </h1>
         </div>
       </div>
@@ -30,26 +30,26 @@ export default function AboutPage() {
       <div className="container mx-auto px-4 py-16">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Our Mission
+            Misi kami
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            At EmployMatch, our mission is to revolutionize the job market by leveraging cutting-edge artificial intelligence to create perfect matches between talented professionals and innovative companies. We believe that the right job can transform a person's life, and the right person can transform a business. We are dedicated to making that connection seamless, efficient, and intelligent.
+            Di EmployMatch, misi kami adalah merevolusi pasar kerja dengan memanfaatkan kecerdasan buatan mutakhir untuk menciptakan kecocokan sempurna antara para profesional berbakat dan perusahaan inovatif. Kami percaya bahwa pekerjaan yang tepat dapat mengubah hidup seseorang, dan orang yang tepat dapat mengubah sebuah bisnis. Kami berdedikasi untuk membuat hubungan itu lancar, efisien, dan cerdas.
           </p>
         </div>
 
         <div className="mt-20">
             <h2 className="text-center font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Meet the Team
+              Temui Tim Kami
             </h2>
             <p className="mt-4 text-center text-lg text-muted-foreground">
-              The passionate minds behind EmployMatch.
+              Orang-orang penuh semangat di balik EmployMatch.
             </p>
             <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {[
-                    { name: "Jane Doe", role: "CEO & Founder", avatar: "JD" },
+                    { name: "Jane Doe", role: "CEO & Pendiri", avatar: "JD" },
                     { name: "John Smith", role: "Chief Technology Officer", avatar: "JS" },
-                    { name: "Emily White", role: "Head of Product", avatar: "EW" },
-                    { name: "Michael Brown", role: "Lead AI Engineer", avatar: "MB" },
+                    { name: "Emily White", role: "Kepala Produk", avatar: "EW" },
+                    { name: "Michael Brown", role: "Insinyur AI Utama", avatar: "MB" },
                 ].map(member => (
                     <Card key={member.name} className="text-center">
                         <CardContent className="p-6">

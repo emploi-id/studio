@@ -9,11 +9,11 @@ import { cn } from '@/lib/utils';
 import Logo from '@/components/icons/logo';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/jobs', label: 'Job Search' },
-  { href: '/employers', label: 'Employers' },
-  { href: '/insights', label: 'Insights' },
-  { href: '/about', label: 'About Us' },
+  { href: '/', label: 'Beranda' },
+  { href: '/jobs', label: 'Cari Lowongan' },
+  { href: '/employers', label: 'Perusahaan' },
+  { href: '/insights', label: 'Wawasan' },
+  { href: '/about', label: 'Tentang Kami' },
 ];
 
 export default function Header() {
@@ -54,7 +54,7 @@ export default function Header() {
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle Menu</span>
+                <span className="sr-only">Buka Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
@@ -77,8 +77,8 @@ export default function Header() {
         </div>
 
         <div className="flex flex-1 items-center justify-end space-x-4">
-          <Button variant="ghost">Login</Button>
-          <Button>Sign Up</Button>
+          <Button variant="ghost">Masuk</Button>
+          <Button>Daftar</Button>
         </div>
       </div>
     </header>

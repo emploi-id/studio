@@ -6,7 +6,7 @@ import Footer from '@/components/layout/footer';
 
 export const metadata: Metadata = {
   title: 'EmployMatch',
-  description: 'Find your dream job with EmployMatch, the AI-powered job matching platform.',
+  description: 'Temukan pekerjaan impian Anda dengan EmployMatch, platform pencocokan pekerjaan bertenaga AI.',
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="id" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

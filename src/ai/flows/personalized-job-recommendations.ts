@@ -2,25 +2,25 @@
 'use server';
 
 /**
- * @fileOverview Provides personalized job recommendations based on user skills, search history, and preferences.
+ * @fileOverview Memberikan rekomendasi pekerjaan yang dipersonalisasi berdasarkan keterampilan pengguna, riwayat pencarian, dan preferensi.
  *
- * - getPersonalizedJobRecommendations - A function that returns personalized job recommendations for a user.
- * - PersonalizedJobRecommendationsInput - The input type for the getPersonalizedJobRecommendations function.
- * - PersonalizedJobRecommendationsOutput - The return type for the getPersonalizedJobRecommendations function.
+ * - getPersonalizedJobRecommendations - Fungsi yang mengembalikan rekomendasi pekerjaan yang dipersonalisasi untuk pengguna.
+ * - PersonalizedJobRecommendationsInput - Tipe input untuk fungsi getPersonalizedJobRecommendations.
+ * - PersonalizedJobRecommendationsOutput - Tipe kembalian untuk fungsi getPersonalizedJobRecommendations.
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const PersonalizedJobRecommendationsInputSchema = z.object({
-  userSkills: z.array(z.string()).describe('List of the job seeker\'s skills.'),
-  searchHistory: z.array(z.string()).describe('Job seeker\'s recent job search queries.'),
-  preferences: z.string().describe('Job seeker\'s preferences (e.g., job type, location).'),
+  userSkills: z.array(z.string()).describe('Daftar keterampilan pencari kerja.'),
+  searchHistory: z.array(z.string()).describe('Kueri pencarian pekerjaan terakhir pencari kerja.'),
+  preferences: z.string().describe('Preferensi pencari kerja (misalnya, jenis pekerjaan, lokasi).'),
 });
 export type PersonalizedJobRecommendationsInput = z.infer<typeof PersonalizedJobRecommendationsInputSchema>;
 
 const PersonalizedJobRecommendationsOutputSchema = z.object({
-  jobRecommendations: z.array(z.string()).describe('A list of job recommendations tailored to the user.'),
+  jobRecommendations: z.array(z.string()).describe('Daftar rekomendasi pekerjaan yang disesuaikan dengan pengguna.'),
 });
 export type PersonalizedJobRecommendationsOutput = z.infer<typeof PersonalizedJobRecommendationsOutputSchema>;
 
@@ -34,15 +34,15 @@ const prompt = ai.definePrompt({
   name: 'personalizedJobRecommendationsPrompt',
   input: {schema: PersonalizedJobRecommendationsInputSchema},
   output: {schema: PersonalizedJobRecommendationsOutputSchema},
-  prompt: `You are an expert job recommendation system.
+  prompt: `Anda adalah sistem rekomendasi pekerjaan ahli.
 
-  Based on the job seeker's skills, search history, and preferences, provide a list of personalized job recommendations.
+  Berdasarkan keterampilan, riwayat pencarian, dan preferensi pencari kerja, berikan daftar rekomendasi pekerjaan yang dipersonalisasi.
 
-  Skills: {{#if userSkills}}{{#each userSkills}} - {{{this}}}\n{{/each}}{{else}}No skills listed.{{/if}}
-  Search History: {{#if searchHistory}}{{#each searchHistory}} - {{{this}}}\n{{/each}}{{else}}No search history.{{/if}}
-  Preferences: {{{preferences}}}
+  Keterampilan: {{#if userSkills}}{{#each userSkills}} - {{{this}}}\n{{/each}}{{else}}Tidak ada keterampilan yang terdaftar.{{/if}}
+  Riwayat Pencarian: {{#if searchHistory}}{{#each searchHistory}} - {{{this}}}\n{{/each}}{{else}}Tidak ada riwayat pencarian.{{/if}}
+  Preferensi: {{{preferences}}}
 
-  Job Recommendations:`,
+  Rekomendasi Pekerjaan:`,
 });
 
 const personalizedJobRecommendationsFlow = ai.defineFlow(

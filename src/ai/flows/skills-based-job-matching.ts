@@ -1,10 +1,10 @@
 'use server';
 /**
- * @fileOverview An AI agent that matches job seekers' skills with job postings.
+ * @fileOverview Agen AI yang mencocokkan keterampilan pencari kerja dengan lowongan pekerjaan.
  *
- * - skillsBasedJobMatching - A function that takes a job seeker's profile and returns relevant job postings.
- * - SkillsBasedJobMatchingInput - The input type for the skillsBasedJobMatching function.
- * - SkillsBasedJobMatchingOutput - The return type for the skillsBasedJobMatching function.
+ * - skillsBasedJobMatching - Sebuah fungsi yang mengambil profil pencari kerja dan mengembalikan lowongan pekerjaan yang relevan.
+ * - SkillsBasedJobMatchingInput - Tipe input untuk fungsi skillsBasedJobMatching.
+ * - SkillsBasedJobMatchingOutput - Tipe kembalian untuk fungsi skillsBasedJobMatching.
  */
 
 import {ai} from '@/ai/genkit';
@@ -13,8 +13,8 @@ import {z} from 'genkit';
 const SkillsBasedJobMatchingInputSchema = z.object({
   jobSeekerProfile: z
     .string()
-    .describe("The job seeker's profile, including skills, experience, and preferences."),
-  jobPostings: z.string().describe('A list of job postings to match against.'),
+    .describe("Profil pencari kerja, termasuk keterampilan, pengalaman, dan preferensi."),
+  jobPostings: z.string().describe('Daftar lowongan pekerjaan untuk dicocokkan.'),
 });
 export type SkillsBasedJobMatchingInput = z.infer<
   typeof SkillsBasedJobMatchingInputSchema
@@ -23,7 +23,7 @@ export type SkillsBasedJobMatchingInput = z.infer<
 const SkillsBasedJobMatchingOutputSchema = z.object({
   matchedJobPostings: z
     .string()
-    .describe('A list of job postings that match the job seeker profile.'),
+    .describe('Daftar lowongan pekerjaan yang cocok dengan profil pencari kerja.'),
 });
 export type SkillsBasedJobMatchingOutput = z.infer<
   typeof SkillsBasedJobMatchingOutputSchema
@@ -39,13 +39,13 @@ const prompt = ai.definePrompt({
   name: 'skillsBasedJobMatchingPrompt',
   input: {schema: SkillsBasedJobMatchingInputSchema},
   output: {schema: SkillsBasedJobMatchingOutputSchema},
-  prompt: `You are an AI job matching expert. Given a job seeker's profile and a list of job postings, identify the postings that best match the job seeker's skills and experience.
+  prompt: `Anda adalah seorang ahli pencocokan pekerjaan AI. Dengan profil pencari kerja dan daftar lowongan pekerjaan, identifikasi lowongan yang paling cocok dengan keterampilan dan pengalaman pencari kerja.
 
-Job Seeker Profile: {{{jobSeekerProfile}}}
+Profil Pencari Kerja: {{{jobSeekerProfile}}}
 
-Job Postings: {{{jobPostings}}}
+Lowongan pekerjaan: {{{jobPostings}}}
 
-Return a list of job postings that are a good match for the job seeker.
+Kembalikan daftar lowongan pekerjaan yang cocok untuk pencari kerja.
 `,
 });
 
