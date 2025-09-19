@@ -10,7 +10,7 @@ import Logo from '@/components/icons/logo';
 
 const navLinks = [
   { href: '/', label: 'Beranda' },
-  { href: '/about', label: 'Tentang Kami' },
+  { href: '/about', label: 'Tentang emploi' },
   { href: '/jobs', label: 'Cari Kerja' },
   { href: '/employers', label: 'Jelajahi Perusahaan' },
   { href: '/insights', label: 'Pengembangan Karir' },

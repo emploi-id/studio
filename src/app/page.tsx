@@ -34,7 +34,7 @@ export default function Home() {
           <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
             <div className="text-center lg:text-left">
               <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                Temukan Pekerjaan Impian Anda dengan EmployMatch
+                Temukan Pekerjaan Impian Anda dengan emploi
               </h1>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
                 Platform bertenaga AI kami menghubungkan Anda dengan peluang

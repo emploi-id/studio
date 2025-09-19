@@ -16,7 +16,7 @@ export default function Footer() {
           </div>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-center text-sm font-medium md:justify-start">
             <Link href="/about" className="hover:text-primary">
-              Tentang kami
+              Tentang emploi
             </Link>
             <Link href="/jobs" className="hover:text-primary">
               Pekerjaan
@@ -34,7 +34,7 @@ export default function Footer() {
         </div>
         <div className="mt-8 flex flex-col-reverse items-center justify-between gap-4 border-t pt-8 sm:flex-row">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} EmployMatch. Seluruh hak cipta.
+            &copy; {new Date().getFullYear()} emploi. Seluruh hak cipta.
           </p>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" asChild>
