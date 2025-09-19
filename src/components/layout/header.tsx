@@ -10,10 +10,11 @@ import Logo from '@/components/icons/logo';
 
 const navLinks = [
   { href: '/', label: 'Beranda' },
-  { href: '/jobs', label: 'Cari Lowongan' },
-  { href: '/employers', label: 'Perusahaan' },
-  { href: '/insights', label: 'Wawasan' },
   { href: '/about', label: 'Tentang Kami' },
+  { href: '/jobs', label: 'Cari Kerja' },
+  { href: '/employers', label: 'Jelajahi Perusahaan' },
+  { href: '/insights', label: 'Pengembangan Karir' },
+  { href: '/post-job', label: 'Posting Lowongan' },
 ];
 
 export default function Header() {
