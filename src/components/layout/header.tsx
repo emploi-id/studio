@@ -36,6 +36,7 @@ const navLinks = [
     label: 'Career Development',
     href: '/insights',
     dropdown: [
+      { href: '/insights', label: 'Overview' },
       { href: '/insights/resume-polisher', label: 'AI Resume Polisher' },
       { href: '/insights/skills-matcher', label: 'Skills Matcher' },
       { href: '/insights/recommendations', label: 'Personalized Recommendations' },
@@ -59,34 +60,40 @@ export default function Header() {
     const isActive = href ? pathname === href : false;
     const isDropdownActive = dropdown?.some((item) => pathname.startsWith(item.href));
 
-    if (dropdown) {
+    if (dropdown && href) {
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              className={cn(
-                'group flex items-center gap-1 text-sm font-medium transition-colors focus:bg-transparent focus:outline-none focus-visible:ring-0 hover:bg-primary-foreground/10',
-                isDropdownActive ? 'text-primary-foreground' : 'text-primary-foreground/80'
-              )}
+        <div className="flex items-center">
+            <Link
+                href={href}
+                className={cn(
+                'text-sm font-medium transition-colors hover:text-primary-foreground',
+                (isActive || isDropdownActive) ? 'text-primary-foreground' : 'text-primary-foreground/80'
+                )}
             >
-              {label}
-              <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            {href && (
-                <DropdownMenuItem asChild>
-                  <Link href={href}>Overview</Link>
+                {label}
+            </Link>
+            <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button
+                variant="ghost"
+                size="icon"
+                className={cn(
+                    'group h-auto w-6 shrink-0 flex items-center gap-1 text-sm font-medium transition-colors focus:bg-transparent focus:outline-none focus-visible:ring-0 hover:bg-primary-foreground/10',
+                    isDropdownActive ? 'text-primary-foreground' : 'text-primary-foreground/80'
+                )}
+                >
+                <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+                {dropdown.map((item) => (
+                <DropdownMenuItem key={item.href} asChild>
+                    <Link href={item.href}>{item.label}</Link>
                 </DropdownMenuItem>
-              )}
-            {dropdown.map((item) => (
-              <DropdownMenuItem key={item.href} asChild>
-                <Link href={item.href}>{item.label}</Link>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+                ))}
+            </DropdownMenuContent>
+            </DropdownMenu>
+        </div>
       );
     }
 
@@ -136,7 +143,6 @@ export default function Header() {
                     <div key={link.label}>
                       <p className="text-lg font-medium">{link.label}</p>
                       <div className="ml-4 mt-2 flex flex-col space-y-2">
-                        {link.href && <Link href={link.href} className="text-base font-medium text-muted-foreground">Overview</Link>}
                         {link.dropdown.map((item) => (
                           <Link
                             key={item.href}
