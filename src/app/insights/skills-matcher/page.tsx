@@ -19,14 +19,14 @@ function SubmitButton() {
   const { pending } = useFormStatus();
   return (
     <Button type="submit" disabled={pending} className="w-full">
-      {pending ? 'Matching...' : 'Find My Match'}
+      {pending ? 'Mencocokkan...' : 'Temukan Pasangan Saya'}
     </Button>
   );
 }
 
-// Prepare a string of job postings for the AI
+// Menyiapkan string lowongan pekerjaan untuk AI
 const jobPostingsString = jobs
-  .map(job => `Title: ${job.title}\nCompany: ${job.companyName}\nDescription: ${job.description}\nRequirements: ${job.requirements.join(', ')}`)
+  .map(job => `Judul: ${job.title}\nPerusahaan: ${job.companyName}\nDeskripsi: ${job.description}\nPersyaratan: ${job.requirements.join(', ')}`)
   .join('\n\n---\n\n');
 
 export default function SkillsMatcherPage() {
@@ -36,10 +36,10 @@ export default function SkillsMatcherPage() {
     <div className="container mx-auto max-w-4xl px-4 py-12">
       <div className="text-center">
         <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          AI Skills Matcher
+          Pencocok Keterampilan AI
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Describe your skills and experience to find the right job for you. We'll match you against our latest job openings.
+          Jelaskan keterampilan dan pengalaman Anda untuk menemukan pekerjaan yang tepat untuk Anda. Kami akan mencocokkan Anda dengan lowongan pekerjaan terbaru kami.
         </p>
       </div>
 
@@ -47,11 +47,11 @@ export default function SkillsMatcherPage() {
         <CardContent className="p-6">
           <form action={formAction} className="space-y-6">
             <div className="grid gap-2">
-              <Label htmlFor="jobSeekerProfile">Your Profile</Label>
+              <Label htmlFor="jobSeekerProfile">Profil Anda</Label>
               <Textarea
                 id="jobSeekerProfile"
                 name="jobSeekerProfile"
-                placeholder="Describe your skills, experience, and what you're looking for. E.g., 'Experienced frontend developer with 5 years in React and TypeScript. Looking for a remote role in a fast-growing startup.'"
+                placeholder="Jelaskan keterampilan, pengalaman, dan apa yang Anda cari. Contoh: 'Pengembang frontend berpengalaman dengan 5 tahun di React dan TypeScript. Mencari peran jarak jauh di startup yang berkembang pesat.'"
                 className="min-h-[200px]"
                 required
               />
@@ -65,7 +65,7 @@ export default function SkillsMatcherPage() {
       {state?.error && (
         <Alert variant="destructive" className="mt-6">
           <Terminal className="h-4 w-4" />
-          <AlertTitle>Error</AlertTitle>
+          <AlertTitle>Kesalahan</AlertTitle>
           <AlertDescription>{state.error}</AlertDescription>
         </Alert>
       )}
@@ -73,8 +73,8 @@ export default function SkillsMatcherPage() {
       {state?.matchedJobs && (
         <Card className="mt-8">
           <CardHeader>
-            <CardTitle>Matched Job Postings</CardTitle>
-            <CardDescription>Based on your profile, here are some jobs that might be a good fit.</CardDescription>
+            <CardTitle>Lowongan Pekerjaan yang Cocok</CardTitle>
+            <CardDescription>Berdasarkan profil Anda, berikut adalah beberapa pekerjaan yang mungkin cocok.</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="prose prose-sm max-w-none whitespace-pre-wrap rounded-md bg-muted p-4">

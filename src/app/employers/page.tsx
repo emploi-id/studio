@@ -8,16 +8,16 @@ export default function EmployersPage() {
     <div className="container mx-auto px-4 py-12">
       <div className="mb-12 rounded-lg bg-card p-6 shadow-sm">
         <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Discover Great Companies
+          Temukan Perusahaan Hebat
         </h1>
         <p className="mt-2 text-muted-foreground">
-          Learn about the culture and opportunities at top employers.
+          Pelajari tentang budaya dan peluang di perusahaan-perusahaan ternama.
         </p>
         <div className="relative mt-6 max-w-md">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             type="text"
-            placeholder="Search by company name or industry..."
+            placeholder="Cari berdasarkan nama atau industri perusahaan..."
             className="pl-9"
           />
         </div>

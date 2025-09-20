@@ -2,69 +2,69 @@
   "placeholderImages": [
     {
       "id": "hero",
-      "description": "A modern office environment with a diverse group of professionals collaborating.",
+      "description": "Lingkungan kantor modern dengan sekelompok profesional yang beragam berkolaborasi.",
       "imageUrl": "https://picsum.photos/seed/employmatchhero/1200/800",
-      "imageHint": "modern office"
+      "imageHint": "kantor modern"
     },
     {
       "id": "employer-logo-1",
-      "description": "Logo for Innovate Inc.",
+      "description": "Logo untuk Innovate Inc.",
       "imageUrl": "https://picsum.photos/seed/logo1/200/200",
-      "imageHint": "company logo"
+      "imageHint": "logo perusahaan"
     },
     {
       "id": "employer-logo-2",
-      "description": "Logo for Quantum Solutions",
+      "description": "Logo untuk Quantum Solutions",
       "imageUrl": "https://picsum.photos/seed/logo2/200/200",
-      "imageHint": "tech logo"
+      "imageHint": "logo teknologi"
     },
     {
       "id": "employer-logo-3",
-      "description": "Logo for EcoVibes",
+      "description": "Logo untuk EcoVibes",
       "imageUrl": "https://picsum.photos/seed/logo3/200/200",
-      "imageHint": "nature logo"
+      "imageHint": "logo alam"
     },
     {
       "id": "employer-logo-4",
-      "description": "Logo for HealthWell",
+      "description": "Logo untuk HealthWell",
       "imageUrl": "https://picsum.photos/seed/logo4/200/200",
-      "imageHint": "medical logo"
+      "imageHint": "logo medis"
     },
     {
       "id": "employer-logo-5",
-      "description": "Logo for FinSecure",
+      "description": "Logo untuk FinSecure",
       "imageUrl": "https://picsum.photos/seed/logo5/200/200",
-      "imageHint": "finance logo"
+      "imageHint": "logo keuangan"
     },
     {
       "id": "employer-logo-6",
-      "description": "Logo for CodeCrafters",
+      "description": "Logo untuk CodeCrafters",
       "imageUrl": "https://picsum.photos/seed/logo6/200/200",
-      "imageHint": "code logo"
+      "imageHint": "logo kode"
     },
     {
       "id": "job-detail-1",
-      "description": "A software engineer at a computer with code on the screen.",
+      "description": "Seorang insinyur perangkat lunak di depan komputer dengan kode di layar.",
       "imageUrl": "https://picsum.photos/seed/jobdetail1/1200/400",
-      "imageHint": "software engineer"
+      "imageHint": "insinyur perangkat lunak"
     },
     {
       "id": "job-detail-2",
-      "description": "A marketing team collaborating around a whiteboard.",
+      "description": "Tim pemasaran berkolaborasi di sekitar papan tulis.",
       "imageUrl": "https://picsum.photos/seed/jobdetail2/1200/400",
-      "imageHint": "marketing team"
+      "imageHint": "tim pemasaran"
     },
     {
       "id": "job-detail-3",
-      "description": "A close-up of a designer's hands using a graphics tablet.",
+      "description": "Tampilan dekat tangan seorang desainer menggunakan tablet grafis.",
       "imageUrl": "https://picsum.photos/seed/jobdetail3/1200/400",
-      "imageHint": "designer working"
+      "imageHint": "desainer bekerja"
     },
     {
       "id": "about-us-hero",
-      "description": "The EmployMatch team working together in a bright, modern office.",
+      "description": "Tim emploi bekerja bersama di kantor yang cerah dan modern.",
       "imageUrl": "https://picsum.photos/seed/aboutus/1600/600",
-      "imageHint": "team working"
+      "imageHint": "tim bekerja"
     }
   ]
 }

@@ -14,18 +14,18 @@ import {z} from 'genkit';
 const ResumeOptimizationInputSchema = z.object({
   resumeText: z
     .string()
-    .describe('The text content of the resume to be optimized.'),
+    .describe('Teks konten dari resume yang akan dioptimalkan.'),
   jobDescription: z
     .string()
     .optional()
-    .describe('An optional job description to tailor the resume for.'),
+    .describe('Deskripsi pekerjaan opsional untuk menyesuaikan resume.'),
 });
 export type ResumeOptimizationInput = z.infer<typeof ResumeOptimizationInputSchema>;
 
 const ResumeOptimizationOutputSchema = z.object({
   suggestions: z
     .string()
-    .describe('The AI-powered suggestions on how to improve the resume.'),
+    .describe('Saran yang didukung AI tentang cara meningkatkan resume.'),
 });
 export type ResumeOptimizationOutput = z.infer<typeof ResumeOptimizationOutputSchema>;
 
@@ -39,19 +39,19 @@ const prompt = ai.definePrompt({
   name: 'resumeOptimizationPrompt',
   input: {schema: ResumeOptimizationInputSchema},
   output: {schema: ResumeOptimizationOutputSchema},
-  prompt: `You are an expert resume optimizer. Review the provided resume and give suggestions for improvement.
+  prompt: `Anda adalah seorang ahli optimisasi resume. Tinjau resume yang diberikan dan berikan saran untuk perbaikan.
 
 Resume:
 {{{resumeText}}}
 
 {{#if jobDescription}}
-Job Description:
+Deskripsi Pekerjaan:
 {{{jobDescription}}}
 
-Tailor the resume for this job description.
+Sesuaikan resume untuk deskripsi pekerjaan ini.
 {{/if}}
 
-Provide specific, actionable suggestions, including keyword optimization, formatting improvements, and content revisions.
+Berikan saran yang spesifik dan dapat ditindaklanjuti, termasuk optimisasi kata kunci, perbaikan format, dan revisi konten.
 `,
 });
 

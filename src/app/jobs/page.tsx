@@ -32,17 +32,17 @@ export default function JobSearchPage() {
     <div className="container mx-auto px-4 py-12">
       <div className="mb-12 rounded-lg bg-card p-6 shadow-sm">
         <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Find Your Next Role
+          Temukan Peran Anda Berikutnya
         </h1>
         <p className="mt-2 text-muted-foreground">
-          Browse through thousands of open positions.
+          Telusuri ribuan posisi terbuka.
         </p>
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               type="text"
-              placeholder="Job title, keywords, or company"
+              placeholder="Jabatan, kata kunci, atau perusahaan"
               className="pl-9"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -50,10 +50,10 @@ export default function JobSearchPage() {
           </div>
           <Select value={location} onValueChange={setLocation}>
             <SelectTrigger>
-              <SelectValue placeholder="Location" />
+              <SelectValue placeholder="Lokasi" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Locations</SelectItem>
+              <SelectItem value="all">Semua Lokasi</SelectItem>
               {jobLocations.map((loc) => (
                 <SelectItem key={loc} value={loc}>
                   {loc}
@@ -63,10 +63,10 @@ export default function JobSearchPage() {
           </Select>
           <Select value={category} onValueChange={setCategory}>
             <SelectTrigger>
-              <SelectValue placeholder="Category" />
+              <SelectValue placeholder="Kategori" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Categories</SelectItem>
+              <SelectItem value="all">Semua Kategori</SelectItem>
               {jobCategories.map((cat) => (
                 <SelectItem key={cat} value={cat}>
                   {cat}
@@ -85,9 +85,9 @@ export default function JobSearchPage() {
         </div>
       ) : (
         <div className="py-24 text-center">
-          <h3 className="text-xl font-semibold">No jobs found</h3>
+          <h3 className="text-xl font-semibold">Tidak ada pekerjaan yang ditemukan</h3>
           <p className="mt-2 text-muted-foreground">
-            Try adjusting your search filters.
+            Coba sesuaikan filter pencarian Anda.
           </p>
         </div>
       )}

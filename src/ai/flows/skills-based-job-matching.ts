@@ -13,8 +13,10 @@ import {z} from 'genkit';
 const SkillsBasedJobMatchingInputSchema = z.object({
   jobSeekerProfile: z
     .string()
-    .describe("The job seeker's profile, including skills, experience, and preferences."),
-  jobPostings: z.string().describe('A list of job postings to match against.'),
+    .describe(
+      "Profil pencari kerja, termasuk keterampilan, pengalaman, dan preferensi."
+    ),
+  jobPostings: z.string().describe('Daftar lowongan pekerjaan untuk dicocokkan.'),
 });
 export type SkillsBasedJobMatchingInput = z.infer<
   typeof SkillsBasedJobMatchingInputSchema
@@ -23,7 +25,7 @@ export type SkillsBasedJobMatchingInput = z.infer<
 const SkillsBasedJobMatchingOutputSchema = z.object({
   matchedJobPostings: z
     .string()
-    .describe('A list of job postings that match the job seeker profile.'),
+    .describe('Daftar lowongan pekerjaan yang cocok dengan profil pencari kerja.'),
 });
 export type SkillsBasedJobMatchingOutput = z.infer<
   typeof SkillsBasedJobMatchingOutputSchema
@@ -39,13 +41,13 @@ const prompt = ai.definePrompt({
   name: 'skillsBasedJobMatchingPrompt',
   input: {schema: SkillsBasedJobMatchingInputSchema},
   output: {schema: SkillsBasedJobMatchingOutputSchema},
-  prompt: `You are an AI job matching expert. Given a job seeker's profile and a list of job postings, identify the most suitable postings that match the seeker's skills and experience.
+  prompt: `Anda adalah seorang ahli pencocokan pekerjaan AI. Berdasarkan profil pencari kerja dan daftar lowongan pekerjaan, identifikasi lowongan yang paling sesuai dengan keterampilan dan pengalaman pencari kerja.
 
-Job Seeker Profile: {{{jobSeekerProfile}}}
+Profil Pencari Kerja: {{{jobSeekerProfile}}}
 
-Job Postings: {{{jobPostings}}}
+Lowongan Pekerjaan: {{{jobPostings}}}
 
-Return a list of matched job postings for the job seeker.
+Kembalikan daftar lowongan pekerjaan yang cocok untuk pencari kerja.
 `,
 });
 

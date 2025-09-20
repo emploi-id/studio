@@ -15,10 +15,19 @@ import { cn } from '@/lib/utils';
 import Logo from '@/components/icons/logo';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/jobs', label: 'Find a Job' },
-  { href: '/employers', label: 'Find a Company' },
-  { href: '/insights', label: 'Insights' },
+  { href: '/', label: 'Beranda' },
+  { href: '/about', label: 'Tentang Kami' },
+  { href: '/jobs', label: 'Cari Kerja' },
+  {
+    label: 'Jelajahi Perusahaan',
+    dropdown: [
+      { href: '/employers', label: 'Daftar Perusahaan' },
+      { href: '/request-talent', label: 'Minta Bakat' },
+      { href: '/career-advise', label: 'Nasihat Karir' },
+    ],
+  },
+  { href: '/insights', label: 'Pengembangan Karir' },
+  { href: '/request-talent', label: 'Posting Lowongan' },
 ];
 
 export default function Header() {
@@ -43,10 +52,8 @@ export default function Header() {
             <Button
               variant="ghost"
               className={cn(
-                'group flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary focus:bg-transparent focus:outline-none focus-visible:ring-0',
-                isDropdownActive
-                  ? 'text-primary'
-                  : 'text-muted-foreground'
+                'group flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary-foreground focus:bg-transparent focus:outline-none focus-visible:ring-0 text-primary-foreground/80 hover:text-primary-foreground',
+                isDropdownActive ? 'text-primary-foreground' : ''
               )}
             >
               {label}
@@ -56,9 +63,7 @@ export default function Header() {
           <DropdownMenuContent>
             {dropdown.map((item) => (
               <DropdownMenuItem key={item.href} asChild>
-                <Link href={item.href}>
-                  {item.label}
-                </Link>
+                <Link href={item.href}>{item.label}</Link>
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
@@ -70,8 +75,8 @@ export default function Header() {
       <Link
         href={href!}
         className={cn(
-          'text-sm font-medium transition-colors hover:text-primary',
-          isActive ? 'text-primary' : 'text-muted-foreground'
+          'text-sm font-medium transition-colors text-primary-foreground/80 hover:text-primary-foreground',
+          isActive ? 'text-primary-foreground' : ''
         )}
       >
         {label}
@@ -80,14 +85,11 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-primary-foreground/20 bg-primary text-primary-foreground">
       <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Briefcase className="h-6 w-6" />
-            <span className="font-headline text-xl font-bold">
-              EmployMatch
-            </span>
+            <Logo />
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {navLinks.map((link) => (
@@ -100,15 +102,14 @@ export default function Header() {
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10">
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Open Menu</span>
+                <span className="sr-only">Buka Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
               <Link href="/" className="flex items-center">
-                <Briefcase className="mr-2 h-6 w-6" />
-                <span className="font-bold">EmployMatch</span>
+                <Logo />
               </Link>
               <div className="mt-8 flex flex-col space-y-4">
                 {navLinks.map((link) =>
@@ -144,14 +145,10 @@ export default function Header() {
 
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center">
-            <Link
-              href="/request-talent"
-            >
-              <Button variant="outline" className="mr-4">
-                Request Talent
-              </Button>
-            </Link>
-            <Button>Sign Up</Button>
+            <Button variant="outline" className="mr-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90">
+              Minta Bakat
+            </Button>
+            <Button variant="secondary">Daftar</Button>
           </nav>
         </div>
       </div>
