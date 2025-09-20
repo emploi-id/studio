@@ -5,8 +5,8 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 
 export const metadata: Metadata = {
-  title: 'emploi',
-  description: 'Find your dream job with emploi, the AI-powered job matching platform.',
+  title: 'EmployMatch',
+  description: 'Find your dream job with EmployMatch, the AI-powered job matching platform.',
 };
 
 export default function RootLayout({

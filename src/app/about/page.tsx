@@ -22,7 +22,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center">
           <h1 className="font-headline text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-            About emploi
+            About EmployMatch
           </h1>
         </div>
       </div>
@@ -33,7 +33,7 @@ export default function AboutPage() {
             Our Mission
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            At emploi, our mission is to revolutionize the job market by leveraging cutting-edge artificial intelligence to create the perfect match between talented professionals and innovative companies. We believe that the right job can transform a person's life, and the right person can transform a business. We're dedicated to making that connection seamless, efficient, and intelligent.
+            At EmployMatch, our mission is to revolutionize the job market by leveraging cutting-edge artificial intelligence to create the perfect match between talented professionals and innovative companies. We believe that the right job can transform a person's life, and the right person can transform a business. We're dedicated to making that connection seamless, efficient, and intelligent.
           </p>
         </div>
 
@@ -42,7 +42,7 @@ export default function AboutPage() {
               Meet Our Team
             </h2>
             <p className="mt-4 text-center text-lg text-muted-foreground">
-              The passionate people behind emploi.
+              The passionate people behind EmployMatch.
             </p>
             <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {[

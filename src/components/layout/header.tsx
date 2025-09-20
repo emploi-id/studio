@@ -16,19 +16,9 @@ import Logo from '@/components/icons/logo';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About emploi' },
-  { href: '/jobs', label: 'Job Search' },
-  {
-    href: '#',
-    label: 'Explore Companies',
-    dropdown: [
-      { href: '/employers', label: 'Explore Companies' },
-      { href: '/request-talent', label: 'Request Talent' },
-      { href: '/career-advise', label: 'Career Advise' },
-    ],
-  },
-  { href: '/insights', label: 'Career Development' },
-  { href: '/request-talent', label: 'Post a Job' },
+  { href: '/jobs', label: 'Find a Job' },
+  { href: '/employers', label: 'Find a Company' },
+  { href: '/insights', label: 'Insights' },
 ];
 
 export default function Header() {
@@ -53,10 +43,10 @@ export default function Header() {
             <Button
               variant="ghost"
               className={cn(
-                'group flex items-center gap-1 text-sm font-medium transition-colors hover:text-white focus:bg-transparent focus:outline-none focus-visible:ring-0',
+                'group flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary focus:bg-transparent focus:outline-none focus-visible:ring-0',
                 isDropdownActive
-                  ? 'text-white'
-                  : 'text-primary-foreground/80'
+                  ? 'text-primary'
+                  : 'text-muted-foreground'
               )}
             >
               {label}
@@ -80,8 +70,8 @@ export default function Header() {
       <Link
         href={href!}
         className={cn(
-          'text-sm font-medium transition-colors hover:text-white',
-          isActive ? 'text-white' : 'text-primary-foreground/80'
+          'text-sm font-medium transition-colors hover:text-primary',
+          isActive ? 'text-primary' : 'text-muted-foreground'
         )}
       >
         {label}
@@ -90,11 +80,14 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-primary/20 bg-primary">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Logo />
+            <Briefcase className="h-6 w-6" />
+            <span className="font-headline text-xl font-bold">
+              EmployMatch
+            </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {navLinks.map((link) => (
@@ -107,14 +100,15 @@ export default function Header() {
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="hover:bg-primary/80 hover:text-white">
+              <Button variant="ghost" size="icon">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Open Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
               <Link href="/" className="flex items-center">
-                <Logo />
+                <Briefcase className="mr-2 h-6 w-6" />
+                <span className="font-bold">EmployMatch</span>
               </Link>
               <div className="mt-8 flex flex-col space-y-4">
                 {navLinks.map((link) =>
@@ -150,8 +144,14 @@ export default function Header() {
 
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center">
-            <Button variant="ghost" className="text-primary-foreground/80 hover:bg-primary/80 hover:text-white">Log In</Button>
-            <Button variant="secondary" className="border border-transparent bg-white/20 text-white hover:bg-white/30">Sign Up</Button>
+            <Link
+              href="/request-talent"
+            >
+              <Button variant="outline" className="mr-4">
+                Request Talent
+              </Button>
+            </Link>
+            <Button>Sign Up</Button>
           </nav>
         </div>
       </div>
