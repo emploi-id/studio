@@ -26,7 +26,15 @@ const navLinks = [
       { href: '/career-advise', label: 'Career Advise' },
     ],
   },
-  { href: '/insights', label: 'Career Development' },
+  {
+    label: 'Career Development',
+    href: '/insights',
+    dropdown: [
+      { href: '/insights/resume-polisher', label: 'AI Resume Polisher' },
+      { href: '/insights/skills-matcher', label: 'Skills Matcher' },
+      { href: '/insights/recommendations', label: 'Personalized Recommendations' },
+    ],
+  },
 ];
 
 export default function Header() {
@@ -42,7 +50,7 @@ export default function Header() {
     dropdown?: { href: string; label: string }[];
   }) => {
     const isActive = href ? pathname === href : false;
-    const isDropdownActive = dropdown?.some((item) => pathname === item.href);
+    const isDropdownActive = dropdown?.some((item) => pathname.startsWith(item.href));
 
     if (dropdown) {
       return (
@@ -60,6 +68,11 @@ export default function Header() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
+            {href && (
+                <DropdownMenuItem asChild>
+                  <Link href={href}>Overview</Link>
+                </DropdownMenuItem>
+              )}
             {dropdown.map((item) => (
               <DropdownMenuItem key={item.href} asChild>
                 <Link href={item.href}>{item.label}</Link>
@@ -116,6 +129,7 @@ export default function Header() {
                     <div key={link.label}>
                       <p className="text-lg font-medium">{link.label}</p>
                       <div className="ml-4 mt-2 flex flex-col space-y-2">
+                        {link.href && <Link href={link.href} className="text-base font-medium text-muted-foreground">Overview</Link>}
                         {link.dropdown.map((item) => (
                           <Link
                             key={item.href}
