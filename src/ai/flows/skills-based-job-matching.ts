@@ -14,9 +14,9 @@ const SkillsBasedJobMatchingInputSchema = z.object({
   jobSeekerProfile: z
     .string()
     .describe(
-      "Profil pencari kerja, termasuk keterampilan, pengalaman, dan preferensi."
+      "A job seeker's profile, including skills, experience, and preferences."
     ),
-  jobPostings: z.string().describe('Daftar lowongan pekerjaan untuk dicocokkan.'),
+  jobPostings: z.string().describe('A list of job postings to match against.'),
 });
 export type SkillsBasedJobMatchingInput = z.infer<
   typeof SkillsBasedJobMatchingInputSchema
@@ -25,7 +25,7 @@ export type SkillsBasedJobMatchingInput = z.infer<
 const SkillsBasedJobMatchingOutputSchema = z.object({
   matchedJobPostings: z
     .string()
-    .describe('Daftar lowongan pekerjaan yang cocok dengan profil pencari kerja.'),
+    .describe('A list of job postings that match the job seeker profile.'),
 });
 export type SkillsBasedJobMatchingOutput = z.infer<
   typeof SkillsBasedJobMatchingOutputSchema
@@ -41,13 +41,13 @@ const prompt = ai.definePrompt({
   name: 'skillsBasedJobMatchingPrompt',
   input: {schema: SkillsBasedJobMatchingInputSchema},
   output: {schema: SkillsBasedJobMatchingOutputSchema},
-  prompt: `Anda adalah seorang ahli pencocokan pekerjaan AI. Berdasarkan profil pencari kerja dan daftar lowongan pekerjaan, identifikasi lowongan yang paling sesuai dengan keterampilan dan pengalaman pencari kerja.
+  prompt: `You are an expert AI job matcher. Based on the job seeker's profile and a list of job postings, identify the most suitable job openings.
 
-Profil Pencari Kerja: {{{jobSeekerProfile}}}
+Job Seeker Profile: {{{jobSeekerProfile}}}
 
-Lowongan Pekerjaan: {{{jobPostings}}}
+Job Postings: {{{jobPostings}}}
 
-Kembalikan daftar lowongan pekerjaan yang cocok untuk pencari kerja.
+Return a list of matched job postings for the job seeker.
 `,
 });
 

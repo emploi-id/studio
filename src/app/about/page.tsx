@@ -22,7 +22,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center">
           <h1 className="font-headline text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-            Tentang emploi
+            About emploi
           </h1>
         </div>
       </div>
@@ -30,19 +30,19 @@ export default function AboutPage() {
       <div className="container mx-auto px-4 py-16">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Misi Kami
+            Our Mission
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            Di emploi, misi kami adalah merevolusi pasar kerja dengan memanfaatkan kecerdasan buatan canggih untuk menciptakan pasangan yang sempurna antara para profesional berbakat dan perusahaan inovatif. Kami percaya bahwa pekerjaan yang tepat dapat mengubah hidup seseorang, dan orang yang tepat dapat mengubah sebuah bisnis. Kami berdedikasi untuk membuat hubungan itu mulus, efisien, dan cerdas.
+            At emploi, our mission is to revolutionize the job market by leveraging cutting-edge artificial intelligence to create the perfect match between talented professionals and innovative companies. We believe the right job can transform a person's life, and the right person can transform a business. We're dedicated to making that connection seamless, efficient, and intelligent.
           </p>
         </div>
 
         <div className="mt-20">
             <h2 className="text-center font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Tim Kami
+              Our Team
             </h2>
             <p className="mt-4 text-center text-lg text-muted-foreground">
-              Orang-orang penuh semangat di balik emploi.
+              The passionate people behind emploi.
             </p>
             <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {[

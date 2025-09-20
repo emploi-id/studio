@@ -12,14 +12,14 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const PersonalizedJobRecommendationsInputSchema = z.object({
-  userSkills: z.array(z.string()).describe("Daftar keterampilan pencari kerja."),
-  searchHistory: z.array(z.string()).describe("Riwayat pencarian kerja terbaru pencari kerja."),
-  preferences: z.string().describe("Preferensi pencari kerja (misalnya, jenis pekerjaan, lokasi)."),
+  userSkills: z.array(z.string()).describe("A list of the job seeker's skills."),
+  searchHistory: z.array(z.string()).describe("The job seeker's recent job search history."),
+  preferences: z.string().describe("The job seeker's preferences (e.g., job type, location)."),
 });
 export type PersonalizedJobRecommendationsInput = z.infer<typeof PersonalizedJobRecommendationsInputSchema>;
 
 const PersonalizedJobRecommendationsOutputSchema = z.object({
-  jobRecommendations: z.array(z.string()).describe('Daftar rekomendasi pekerjaan yang disesuaikan untuk pengguna.'),
+  jobRecommendations: z.array(z.string()).describe('A list of tailored job recommendations for the user.'),
 });
 export type PersonalizedJobRecommendationsOutput = z.infer<typeof PersonalizedJobRecommendationsOutputSchema>;
 
@@ -33,15 +33,15 @@ const prompt = ai.definePrompt({
   name: 'personalizedJobRecommendationsPrompt',
   input: {schema: PersonalizedJobRecommendationsInputSchema},
   output: {schema: PersonalizedJobRecommendationsOutputSchema},
-  prompt: `Anda adalah sistem rekomendasi pekerjaan ahli.
+  prompt: `You are an expert job recommendation system.
 
-  Berdasarkan keterampilan, riwayat pencarian, dan preferensi pencari kerja, berikan daftar rekomendasi pekerjaan yang dipersonalisasi.
+  Based on the job seeker's skills, search history, and preferences, provide a list of personalized job recommendations.
 
-  Keterampilan: {{#if userSkills}}{{#each userSkills}} - {{{this}}}\n{{/each}}{{else}}Tidak ada keterampilan yang terdaftar.{{/if}}
-  Riwayat Pencarian: {{#if searchHistory}}{{#each searchHistory}} - {{{this}}}\n{{/each}}{{else}}Tidak ada riwayat pencarian.{{/if}}
-  Preferensi: {{{preferences}}}
+  Skills: {{#if userSkills}}{{#each userSkills}} - {{{this}}}\n{{/each}}{{else}}No skills listed.{{/if}}
+  Search History: {{#if searchHistory}}{{#each searchHistory}} - {{{this}}}\n{{/each}}{{else}}No search history.{{/if}}
+  Preferences: {{{preferences}}}
 
-  Rekomendasi Pekerjaan:`,
+  Job Recommendations:`,
 });
 
 const personalizedJobRecommendationsFlow = ai.defineFlow(

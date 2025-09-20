@@ -15,19 +15,19 @@ import { cn } from '@/lib/utils';
 import Logo from '@/components/icons/logo';
 
 const navLinks = [
-  { href: '/', label: 'Beranda' },
-  { href: '/about', label: 'Tentang Kami' },
-  { href: '/jobs', label: 'Cari Kerja' },
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About Us' },
+  { href: '/jobs', label: 'Job Search' },
   {
-    label: 'Jelajahi Perusahaan',
+    label: 'Explore',
     dropdown: [
-      { href: '/employers', label: 'Daftar Perusahaan' },
-      { href: '/request-talent', label: 'Minta Bakat' },
-      { href: '/career-advise', label: 'Nasihat Karir' },
+      { href: '/employers', label: 'Companies' },
+      { href: '/request-talent', label: 'Request Talent' },
+      { href: '/career-advise', label: 'Career Advise' },
     ],
   },
-  { href: '/insights', label: 'Pengembangan Karir' },
-  { href: '/request-talent', label: 'Posting Lowongan' },
+  { href: '/insights', label: 'Career Development' },
+  { href: '/request-talent', label: 'Post a Job' },
 ];
 
 export default function Header() {
@@ -104,7 +104,7 @@ export default function Header() {
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10">
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Buka Menu</span>
+                <span className="sr-only">Open Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
@@ -146,9 +146,9 @@ export default function Header() {
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center">
             <Button variant="outline" className="mr-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-              Minta Bakat
+              Request Talent
             </Button>
-            <Button variant="secondary">Daftar</Button>
+            <Button variant="secondary">Sign Up</Button>
           </nav>
         </div>
       </div>

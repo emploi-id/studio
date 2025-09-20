@@ -19,7 +19,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
   return (
     <Button type="submit" disabled={pending} className="w-full">
-      {pending ? 'Memoles...' : 'Poles Resume Saya'}
+      {pending ? 'Polishing...' : 'Polish My Resume'}
     </Button>
   );
 }
@@ -31,10 +31,10 @@ export default function ResumePolisherPage() {
     <div className="container mx-auto max-w-4xl px-4 py-12">
       <div className="text-center">
         <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Poles Resume AI
+          AI Resume Polisher
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Tempelkan resume Anda dan deskripsi pekerjaan opsional untuk mendapatkan umpan balik yang disesuaikan dari AI kami.
+          Paste your resume and an optional job description to get tailored feedback from our AI.
         </p>
       </div>
 
@@ -42,21 +42,21 @@ export default function ResumePolisherPage() {
         <CardContent className="p-6">
           <form action={formAction} className="space-y-6">
             <div className="grid gap-2">
-              <Label htmlFor="resumeText">Resume Anda</Label>
+              <Label htmlFor="resumeText">Your Resume</Label>
               <Textarea
                 id="resumeText"
                 name="resumeText"
-                placeholder="Tempelkan teks lengkap resume Anda di sini..."
+                placeholder="Paste the full text of your resume here..."
                 className="min-h-[250px]"
                 required
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="jobDescription">Deskripsi Pekerjaan Target (Opsional)</Label>
+              <Label htmlFor="jobDescription">Target Job Description (Optional)</Label>
               <Textarea
                 id="jobDescription"
                 name="jobDescription"
-                placeholder="Tempelkan deskripsi pekerjaan di sini untuk umpan balik yang lebih spesifik..."
+                placeholder="Paste a job description here for more specific feedback..."
                 className="min-h-[150px]"
               />
             </div>
@@ -68,7 +68,7 @@ export default function ResumePolisherPage() {
       {state?.error && (
         <Alert variant="destructive" className="mt-6">
             <Terminal className="h-4 w-4" />
-            <AlertTitle>Kesalahan</AlertTitle>
+            <AlertTitle>Error</AlertTitle>
             <AlertDescription>{state.error}</AlertDescription>
         </Alert>
       )}
@@ -76,8 +76,8 @@ export default function ResumePolisherPage() {
       {state?.suggestions && (
         <Card className="mt-8">
             <CardHeader>
-                <CardTitle>Saran Optimisasi</CardTitle>
-                <CardDescription>Berikut adalah saran yang didukung AI untuk meningkatkan resume Anda.</CardDescription>
+                <CardTitle>Optimization Suggestions</CardTitle>
+                <CardDescription>Here are the AI-powered suggestions for improving your resume.</CardDescription>
             </CardHeader>
             <CardContent>
                 <div className="prose prose-sm max-w-none whitespace-pre-wrap rounded-md bg-muted p-4">

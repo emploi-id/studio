@@ -98,23 +98,23 @@ export default function JobDetailPage({ params }: Props) {
                 )}
                 <div className="flex items-center gap-2">
                   <CalendarDays className="h-4 w-4" />{' '}
-                  <span>Diposting {job.postedAt}</span>
+                  <span>Posted {job.postedAt}</span>
                 </div>
               </div>
             </div>
             <Dialog>
               <DialogTrigger asChild>
-                <Button size="lg" className="w-full sm:w-auto">Lamar Sekarang</Button>
+                <Button size="lg" className="w-full sm:w-auto">Apply Now</Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Lamar ke {job.title}</DialogTitle>
+                  <DialogTitle>Apply to {job.title}</DialogTitle>
                   <DialogDescription>
-                    Lamaran Anda akan dikirim langsung ke {job.companyName}. Ini adalah aplikasi demo.
+                    Your application will be sent directly to {job.companyName}. This is a demo application.
                   </DialogDescription>
                 </DialogHeader>
                 <div className="py-4 text-center">
-                    <p>Lamaran berhasil dikirim!</p>
+                    <p>Application submitted successfully!</p>
                 </div>
               </DialogContent>
             </Dialog>
@@ -126,7 +126,7 @@ export default function JobDetailPage({ params }: Props) {
             <Card>
               <CardContent className="p-6">
                 <h2 className="font-headline text-xl font-bold">
-                  Deskripsi Pekerjaan
+                  Job Description
                 </h2>
                 <p className="mt-4 whitespace-pre-line text-foreground/80">
                   {job.longDescription}
@@ -138,7 +138,7 @@ export default function JobDetailPage({ params }: Props) {
             <Card>
               <CardContent className="p-6">
                 <h2 className="font-headline text-xl font-bold">
-                  Persyaratan
+                  Requirements
                 </h2>
                 <ul className="mt-4 space-y-2">
                   {job.requirements.map((req, index) => (

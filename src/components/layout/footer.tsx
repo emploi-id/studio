@@ -11,30 +11,30 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-4 md:items-start">
             <Logo />
             <p className="max-w-xs text-center text-sm text-primary-foreground/80 md:text-left">
-              Mitra bertenaga AI Anda dalam menemukan pasangan karir yang sempurna.
+              Your AI-powered partner in finding the perfect career match.
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-center text-sm font-medium md:justify-start">
             <Link href="/about" className="text-primary-foreground/80 hover:text-primary-foreground">
-              Tentang emploi
+              About emploi
             </Link>
             <Link href="/jobs" className="text-primary-foreground/80 hover:text-primary-foreground">
-              Cari Kerja
+              Job Search
             </Link>
             <Link href="/employers" className="text-primary-foreground/80 hover:text-primary-foreground">
-              Jelajahi Perusahaan
+              Explore Companies
             </Link>
             <Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground">
-              Kebijakan Privasi
+              Privacy Policy
             </Link>
             <Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground">
-              Ketentuan Layanan
+              Terms of Service
             </Link>
           </div>
         </div>
         <div className="mt-8 flex flex-col-reverse items-center justify-between gap-4 border-t border-primary-foreground/20 pt-8 sm:flex-row">
           <p className="text-sm text-primary-foreground/80">
-            &copy; {new Date().getFullYear()} emploi. Semua hak dilindungi.
+            &copy; {new Date().getFullYear()} emploi. All rights reserved.
           </p>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10" asChild>
