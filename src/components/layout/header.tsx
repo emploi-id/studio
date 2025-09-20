@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, Briefcase, ChevronDown } from 'lucide-react';
+import { Menu, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import {
@@ -52,7 +52,7 @@ export default function Header() {
             <Button
               variant="ghost"
               className={cn(
-                'group flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary-foreground focus:bg-transparent focus:outline-none focus-visible:ring-0 text-primary-foreground/80 hover:text-primary-foreground',
+                'group flex items-center gap-1 text-sm font-medium transition-colors focus:bg-transparent focus:outline-none focus-visible:ring-0 text-primary-foreground/80 hover:text-primary-foreground',
                 isDropdownActive ? 'text-primary-foreground' : ''
               )}
             >
