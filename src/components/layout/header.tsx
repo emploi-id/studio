@@ -16,14 +16,20 @@ import Logo from '@/components/icons/logo';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About Us' },
-  { href: '/jobs', label: 'Job Search' },
   {
-    label: 'Explore',
+    label: 'About Us',
+    href: '/about',
     dropdown: [
-      { href: '/employers', label: 'Companies' },
-      { href: '/request-talent', label: 'Request Talent' },
+      { href: '/about', label: 'About emploi' },
       { href: '/career-advise', label: 'Career Advise' },
+    ],
+  },
+  {
+    label: 'Job Search',
+    href: '/jobs',
+    dropdown: [
+        { href: '/jobs', label: 'Find a Job' },
+        { href: '/employers', label: 'Find a Company' },
     ],
   },
   {
@@ -35,6 +41,7 @@ const navLinks = [
       { href: '/insights/recommendations', label: 'Personalized Recommendations' },
     ],
   },
+  { href: '/request-talent', label: 'Request Talent' },
 ];
 
 export default function Header() {
