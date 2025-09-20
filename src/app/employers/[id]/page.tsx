@@ -97,7 +97,7 @@ export default function EmployerDetailPage({ params }: Props) {
                         {employerJobs.map(job => <JobCard key={job.id} job={job} />)}
                     </div>
                 ) : (
-                    <p className="mt-4 text-muted-foreground">Saat ini không ada posisi terbuka di {employer.name}.</p>
+                    <p className="mt-4 text-muted-foreground">Saat ini tidak ada posisi terbuka di {employer.name}.</p>
                 )}
             </div>
         </div>
