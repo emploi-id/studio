@@ -16,18 +16,10 @@ import Logo from '@/components/icons/logo';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About emploi' },
   { href: '/jobs', label: 'Job Search' },
-  {
-    label: 'Employers',
-    dropdown: [
-      { href: '/employers', label: 'Browse Employers' },
-      { href: '/request-talent', label: 'Request Talent' },
-      { href: '/career-advise', label: 'Career Advise' },
-    ],
-  },
-  { href: '/insights', label: 'Career Development' },
-  { href: '/post-job', label: 'Post a Job' },
+  { href: '/employers', label: 'Employers' },
+  { href: '/insights', label: 'AI Tools' },
+  { href: '/about', label: 'About' },
 ];
 
 export default function Header() {
@@ -52,20 +44,20 @@ export default function Header() {
             <Button
               variant="ghost"
               className={cn(
-                'group flex items-center gap-1 text-sm font-medium transition-colors hover:bg-transparent hover:text-white focus:bg-transparent focus:outline-none focus-visible:ring-0',
+                'group flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary focus:bg-transparent focus:outline-none focus-visible:ring-0',
                 isDropdownActive
-                  ? 'text-white'
-                  : 'text-primary-foreground/80'
+                  ? 'text-primary'
+                  : 'text-muted-foreground'
               )}
             >
               {label}
               <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-primary border-primary/20 text-primary-foreground">
+          <DropdownMenuContent>
             {dropdown.map((item) => (
               <DropdownMenuItem key={item.href} asChild>
-                <Link href={item.href} className="hover:!bg-white/10 hover:!text-white">
+                <Link href={item.href}>
                   {item.label}
                 </Link>
               </DropdownMenuItem>
@@ -79,8 +71,8 @@ export default function Header() {
       <Link
         href={href!}
         className={cn(
-          'text-sm font-medium transition-colors hover:text-white',
-          isActive ? 'text-white' : 'text-primary-foreground/80'
+          'text-sm font-medium transition-colors hover:text-primary',
+          isActive ? 'text-primary' : 'text-muted-foreground'
         )}
       >
         {label}
@@ -89,8 +81,8 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-primary/20 bg-primary text-primary-foreground">
-      <div className="container flex h-14 items-center">
+    <header className="sticky top-0 z-50 w-full border-b bg-background">
+      <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Logo />
@@ -147,16 +139,11 @@ export default function Header() {
           </Sheet>
         </div>
 
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <Button variant="ghost" className="hover:bg-white/10">
-            Log In
-          </Button>
-          <Button
-            variant="secondary"
-            className="bg-white/20 text-primary-foreground hover:bg-white/30"
-          >
-            Sign Up
-          </Button>
+        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+          <nav className="flex items-center">
+            <Button variant="ghost">Log In</Button>
+            <Button>Sign Up</Button>
+          </nav>
         </div>
       </div>
     </header>
