@@ -1,6 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { polishResumeAction } from '@/app/actions';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -24,7 +25,7 @@ function SubmitButton() {
 }
 
 export default function ResumePolisherPage() {
-  const [state, formAction] = useFormState(polishResumeAction, initialState);
+  const [state, formAction] = useActionState(polishResumeAction, initialState);
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12">

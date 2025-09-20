@@ -1,6 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { matchSkillsAction } from '@/app/actions';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -30,7 +31,7 @@ const jobPostingsString = jobs
   .join('\n\n---\n\n');
 
 export default function SkillsMatcherPage() {
-  const [state, formAction] = useFormState(matchSkillsAction, initialState);
+  const [state, formAction] = useActionState(matchSkillsAction, initialState);
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12">
