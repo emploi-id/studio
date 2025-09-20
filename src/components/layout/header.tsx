@@ -27,7 +27,6 @@ const navLinks = [
     ],
   },
   { href: '/insights', label: 'Career Development' },
-  { href: '/request-talent', label: 'Post a Job' },
 ];
 
 export default function Header() {
@@ -52,8 +51,8 @@ export default function Header() {
             <Button
               variant="ghost"
               className={cn(
-                'group flex items-center gap-1 text-sm font-medium transition-colors focus:bg-transparent focus:outline-none focus-visible:ring-0 text-primary-foreground/80 hover:text-primary-foreground',
-                isDropdownActive ? 'text-primary-foreground' : ''
+                'group flex items-center gap-1 text-sm font-medium transition-colors focus:bg-transparent focus:outline-none focus-visible:ring-0 hover:bg-primary-foreground/10',
+                isDropdownActive ? 'text-primary-foreground' : 'text-primary-foreground/80'
               )}
             >
               {label}
@@ -75,8 +74,8 @@ export default function Header() {
       <Link
         href={href!}
         className={cn(
-          'text-sm font-medium transition-colors text-primary-foreground/80 hover:text-primary-foreground',
-          isActive ? 'text-primary-foreground' : ''
+          'text-sm font-medium transition-colors hover:text-primary-foreground',
+          isActive ? 'text-primary-foreground' : 'text-primary-foreground/80'
         )}
       >
         {label}
@@ -145,8 +144,8 @@ export default function Header() {
 
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center">
-            <Link href="/request-talent" className="mr-4" passHref>
-              <Button asChild variant="outline" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
+            <Link href="/request-talent" passHref>
+              <Button asChild variant="outline" className="mr-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90">
                 <span>Request Talent</span>
               </Button>
             </Link>
