@@ -45,70 +45,81 @@ const navLinks = [
   { href: '/request-talent', label: 'Request Talent' },
 ];
 
-export default function Header() {
+const NavLinkContent = ({
+  href,
+  label,
+  dropdown,
+}: {
+  href: string;
+  label: string;
+  dropdown?: { href: string; label: string }[];
+}) => {
   const pathname = usePathname();
+  const isActive = pathname === href;
+  const isDropdownActive = dropdown?.some((item) => pathname.startsWith(item.href));
 
-  const NavLink = ({
-    href,
-    label,
-    dropdown,
-  }: {
-    href?: string;
-    label: string;
-    dropdown?: { href: string; label: string }[];
-  }) => {
-    const isActive = href ? pathname === href : false;
-    const isDropdownActive = dropdown?.some((item) => pathname.startsWith(item.href));
+  return (
+    <Link
+      href={href}
+      className={cn(
+        'text-sm font-medium transition-colors hover:text-primary-foreground',
+        isActive || isDropdownActive
+          ? 'text-primary-foreground'
+          : 'text-primary-foreground/80'
+      )}
+    >
+      {label}
+    </Link>
+  );
+};
 
-    if (dropdown && href) {
-      return (
-        <div className="flex items-center">
-            <Link
-                href={href}
-                className={cn(
-                'text-sm font-medium transition-colors hover:text-primary-foreground',
-                (isActive || isDropdownActive) ? 'text-primary-foreground' : 'text-primary-foreground/80'
-                )}
-            >
-                {label}
-            </Link>
-            <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <Button
-                variant="ghost"
-                size="icon"
-                className={cn(
-                    'group h-auto w-6 shrink-0 flex items-center gap-1 text-sm font-medium transition-colors focus:bg-transparent focus:outline-none focus-visible:ring-0 hover:bg-primary-foreground/10',
-                    isDropdownActive ? 'text-primary-foreground' : 'text-primary-foreground/80'
-                )}
-                >
-                <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-                </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-                {dropdown.map((item) => (
-                <DropdownMenuItem key={item.href} asChild>
-                    <Link href={item.href}>{item.label}</Link>
-                </DropdownMenuItem>
-                ))}
-            </DropdownMenuContent>
-            </DropdownMenu>
-        </div>
-      );
-    }
-
+const NavLink = ({
+  href,
+  label,
+  dropdown,
+}: {
+  href?: string;
+  label: string;
+  dropdown?: { href: string; label: string }[];
+}) => {
+  const pathname = usePathname();
+  const isDropdownActive = dropdown?.some((item) => pathname.startsWith(item.href));
+  
+  if (dropdown && href) {
     return (
-      <Link
-        href={href!}
-        className={cn(
-          'text-sm font-medium transition-colors hover:text-primary-foreground',
-          isActive ? 'text-primary-foreground' : 'text-primary-foreground/80'
-        )}
-      >
-        {label}
-      </Link>
+      <div className="flex items-center">
+        <NavLinkContent href={href} label={label} dropdown={dropdown} />
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={cn(
+                'group h-auto w-6 shrink-0 flex items-center gap-1 text-sm font-medium transition-colors focus:bg-transparent focus:outline-none focus-visible:ring-0 hover:bg-primary-foreground/10',
+                isDropdownActive
+                  ? 'text-primary-foreground'
+                  : 'text-primary-foreground/80'
+              )}
+            >
+              <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            {dropdown.map((item) => (
+              <DropdownMenuItem key={item.href} asChild>
+                <Link href={item.href}>{item.label}</Link>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
     );
-  };
+  }
+
+  return href ? <NavLinkContent href={href} label={label} /> : null;
+};
+
+export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-primary-foreground/20 bg-primary text-primary-foreground">
