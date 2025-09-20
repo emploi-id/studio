@@ -16,10 +16,19 @@ import Logo from '@/components/icons/logo';
 
 const navLinks = [
   { href: '/', label: 'Home' },
+  { href: '/about', label: 'About emploi' },
   { href: '/jobs', label: 'Job Search' },
-  { href: '/employers', label: 'Employers' },
-  { href: '/insights', label: 'AI Tools' },
-  { href: '/about', label: 'About' },
+  {
+    href: '#',
+    label: 'Explore Companies',
+    dropdown: [
+      { href: '/employers', label: 'Explore Companies' },
+      { href: '/request-talent', label: 'Request Talent' },
+      { href: '/career-advise', label: 'Career Advise' },
+    ],
+  },
+  { href: '/insights', label: 'Career Development' },
+  { href: '/request-talent', label: 'Post a Job' },
 ];
 
 export default function Header() {
@@ -44,10 +53,10 @@ export default function Header() {
             <Button
               variant="ghost"
               className={cn(
-                'group flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary focus:bg-transparent focus:outline-none focus-visible:ring-0',
+                'group flex items-center gap-1 text-sm font-medium transition-colors hover:text-white focus:bg-transparent focus:outline-none focus-visible:ring-0',
                 isDropdownActive
-                  ? 'text-primary'
-                  : 'text-muted-foreground'
+                  ? 'text-white'
+                  : 'text-primary-foreground/80'
               )}
             >
               {label}
@@ -71,8 +80,8 @@ export default function Header() {
       <Link
         href={href!}
         className={cn(
-          'text-sm font-medium transition-colors hover:text-primary',
-          isActive ? 'text-primary' : 'text-muted-foreground'
+          'text-sm font-medium transition-colors hover:text-white',
+          isActive ? 'text-white' : 'text-primary-foreground/80'
         )}
       >
         {label}
@@ -81,7 +90,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background">
+    <header className="sticky top-0 z-50 w-full border-b border-primary/20 bg-primary">
       <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
@@ -98,7 +107,7 @@ export default function Header() {
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="hover:bg-primary/80 hover:text-white">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Open Menu</span>
               </Button>
@@ -141,8 +150,8 @@ export default function Header() {
 
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center">
-            <Button variant="ghost">Log In</Button>
-            <Button>Sign Up</Button>
+            <Button variant="ghost" className="text-primary-foreground/80 hover:bg-primary/80 hover:text-white">Log In</Button>
+            <Button variant="secondary" className="border border-transparent bg-white/20 text-white hover:bg-white/30">Sign Up</Button>
           </nav>
         </div>
       </div>
