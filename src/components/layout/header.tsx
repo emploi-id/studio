@@ -145,9 +145,11 @@ export default function Header() {
 
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center">
-            <Button variant="outline" className="mr-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-              Request Talent
-            </Button>
+            <Link href="/request-talent" className="mr-4">
+              <Button variant="outline" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
+                Request Talent
+              </Button>
+            </Link>
             <Button variant="secondary">Sign Up</Button>
           </nav>
         </div>
