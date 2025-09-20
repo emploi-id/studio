@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { jobs, jobCategories, jobLocations } from '@/lib/data';
+import { useState, useMemo } from 'react';
+import { jobs, jobCategories } from '@/lib/data';
 import JobCard from '@/components/job-card';
 import { Input } from '@/components/ui/input';
 import {
@@ -17,6 +17,8 @@ export default function JobSearchPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [location, setLocation] = useState('all');
   const [category, setCategory] = useState('all');
+
+  const jobLocations = useMemo(() => [...new Set(jobs.map(job => job.location))], []);
 
   const filteredJobs = jobs.filter((job) => {
     return (
