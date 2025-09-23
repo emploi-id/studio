@@ -47,7 +47,7 @@ export default function AboutPage() {
             <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {[
                     { name: "Wasis Winardi", role: "CEO & Pendiri", avatar: "WW" },
-                    { name: "John Smith", role: "Chief Technology Officer", avatar: "JS" },
+                    { name: "Bernard Panggabean", role: "Chief Technology Officer", avatar: "BP" },
                     { name: "Emily White", role: "Kepala Produk", avatar: "EW" },
                     { name: "Michael Brown", role: "Lead AI Engineer", avatar: "MB" },
                 ].map(member => (
