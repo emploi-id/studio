@@ -48,7 +48,7 @@ export default function AboutPage() {
                 {[
                     { name: "Wasis Winardi", role: "CEO & Pendiri", avatar: "WW" },
                     { name: "Bernard Panggabean", role: "Chief Technology Officer", avatar: "BP" },
-                    { name: "Emily White", role: "Kepala Produk", avatar: "EW" },
+                    { name: "Lukman", role: "Kepala Produk", avatar: "L" },
                     { name: "Michael Brown", role: "Lead AI Engineer", avatar: "MB" },
                 ].map(member => (
                     <Card key={member.name} className="text-center">
