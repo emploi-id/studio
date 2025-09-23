@@ -12,7 +12,6 @@ import { ArrowLeft } from 'lucide-react';
 const formSchema = z.object({
   companyName: z.string().min(2, { message: 'Company name is required.' }),
   contactName: z.string().min(2, { message: 'Contact name is required.' }),
-  memberId: z.string().optional(),
   phone: z.string().optional(),
   jobTitle: z.string().min(2, { message: 'Job title is required.' }),
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -31,7 +30,6 @@ export default function EmployerSignUpForm({ onBack }: Props) {
     defaultValues: {
       companyName: '',
       contactName: '',
-      memberId: '',
       phone: '',
       jobTitle: '',
       email: '',
@@ -57,19 +55,6 @@ export default function EmployerSignUpForm({ onBack }: Props) {
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="memberId"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Member ID (Optional)</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your member ID" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
              <FormField
               control={form.control}
               name="companyName"
