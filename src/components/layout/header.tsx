@@ -128,15 +128,10 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-primary-foreground/20 bg-primary text-primary-foreground">
       <div className="container flex h-16 items-center">
-        <div className="mr-4 hidden md:flex">
+        <div className="flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Logo />
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
-            {navLinks.map((link) => (
-              <NavLink key={link.label} {...link} />
-            ))}
-          </nav>
         </div>
 
         {/* Mobile Menu */}
@@ -184,7 +179,13 @@ export default function Header() {
           </Sheet>
         </div>
 
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+        <nav className="hidden flex-1 items-center justify-center space-x-6 text-sm font-medium md:flex">
+          {navLinks.map((link) => (
+            <NavLink key={link.label} {...link} />
+          ))}
+        </nav>
+
+        <div className="flex items-center justify-end md:w-auto">
           <nav className="flex items-center">
             <Link href="/employers" passHref>
                 <Button variant="outline" className="mr-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90">
