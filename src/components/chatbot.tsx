@@ -60,15 +60,18 @@ export default function Chatbot() {
 
   return (
     <>
-      {!isOpen ? (
+      {!isOpen && isMounted ? (
         <Button
-          className="fixed bottom-4 right-4 h-16 w-16 rounded-full bg-green-600 shadow-lg hover:bg-green-700 text-white"
+          className="fixed bottom-4 right-4 h-16 w-16 rounded-full shadow-lg"
           onClick={() => setIsOpen(true)}
+          variant="primary"
         >
           <MessageSquare className="h-8 w-8" />
           <span className="sr-only">Open chat</span>
         </Button>
-      ) : (
+      ) : null}
+      
+      {isOpen && isMounted ? (
         <Card className="fixed bottom-4 right-4 z-50 w-full max-w-sm rounded-xl shadow-2xl">
           <CardHeader className="flex flex-row items-center justify-between">
             <div className="flex items-center gap-2">
@@ -106,9 +109,7 @@ export default function Chatbot() {
                           : 'bg-muted'
                       )}
                     >
-                      {typeof message.content === 'string'
-                        ? message.content
-                        : message.content[0].text}
+                      {message.content[0].text}
                     </div>
                     {message.role === 'user' && (
                       <Avatar className="h-8 w-8 border">
@@ -148,7 +149,7 @@ export default function Chatbot() {
             </form>
           </CardContent>
         </Card>
-      )}
+      ) : null}
     </>
   );
 }
