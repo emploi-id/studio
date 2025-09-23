@@ -52,7 +52,7 @@ export default function Chatbot() {
   if (!isOpen) {
     return (
       <Button
-        className="fixed bottom-4 right-4 h-16 w-16 rounded-full shadow-lg"
+        className="fixed bottom-4 right-4 h-16 w-16 rounded-full bg-green-600 shadow-lg hover:bg-green-700"
         onClick={() => setIsOpen(true)}
       >
         <Bot className="h-8 w-8" />
