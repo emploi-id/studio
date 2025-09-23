@@ -2,27 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   ArrowRight,
-  Briefcase,
-  MapPin,
-  Search,
-  Building,
-  Star,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { featuredJobs, topEmployers } from '@/lib/data';
 import JobCard from '@/components/job-card';
 import EmployerCard from '@/components/employer-card';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 // TODO: Replace with actual authentication check
 const isAdmin = false;
