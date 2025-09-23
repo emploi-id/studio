@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useTransition } from 'react';
 import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { Bot, Send, User, X, Loader, MessageSquare } from 'lucide-react';
@@ -35,6 +35,8 @@ export default function Chatbot() {
   const [state, formAction] = useActionState(chatAction, initialState);
   const formRef = useRef<HTMLFormElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const [isPending, startTransition] = useTransition();
+
 
   useEffect(() => {
     setIsMounted(true);
@@ -50,7 +52,9 @@ export default function Chatbot() {
   }, [state.messages]);
   
   const handleFormAction = (formData: FormData) => {
-    formAction(formData);
+    startTransition(() => {
+        formAction(formData);
+    });
     formRef.current?.reset();
   }
 
@@ -60,18 +64,17 @@ export default function Chatbot() {
 
   return (
     <>
-      {!isOpen && isMounted ? (
+      {isMounted && !isOpen && (
         <Button
-          className="fixed bottom-4 right-4 h-16 w-16 rounded-full shadow-lg"
+          className="fixed bottom-4 right-4 h-14 gap-2 rounded-full bg-green-600 px-5 text-white shadow-lg hover:bg-green-700"
           onClick={() => setIsOpen(true)}
-          variant="primary"
         >
-          <MessageSquare className="h-8 w-8" />
-          <span className="sr-only">Open chat</span>
+          <MessageSquare className="h-6 w-6" />
+          <span className="font-semibold">Chat Me</span>
         </Button>
-      ) : null}
+      )}
       
-      {isOpen && isMounted ? (
+      {isMounted && isOpen && (
         <Card className="fixed bottom-4 right-4 z-50 w-full max-w-sm rounded-xl shadow-2xl">
           <CardHeader className="flex flex-row items-center justify-between">
             <div className="flex items-center gap-2">
@@ -120,7 +123,7 @@ export default function Chatbot() {
                     )}
                   </div>
                 ))}
-                {useFormStatus().pending &&
+                {isPending &&
                   state.messages[state.messages.length - 1].role === 'user' && (
                     <div className="flex items-start gap-3 justify-start">
                       <Avatar className="h-8 w-8 border">
@@ -149,7 +152,7 @@ export default function Chatbot() {
             </form>
           </CardContent>
         </Card>
-      ) : null}
+      )}
     </>
   );
 }
