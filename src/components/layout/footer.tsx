@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Logo from '@/components/icons/logo';
 import { Instagram, Facebook, MessageSquare } from 'lucide-react';
@@ -40,11 +41,11 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-primary-foreground/20 pt-8 sm:flex-row">
-          <p className="text-sm text-primary-foreground/80">
+        <div className="mt-8 flex flex-col items-center gap-4 border-t border-primary-foreground/20 pt-8 sm:flex-row">
+          <p className="flex-1 text-center text-sm text-primary-foreground/80 sm:text-left">
             &copy; {new Date().getFullYear()} emploi. All rights reserved.
           </p>
-          <div className="flex flex-grow items-center justify-center gap-2">
+          <div className="flex flex-1 items-center justify-center gap-2">
             <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10" asChild>
               <Link href="#" aria-label="Instagram">
                 <Instagram className="h-4 w-4" />
@@ -61,7 +62,7 @@ export default function Footer() {
               </Link>
             </Button>
           </div>
-          <div className="hidden sm:block sm:w-[0px]"></div>
+          <div className="hidden flex-1 sm:block"></div>
         </div>
       </div>
     </footer>
