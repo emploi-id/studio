@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { jobs, jobCategories } from '@/lib/data';
 import JobCard from '@/components/job-card';
 import { Input } from '@/components/ui/input';
@@ -13,12 +13,19 @@ import {
 } from '@/components/ui/select';
 import { Search } from 'lucide-react';
 
+const jobLocations = [
+  "Bekasi",
+  "Bogor",
+  "Depok",
+  "Jakarta",
+  "Tangerang",
+  "Tangerang Selatan",
+];
+
 export default function JobSearchPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [location, setLocation] = useState('all');
   const [category, setCategory] = useState('all');
-
-  const jobLocations = useMemo(() => [...new Set(jobs.map(job => job.location))], []);
 
   const filteredJobs = jobs.filter((job) => {
     return (
@@ -55,7 +62,7 @@ export default function JobSearchPage() {
               <SelectValue placeholder="Location" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Locations</SelectItem>
+              <SelectItem value="all">Semua Lokasi</SelectItem>
               {jobLocations.map((loc) => (
                 <SelectItem key={loc} value={loc}>
                   {loc}
