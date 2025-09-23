@@ -149,7 +149,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-primary-foreground/20 bg-primary text-primary-foreground">
       <div className="container flex h-16 items-center">
-        <div className="mr-6 flex items-center">
+        <div className="mr-6">
           <Logo />
         </div>
 
