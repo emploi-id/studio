@@ -14,10 +14,10 @@ import Link from 'next/link';
 const formSchema = z.object({
   companyName: z.string().min(2, { message: 'Company name is required.' }),
   companyAssets: z.string().min(1, { message: 'Please select company assets.' }),
+  email: z.string().email({ message: 'Invalid email address.' }),
   contactName: z.string().min(2, { message: 'Contact name is required.' }),
   phone: z.string().optional(),
   jobTitle: z.string().min(2, { message: 'Job title is required.' }),
-  email: z.string().email({ message: 'Invalid email address.' }),
   password: z.string().min(8, { message: 'Password must be at least 8 characters.' }),
 });
 
@@ -33,10 +33,10 @@ export default function EmployerSignUpForm({ onBack }: Props) {
     defaultValues: {
       companyName: '',
       companyAssets: '',
+      email: '',
       contactName: '',
       phone: '',
       jobTitle: '',
-      email: '',
       password: '',
     },
   });
@@ -119,6 +119,19 @@ export default function EmployerSignUpForm({ onBack }: Props) {
                 </FormItem>
               )}
             />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Work Email Address</FormLabel>
+                  <FormControl>
+                    <Input type="email" placeholder="e.g. jane.doe@company.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
              <FormField
               control={form.control}
               name="contactName"
@@ -153,19 +166,6 @@ export default function EmployerSignUpForm({ onBack }: Props) {
                   <FormLabel>Job Title</FormLabel>
                   <FormControl>
                     <Input placeholder="e.g. Hiring Manager" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Work Email Address</FormLabel>
-                  <FormControl>
-                    <Input type="email" placeholder="e.g. jane.doe@company.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
