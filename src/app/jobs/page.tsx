@@ -11,7 +11,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Search } from 'lucide-react';
+import { Search, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const jobLocations = [
   "Bekasi",
@@ -65,6 +66,14 @@ export default function JobSearchPage() {
       salaryMatch
     );
   });
+  
+  const handleResetFilters = () => {
+    setSearchTerm('');
+    setLocation('all');
+    setCategory('all');
+    setSalaryRange('all');
+    setStatus('all');
+  };
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -138,6 +147,12 @@ export default function JobSearchPage() {
               ))}
             </SelectContent>
           </Select>
+        </div>
+         <div className="mt-4 flex justify-end">
+          <Button variant="ghost" onClick={handleResetFilters}>
+            <X className="mr-2 h-4 w-4" />
+            Reset Filter
+          </Button>
         </div>
       </div>
 
