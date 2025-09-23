@@ -150,7 +150,9 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-primary-foreground/20 bg-primary text-primary-foreground">
       <div className="container flex h-16 items-center">
         <div className="mr-6">
-          <Logo />
+          <Link href="/" className="flex items-center">
+            <Logo />
+          </Link>
         </div>
 
         {/* Mobile Menu */}
@@ -167,7 +169,9 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
-              <Logo />
+              <Link href="/" className="flex items-center">
+                <Logo />
+              </Link>
               <div className="mt-8 flex flex-col space-y-4">
                 {navLinks.map((link) =>
                   link.dropdown ? (

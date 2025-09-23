@@ -10,7 +10,9 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row md:items-start">
           <div className="flex flex-col items-center gap-4 md:items-start">
-            <Logo />
+            <Link href="/" className="flex items-center">
+                <Logo />
+            </Link>
             <p className="max-w-xs text-center text-sm text-primary-foreground/80 md:text-left">
               Your AI-powered partner in finding the perfect career match.
             </p>

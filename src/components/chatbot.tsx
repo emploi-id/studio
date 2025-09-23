@@ -12,6 +12,7 @@ import { chatAction, ChatState } from '@/app/actions';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import Logo from './icons/logo';
+import Link from 'next/link';
 
 const initialState: ChatState = {
   messages: [
@@ -144,7 +145,9 @@ export default function Chatbot() {
         <Card className="fixed bottom-4 right-4 z-50 w-full max-w-sm rounded-xl shadow-2xl">
           <CardHeader className="flex flex-row items-center justify-between">
             <div className="flex items-center gap-2">
-              <Logo />
+              <Link href="/" className="flex items-center">
+                <Logo />
+              </Link>
               <CardTitle className="text-xl">Assistant</CardTitle>
             </div>
             <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
