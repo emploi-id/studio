@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
-import { Bot, Send, User, X, Loader } from 'lucide-react';
+import { Bot, Send, User, X, Loader, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -61,10 +61,11 @@ export default function Chatbot() {
   if (!isOpen) {
     return (
       <Button
-        className="fixed bottom-4 right-4 rounded-full bg-green-600 px-6 py-4 text-lg font-semibold shadow-lg hover:bg-green-700"
+        className="fixed bottom-4 right-4 h-16 w-16 rounded-full shadow-lg"
         onClick={() => setIsOpen(true)}
       >
-        Chat Me
+        <MessageSquare className="h-8 w-8" />
+        <span className="sr-only">Open chat</span>
       </Button>
     );
   }
