@@ -157,4 +157,17 @@ export const featuredJobs = jobs.slice(0, 3);
 export const topEmployers = employers.slice(0, 4);
 
 export const jobCategories = [...new Set(jobs.map(job => job.category))];
-export const jobLocations = [...new Set(jobs.map(job => job.location))];
+export const jobLocations = [
+  "Bekasi",
+  "Bogor",
+  "Depok",
+  "Jakarta",
+  "Tangerang",
+  "Tangerang Selatan",
+  "San Francisco, CA",
+  "New York, NY",
+  "Austin, TX",
+  "Boston, MA",
+  "Chicago, IL",
+  "Remote"
+];

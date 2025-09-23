@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { jobs, jobCategories } from '@/lib/data';
+import { jobs, jobCategories, jobLocations } from '@/lib/data';
 import JobCard from '@/components/job-card';
 import { Input } from '@/components/ui/input';
 import {
@@ -13,16 +13,6 @@ import {
 } from '@/components/ui/select';
 import { Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
-const jobLocations = [
-  "Bekasi",
-  "Bogor",
-  "Depok",
-  "Jakarta",
-  "Semua Lokasi",
-  "Tangerang",
-  "Tangerang Selatan",
-];
 
 const salaryRanges = [
   'IDR 5.000.000 - IDR 10.000.000',

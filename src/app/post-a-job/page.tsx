@@ -29,7 +29,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { jobCategories } from '@/lib/data';
+import { jobCategories, jobLocations } from '@/lib/data';
 
 const jobSchema = z.object({
   jobTitle: z.string().min(1, 'Job title is required.'),
@@ -154,9 +154,18 @@ export default function PostAJobPage() {
                     render={({ field }) => (
                     <FormItem>
                         <FormLabel>Location</FormLabel>
-                        <FormControl>
-                        <Input placeholder="e.g. San Francisco, CA or Remote" {...field} />
-                        </FormControl>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select a location" />
+                                </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                                {jobLocations.map(loc => (
+                                    <SelectItem key={loc} value={loc}>{loc}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
                         <FormMessage />
                     </FormItem>
                     )}
