@@ -164,5 +164,6 @@ export const jobLocations = [
   "Jakarta",
   "Tangerang",
   "Tangerang Selatan",
-  "Remote"
+  "Working From Home",
+  "Hybrid"
 ];
