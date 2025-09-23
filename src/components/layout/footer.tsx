@@ -14,6 +14,23 @@ export default function Footer() {
             <p className="max-w-xs text-center text-sm text-primary-foreground/80 md:text-left">
               Your AI-powered partner in finding the perfect career match.
             </p>
+            <div className="flex items-center justify-center gap-2">
+                <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10" asChild>
+                <Link href="#" aria-label="Instagram">
+                    <Instagram className="h-4 w-4" />
+                </Link>
+                </Button>
+                <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10" asChild>
+                <Link href="#" aria-label="Facebook">
+                    <Facebook className="h-4 w-4" />
+                </Link>
+                </Button>
+                <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10" asChild>
+                <Link href="#" aria-label="WhatsApp">
+                    <MessageSquare className="h-4 w-4" />
+                </Link>
+                </Button>
+            </div>
           </div>
           <div className="grid grid-cols-2 gap-x-8 gap-y-4 text-center text-sm font-medium md:grid-cols-4 md:text-left">
             <div className="flex flex-col space-y-2">
@@ -41,27 +58,10 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-8 flex flex-col items-center gap-4 border-t border-primary-foreground/20 pt-8 sm:flex-row">
-          <p className="text-center text-sm text-primary-foreground/80 sm:text-left">
+        <div className="mt-8 border-t border-primary-foreground/20 pt-8">
+          <p className="text-center text-sm text-primary-foreground/80">
             &copy; {new Date().getFullYear()} emploi. All rights reserved.
           </p>
-          <div className="flex flex-1 items-center justify-center gap-2">
-            <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10" asChild>
-              <Link href="#" aria-label="Instagram">
-                <Instagram className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10" asChild>
-              <Link href="#" aria-label="Facebook">
-                <Facebook className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10" asChild>
-              <Link href="#" aria-label="WhatsApp">
-                <MessageSquare className="h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
         </div>
       </div>
     </footer>
