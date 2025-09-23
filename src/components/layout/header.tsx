@@ -56,7 +56,7 @@ const navLinks = [
     ],
   },
   {
-    label: 'Tentang Kami',
+    label: 'Tentang Emploi',
     href: '/about',
     dropdown: [
       { href: '/about', label: 'Tentang Emploi' },
