@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useTransition } from 'react';
 import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
-import { Bot, Send, User, X, Loader, MessageSquare } from 'lucide-react';
+import { Bot, Send, User, X, Loader, MessageSquare, GripVertical } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -36,7 +36,10 @@ export default function Chatbot() {
   const formRef = useRef<HTMLFormElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const [isPending, startTransition] = useTransition();
-
+  const [position, setPosition] = useState({ x: 16, y: 16 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const buttonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -50,13 +53,62 @@ export default function Chatbot() {
       });
     }
   }, [state.messages]);
-  
+
   const handleFormAction = (formData: FormData) => {
     startTransition(() => {
         formAction(formData);
     });
     formRef.current?.reset();
   }
+  
+  const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (buttonRef.current) {
+      setIsDragging(true);
+      const rect = buttonRef.current.getBoundingClientRect();
+      setOffset({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    }
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (isDragging) {
+      setPosition({
+        x: e.clientX - offset.x,
+        y: e.clientY - offset.y,
+      });
+    }
+  };
+
+  const handleMouseUp = () => {
+    if (isDragging) {
+      // Small delay to differentiate drag from click
+      setTimeout(() => setIsDragging(false), 50);
+    }
+  };
+  
+  const handleClick = () => {
+    if (!isDragging) {
+      setIsOpen(true);
+    }
+  }
+
+  useEffect(() => {
+    if (isDragging) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+    } else {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging, offset]);
+
 
   if (!isMounted) {
     return null;
@@ -65,13 +117,27 @@ export default function Chatbot() {
   return (
     <>
       {isMounted && !isOpen && (
-        <Button
-          className="fixed bottom-4 right-4 h-14 gap-2 rounded-full bg-green-600 px-5 text-white shadow-lg hover:bg-green-700"
-          onClick={() => setIsOpen(true)}
+        <div
+            ref={buttonRef}
+            className="fixed"
+            style={{
+                bottom: `calc(100% - ${position.y}px - 14px - 56px)`,
+                right: `calc(100% - ${position.x}px - 14px - 200px)`,
+                transform: `translate(${position.x}px, ${position.y}px)`,
+                touchAction: 'none',
+                cursor: isDragging ? 'grabbing' : 'grab',
+            }}
         >
-          <MessageSquare className="h-6 w-6" />
-          <span className="font-semibold">Chat Me</span>
-        </Button>
+            <Button
+              className="h-14 gap-2 rounded-full bg-green-600 px-5 text-white shadow-lg hover:bg-green-700"
+              onMouseDown={handleMouseDown}
+              onClick={handleClick}
+            >
+              <GripVertical className="cursor-grabbing" />
+              <MessageSquare className="h-6 w-6" />
+              <span className="font-semibold">Chat Me</span>
+            </Button>
+        </div>
       )}
       
       {isMounted && isOpen && (
