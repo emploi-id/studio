@@ -49,6 +49,10 @@ const navLinks = [
       { href: '/insights/resume-polisher', label: 'AI Resume Polisher' },
       { href: '/insights/skills-matcher', label: 'Skills Matcher' },
       { href: '/insights/recommendations', label: 'Personalized Recommendations' },
+      { href: '/events', label: 'Events' },
+      { href: '/training', label: 'Training' },
+      { href: '/community', label: 'Community' },
+      { href: '/resources', label: 'Resources' },
     ],
   },
 ];
@@ -183,9 +187,9 @@ export default function Header() {
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center">
             <Link href="/employers" passHref>
-              <Button asChild variant="outline" className="mr-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-                <span>For Employers</span>
-              </Button>
+                <Button variant="outline" className="mr-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90">
+                    For Employers
+                </Button>
             </Link>
             <Button variant="secondary">Sign Up</Button>
           </nav>
