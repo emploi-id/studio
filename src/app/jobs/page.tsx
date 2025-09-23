@@ -30,7 +30,7 @@ const salaryRanges = [
   '> IDR 20.000.000',
 ];
 
-const jobStatuses = ['Full Time', 'Part Time', 'Contract'];
+const jobStatuses = ['Full Time', 'Part Time', 'Contract', 'Freelance', 'Hybrid', 'Remote'];
 
 export default function JobSearchPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -41,10 +41,19 @@ export default function JobSearchPage() {
 
   const filteredJobs = jobs.filter((job) => {
     const jobStatus = job.type;
+    const isRemote = job.location === 'Remote';
 
     // Simple text match for salary until data structure is updated
     const salaryMatch =
       salaryRange === 'all' || (job.salary && job.salary.includes(salaryRange.substring(4,9))); 
+
+    const statusMatch = () => {
+      if (status === 'all') return true;
+      if (status.toLowerCase() === 'remote') return isRemote;
+      // The other statuses like Hybrid and Freelance aren't in the data yet,
+      // but this logic will handle them when they are.
+      return jobStatus.toLowerCase() === status.toLowerCase();
+    }
 
     return (
       (job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -52,7 +61,7 @@ export default function JobSearchPage() {
         job.description.toLowerCase().includes(searchTerm.toLowerCase())) &&
       (location === 'all' || location === 'Semua Lokasi' || job.location === location) &&
       (category === 'all' || job.category === category) &&
-      (status === 'all' || jobStatus.toLowerCase() === status.toLowerCase()) &&
+      statusMatch() &&
       salaryMatch
     );
   });
