@@ -8,9 +8,11 @@ import { Input } from '@/components/ui/input';
 import { CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { ArrowLeft } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const formSchema = z.object({
   companyName: z.string().min(2, { message: 'Company name is required.' }),
+  companyAssets: z.string().min(1, { message: 'Please select company assets.' }),
   contactName: z.string().min(2, { message: 'Contact name is required.' }),
   phone: z.string().optional(),
   jobTitle: z.string().min(2, { message: 'Job title is required.' }),
@@ -29,6 +31,7 @@ export default function EmployerSignUpForm({ onBack }: Props) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       companyName: '',
+      companyAssets: '',
       contactName: '',
       phone: '',
       jobTitle: '',
@@ -64,6 +67,28 @@ export default function EmployerSignUpForm({ onBack }: Props) {
                   <FormControl>
                     <Input placeholder="e.g. Innovate Inc." {...field} />
                   </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="companyAssets"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Company Assets</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select asset range" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="<5M">>= 5 M</SelectItem>
+                      <SelectItem value="5M-10M">5 M - 10 M</SelectItem>
+                      <SelectItem value=">10M">> 10 M</SelectItem>
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
