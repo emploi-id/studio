@@ -18,22 +18,42 @@ const jobLocations = [
   "Bogor",
   "Depok",
   "Jakarta",
+  "Semua Lokasi",
   "Tangerang",
   "Tangerang Selatan",
 ];
+
+const salaryRanges = [
+  'IDR 5.000.000 - IDR 10.000.000',
+  'IDR 10.000.000 - IDR 15.000.000',
+  'IDR 15.000.000 - 20.000.000',
+  '> IDR 20.000.000',
+];
+
+const jobStatuses = ['Full Time', 'Part Time', 'Contract'];
 
 export default function JobSearchPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [location, setLocation] = useState('all');
   const [category, setCategory] = useState('all');
+  const [salaryRange, setSalaryRange] = useState('all');
+  const [status, setStatus] = useState('all');
 
   const filteredJobs = jobs.filter((job) => {
+    const jobStatus = job.type;
+
+    // Simple text match for salary until data structure is updated
+    const salaryMatch =
+      salaryRange === 'all' || (job.salary && job.salary.includes(salaryRange.substring(4,9))); 
+
     return (
       (job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         job.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         job.description.toLowerCase().includes(searchTerm.toLowerCase())) &&
-      (location === 'all' || job.location === location) &&
-      (category === 'all' || job.category === category)
+      (location === 'all' || location === 'Semua Lokasi' || job.location === location) &&
+      (category === 'all' || job.category === category) &&
+      (status === 'all' || jobStatus.toLowerCase() === status.toLowerCase()) &&
+      salaryMatch
     );
   });
 
@@ -46,8 +66,8 @@ export default function JobSearchPage() {
         <p className="mt-2 text-muted-foreground">
           Browse through thousands of open positions.
         </p>
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="relative">
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="relative lg:col-span-3 xl:col-span-1">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               type="text"
@@ -79,6 +99,32 @@ export default function JobSearchPage() {
               {jobCategories.map((cat) => (
                 <SelectItem key={cat} value={cat}>
                   {cat}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+           <Select value={salaryRange} onValueChange={setSalaryRange}>
+            <SelectTrigger>
+              <SelectValue placeholder="Salary Range" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Salary Ranges</SelectItem>
+              {salaryRanges.map((range) => (
+                <SelectItem key={range} value={range}>
+                  {range}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={status} onValueChange={setStatus}>
+            <SelectTrigger>
+              <SelectValue placeholder="Status" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Statuses</SelectItem>
+              {jobStatuses.map((stat) => (
+                <SelectItem key={stat} value={stat}>
+                  {stat}
                 </SelectItem>
               ))}
             </SelectContent>
