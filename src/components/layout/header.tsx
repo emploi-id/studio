@@ -29,7 +29,7 @@ const navLinks = [
     href: '/employers',
     dropdown: [
       { href: '/employers', label: 'Find a Company' },
-      { href: '/request-talent', label: 'Post a Job' },
+      { href: '/post-a-job', label: 'Post a Job' },
     ],
   },
   {
@@ -148,14 +148,13 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-primary-foreground/20 bg-primary text-primary-foreground">
       <div className="container flex h-16 items-center">
-        <div className="mr-6">
-          <Link href="/" className="flex items-center">
-            <span className="font-headline text-xl font-bold lowercase">emploi</span>
-          </Link>
-        </div>
+        <Link href="/" className="mr-6 flex items-center">
+          <span className="font-headline text-xl font-bold lowercase">emploi</span>
+        </Link>
+        
 
         {/* Mobile Menu */}
-        <div className="flex flex-1 md:hidden">
+        <div className="flex flex-1 lg:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button
@@ -205,7 +204,7 @@ export default function Header() {
           </Sheet>
         </div>
 
-        <nav className="hidden flex-1 items-center justify-center space-x-6 text-sm font-medium md:flex">
+        <nav className="hidden flex-1 items-center justify-center space-x-6 text-sm font-medium lg:flex">
           {navLinks.map((link) => (
             <NavLink key={link.label} {...link} />
           ))}
