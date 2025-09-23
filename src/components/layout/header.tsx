@@ -22,6 +22,8 @@ const navLinks = [
     dropdown: [
       { href: '/about', label: 'About emploi' },
       { href: '/career-advise', label: 'Career Advise' },
+      { href: '/join-our-team', label: 'Join Our Team' },
+      { href: '/contact', label: 'Contact' },
     ],
   },
   {
