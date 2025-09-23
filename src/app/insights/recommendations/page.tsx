@@ -5,9 +5,9 @@ import { Terminal, Star } from 'lucide-react';
 
 // Mock user data for demonstration
 const mockUserData = {
-  userSkills: ['React', 'Node.js', 'TypeScript', 'GraphQL', 'Product Management'],
-  searchHistory: ['Senior Software Engineer', 'Remote Product Manager', 'Fintech startup jobs'],
-  preferences: 'I am looking for a full-time remote position in a company with a strong engineering culture. I am interested in the fintech and AI sectors. Salary expectations are above $150,000.',
+  userSkills: ['React', 'Node.js', 'TypeScript', 'GraphQL', 'Manajemen Produk'],
+  searchHistory: ['Insinyur Perangkat Lunak Senior', 'Manajer Produk Jarak Jauh', 'Pekerjaan startup Fintech'],
+  preferences: 'Saya mencari posisi jarak jauh penuh waktu di perusahaan dengan budaya rekayasa yang kuat. Saya tertarik pada sektor fintech dan AI. Harapan gaji di atas $150.000.',
 };
 
 export default async function RecommendationsPage() {
@@ -18,17 +18,17 @@ export default async function RecommendationsPage() {
     const result = await getPersonalizedJobRecommendations(mockUserData);
     recommendations = result.jobRecommendations;
   } catch (e) {
-    error = e instanceof Error ? e.message : 'An unknown error occurred.';
+    error = e instanceof Error ? e.message : 'Terjadi kesalahan yang tidak diketahui.';
   }
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12">
       <div className="text-center">
         <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Personalized Job Recommendations
+          Rekomendasi Pekerjaan yang Dipersonalisasi
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Here are jobs recommended just for you, based on your profile and activity.
+          Berikut adalah pekerjaan yang direkomendasikan hanya untuk Anda, berdasarkan profil dan aktivitas Anda.
         </p>
       </div>
 
@@ -44,8 +44,8 @@ export default async function RecommendationsPage() {
         {recommendations.length > 0 && (
           <Card>
             <CardHeader>
-              <CardTitle>Your Top Recommendations</CardTitle>
-              <CardDescription>Our AI has curated this list of jobs that align with your skills and preferences.</CardDescription>
+              <CardTitle>Rekomendasi Teratas Anda</CardTitle>
+              <CardDescription>AI kami telah menyusun daftar pekerjaan ini yang selaras dengan keterampilan dan preferensi Anda.</CardDescription>
             </CardHeader>
             <CardContent>
               <ul className="space-y-4">
@@ -62,15 +62,15 @@ export default async function RecommendationsPage() {
         
         <Card>
             <CardHeader>
-                <CardTitle>Your Profile</CardTitle>
-                <CardDescription>These recommendations are based on the following profile data (for demo purposes).</CardDescription>
+                <CardTitle>Profil Anda</CardTitle>
+                <CardDescription>Rekomendasi ini didasarkan pada data profil berikut (untuk tujuan demo).</CardDescription>
             </CardHeader>
             <CardContent className="text-sm">
-                <h4 className="font-semibold">Skills</h4>
+                <h4 className="font-semibold">Keahlian</h4>
                 <p className="text-muted-foreground">{mockUserData.userSkills.join(', ')}</p>
-                <h4 className="mt-4 font-semibold">Search History</h4>
+                <h4 className="mt-4 font-semibold">Riwayat Pencarian</h4>
                 <p className="text-muted-foreground">{mockUserData.searchHistory.join(', ')}</p>
-                <h4 className="mt-4 font-semibold">Preferences</h4>
+                <h4 className="mt-4 font-semibold">Preferensi</h4>
                 <p className="text-muted-foreground">{mockUserData.preferences}</p>
             </CardContent>
         </Card>

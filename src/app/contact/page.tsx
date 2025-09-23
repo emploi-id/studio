@@ -16,10 +16,10 @@ import { format } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: 'Name is required.' }),
-  email: z.string().email({ message: 'Invalid email address.' }),
-  subject: z.string().min(1, { message: 'Please select a subject.' }),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+  name: z.string().min(2, { message: 'Nama wajib diisi.' }),
+  email: z.string().email({ message: 'Alamat email tidak valid.' }),
+  subject: z.string().min(1, { message: 'Silakan pilih subjek.' }),
+  message: z.string().min(10, { message: 'Pesan harus minimal 10 karakter.' }),
   scheduleDate: z.date().optional(),
 });
 
@@ -38,7 +38,7 @@ export default function ContactPage() {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
-    alert('Your message has been sent! We will get back to you shortly.');
+    alert('Pesan Anda telah terkirim! Kami akan segera menghubungi Anda.');
     form.reset();
   };
 
@@ -46,9 +46,9 @@ export default function ContactPage() {
     <div className="container mx-auto max-w-2xl px-4 py-12">
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="font-headline text-3xl font-bold">Contact Us</CardTitle>
+          <CardTitle className="font-headline text-3xl font-bold">Hubungi Kami</CardTitle>
           <CardDescription>
-            Have a question or feedback? We'd love to hear from you.
+            Punya pertanyaan atau masukan? Kami ingin sekali mendengarnya dari Anda.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -59,9 +59,9 @@ export default function ContactPage() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Full Name</FormLabel>
+                    <FormLabel>Nama Lengkap</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g. John Doe" {...field} />
+                      <Input placeholder="cth. John Doe" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -72,9 +72,9 @@ export default function ContactPage() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email Address</FormLabel>
+                    <FormLabel>Alamat Email</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="e.g. johndoe@example.com" {...field} />
+                      <Input type="email" placeholder="cth. johndoe@example.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -85,18 +85,18 @@ export default function ContactPage() {
                 name="subject"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Subject</FormLabel>
+                    <FormLabel>Subjek</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select a subject" />
+                          <SelectValue placeholder="Pilih subjek" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="general">General Inquiry</SelectItem>
-                        <SelectItem value="support">Technical Support</SelectItem>
-                        <SelectItem value="feedback">Feedback</SelectItem>
-                        <SelectItem value="partnership">Partnership</SelectItem>
+                        <SelectItem value="general">Pertanyaan Umum</SelectItem>
+                        <SelectItem value="support">Dukungan Teknis</SelectItem>
+                        <SelectItem value="feedback">Masukan</SelectItem>
+                        <SelectItem value="partnership">Kemitraan</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -108,10 +108,10 @@ export default function ContactPage() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Message</FormLabel>
+                    <FormLabel>Pesan</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Tell us what's on your mind..."
+                        placeholder="Beri tahu kami apa yang ada di pikiran Anda..."
                         className="min-h-[150px]"
                         {...field}
                       />
@@ -125,7 +125,7 @@ export default function ContactPage() {
                 name="scheduleDate"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Schedule a Meeting (Optional)</FormLabel>
+                    <FormLabel>Jadwalkan Pertemuan (Opsional)</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -139,7 +139,7 @@ export default function ContactPage() {
                             {field.value ? (
                               format(field.value, 'PPP')
                             ) : (
-                              <span>Pick a date</span>
+                              <span>Pilih tanggal</span>
                             )}
                             <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                           </Button>
@@ -162,7 +162,7 @@ export default function ContactPage() {
                 )}
               />
               <Button type="submit" className="w-full">
-                Send Message
+                Kirim Pesan
               </Button>
             </form>
           </Form>

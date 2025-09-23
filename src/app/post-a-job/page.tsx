@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -32,16 +31,16 @@ import { Textarea } from '@/components/ui/textarea';
 import { jobCategories, jobLocations } from '@/lib/data';
 
 const jobSchema = z.object({
-  jobTitle: z.string().min(1, 'Job title is required.'),
-  category: z.string().min(1, 'Category is required.'),
-  jobType: z.string().min(1, 'Job type is required.'),
-  location: z.string().min(1, 'Location is required.'),
+  jobTitle: z.string().min(1, 'Judul pekerjaan wajib diisi.'),
+  category: z.string().min(1, 'Kategori wajib diisi.'),
+  jobType: z.string().min(1, 'Jenis pekerjaan wajib diisi.'),
+  location: z.string().min(1, 'Lokasi wajib diisi.'),
   salaryRange: z.string().optional(),
-  description: z.string().min(20, 'Description must be at least 20 characters.'),
-  requirements: z.string().min(10, 'Requirements must be at least 10 characters.'),
-  companyName: z.string().min(1, 'Company name is required.'),
-  companyWebsite: z.string().url('Please enter a valid URL.').optional(),
-  applyLink: z.string().email('Please enter a valid email.').or(z.string().url('Please enter a valid URL.')),
+  description: z.string().min(20, 'Deskripsi harus minimal 20 karakter.'),
+  requirements: z.string().min(10, 'Persyaratan harus minimal 10 karakter.'),
+  companyName: z.string().min(1, 'Nama perusahaan wajib diisi.'),
+  companyWebsite: z.string().url('Silakan masukkan URL yang valid.').optional(),
+  applyLink: z.string().email('Silakan masukkan email yang valid.').or(z.string().url('Silakan masukkan URL yang valid.')),
 });
 
 type JobFormValues = z.infer<typeof jobSchema>;
@@ -64,8 +63,8 @@ export default function PostAJobPage() {
   });
 
   const onSubmit: SubmitHandler<JobFormValues> = (data) => {
-    console.log('New Job Posting:', data);
-    alert('Your job has been successfully posted!');
+    console.log('Posting Pekerjaan Baru:', data);
+    alert('Pekerjaan Anda telah berhasil diposting!');
     form.reset();
   };
 
@@ -74,11 +73,11 @@ export default function PostAJobPage() {
       <Card>
         <CardHeader>
           <CardTitle className="font-headline text-3xl font-bold">
-            Post a Job
+            Posting Pekerjaan
           </CardTitle>
           <CardDescription>
-            Fill out the form below to create your job listing. We'll help you
-            find the best candidates.
+            Isi formulir di bawah ini untuk membuat daftar pekerjaan Anda. Kami akan membantu Anda
+            menemukan kandidat terbaik.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -89,9 +88,9 @@ export default function PostAJobPage() {
                 name="jobTitle"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Job Title</FormLabel>
+                    <FormLabel>Judul Pekerjaan</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g. Senior Software Engineer" {...field} />
+                      <Input placeholder="cth. Insinyur Perangkat Lunak Senior" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -104,11 +103,11 @@ export default function PostAJobPage() {
                   name="category"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Category</FormLabel>
+                      <FormLabel>Kategori</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select a category" />
+                            <SelectValue placeholder="Pilih kategori" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -126,18 +125,18 @@ export default function PostAJobPage() {
                   name="jobType"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Job Type</FormLabel>
+                      <FormLabel>Jenis Pekerjaan</FormLabel>
                        <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select a job type" />
+                            <SelectValue placeholder="Pilih jenis pekerjaan" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="Full-Time">Full-Time</SelectItem>
-                          <SelectItem value="Part-Time">Part-Time</SelectItem>
-                          <SelectItem value="Contract">Contract</SelectItem>
-                          <SelectItem value="Internship">Internship</SelectItem>
+                          <SelectItem value="Full-Time">Purna Waktu</SelectItem>
+                          <SelectItem value="Part-Time">Paruh Waktu</SelectItem>
+                          <SelectItem value="Contract">Kontrak</SelectItem>
+                          <SelectItem value="Internship">Magang</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -152,11 +151,11 @@ export default function PostAJobPage() {
                     name="location"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Location</FormLabel>
+                        <FormLabel>Lokasi</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                                 <SelectTrigger>
-                                    <SelectValue placeholder="Select a location" />
+                                    <SelectValue placeholder="Pilih lokasi" />
                                 </SelectTrigger>
                             </FormControl>
                             <SelectContent>
@@ -174,9 +173,9 @@ export default function PostAJobPage() {
                     name="salaryRange"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Salary Range (Optional)</FormLabel>
+                        <FormLabel>Rentang Gaji (Opsional)</FormLabel>
                         <FormControl>
-                        <Input placeholder="e.g. $120,000 - $150,000" {...field} />
+                        <Input placeholder="cth. Rp 10.000.000 - Rp 15.000.000" {...field} />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
@@ -189,9 +188,9 @@ export default function PostAJobPage() {
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Job Description</FormLabel>
+                    <FormLabel>Deskripsi Pekerjaan</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="Describe the role and responsibilities..." className="min-h-[150px]" {...field} />
+                      <Textarea placeholder="Jelaskan peran dan tanggung jawab..." className="min-h-[150px]" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -203,25 +202,25 @@ export default function PostAJobPage() {
                 name="requirements"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Requirements</FormLabel>
+                    <FormLabel>Persyaratan</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="List the key skills and qualifications..." className="min-h-[150px]" {...field} />
+                      <Textarea placeholder="Sebutkan keahlian dan kualifikasi utama..." className="min-h-[150px]" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
-              <h3 className="border-t pt-6 font-headline text-2xl font-bold">Company Details</h3>
+              <h3 className="border-t pt-6 font-headline text-2xl font-bold">Detail Perusahaan</h3>
                
                 <FormField
                     control={form.control}
                     name="companyName"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Company Name</FormLabel>
+                        <FormLabel>Nama Perusahaan</FormLabel>
                         <FormControl>
-                        <Input placeholder="Your company's name" {...field} />
+                        <Input placeholder="Nama perusahaan Anda" {...field} />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
@@ -233,9 +232,9 @@ export default function PostAJobPage() {
                     name="companyWebsite"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Company Website (Optional)</FormLabel>
+                        <FormLabel>Situs Web Perusahaan (Opsional)</FormLabel>
                         <FormControl>
-                        <Input placeholder="https://yourcompany.com" {...field} />
+                        <Input placeholder="https://perusahaananda.com" {...field} />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
@@ -247,9 +246,9 @@ export default function PostAJobPage() {
                     name="applyLink"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel>How to Apply</FormLabel>
+                        <FormLabel>Cara Melamar</FormLabel>
                         <FormControl>
-                        <Input placeholder="Enter an email or application link" {...field} />
+                        <Input placeholder="Masukkan email atau tautan aplikasi" {...field} />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
@@ -258,7 +257,7 @@ export default function PostAJobPage() {
 
 
               <Button type="submit" className="w-full" size="lg">
-                Submit Job Posting
+                Kirim Postingan Pekerjaan
               </Button>
             </form>
           </Form>

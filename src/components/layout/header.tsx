@@ -18,50 +18,50 @@ import { cn } from '@/lib/utils';
 const isAdmin = false;
 
 const navLinks = [
-  { href: '/', label: 'Home' },
+  { href: '/', label: 'Beranda' },
   {
-    label: 'Job Search',
+    label: 'Pencarian Kerja',
     href: '/jobs',
-    dropdown: [{ href: '/jobs', label: 'Find a Job' }],
+    dropdown: [{ href: '/jobs', label: 'Cari Pekerjaan' }],
   },
   {
-    label: 'Employers',
+    label: 'Perusahaan',
     href: '/employers',
     dropdown: [
-      { href: '/employers', label: 'Find a Company' },
-      { href: '/request-talent', label: 'Post a Job' },
+      { href: '/employers', label: 'Cari Perusahaan' },
+      { href: '/request-talent', label: 'Posting Pekerjaan' },
     ],
   },
   {
-    label: 'Career Development',
+    label: 'Pengembangan Karir',
     href: '#',
     dropdown: [
-      { href: '/insights', label: 'Overview', admin: true },
+      { href: '/insights', label: 'Gambaran', admin: true },
       {
         href: '/insights/resume-polisher',
-        label: 'AI Resume Polisher',
+        label: 'Pemoles Resume AI',
         admin: true,
       },
-      { href: '/insights/skills-matcher', label: 'Skills Matcher', admin: true },
+      { href: '/insights/skills-matcher', label: 'Pencocok Keterampilan', admin: true },
       {
         href: '/insights/recommendations',
-        label: 'Personalized Recommendations',
+        label: 'Rekomendasi yang Dipersonalisasi',
         admin: true,
       },
-      { href: '/career-advise', label: 'Career Advise' },
-      { href: '/events', label: 'Events' },
-      { href: '/training', label: 'Training' },
-      { href: '/community', label: 'Community' },
-      { href: '/resources', label: 'Resources' },
+      { href: '/career-advise', label: 'Saran Karir' },
+      { href: '/events', label: 'Acara' },
+      { href: '/training', label: 'Pelatihan' },
+      { href: '/community', label: 'Komunitas' },
+      { href: '/resources', label: 'Sumber Daya' },
     ],
   },
   {
-    label: 'About Us',
+    label: 'Tentang Kami',
     href: '/about',
     dropdown: [
-      { href: '/about', label: 'About emploi' },
-      { href: '/join-our-team', label: 'Join Our Team' },
-      { href: '/contact', label: 'Contact' },
+      { href: '/about', label: 'Tentang Emploi' },
+      { href: '/join-our-team', label: 'Bergabung dengan Tim Kami' },
+      { href: '/contact', label: 'Kontak' },
     ],
   },
 ];
@@ -148,9 +148,11 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-primary-foreground/20 bg-primary text-primary-foreground">
       <div className="container flex h-16 items-center">
-        <Link href="/" className="mr-6 flex items-center">
-          <span className="font-headline text-xl font-bold lowercase">emploi</span>
-        </Link>
+        <div className="mr-6 flex items-center">
+          <Link href="/" className="flex items-center">
+            <span className="font-headline text-xl font-bold lowercase">emploi</span>
+          </Link>
+        </div>
         
 
         {/* Mobile Menu */}
@@ -163,7 +165,7 @@ export default function Header() {
                 className="hover:bg-primary-foreground/10"
               >
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Open Menu</span>
+                <span className="sr-only">Buka Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
@@ -217,11 +219,11 @@ export default function Header() {
                 variant="outline"
                 className="mr-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90"
               >
-                Post a Job
+                Posting Pekerjaan
               </Button>
             </Link>
             <Link href="/signup" passHref>
-              <Button variant="secondary">Sign Up</Button>
+              <Button variant="secondary">Daftar</Button>
             </Link>
           </nav>
         </div>

@@ -32,8 +32,8 @@ function SignUpPageContent() {
         {!role ? (
           <>
             <CardHeader className="text-center">
-              <CardTitle className="font-headline text-3xl font-bold">Join emploi</CardTitle>
-              <CardDescription>First, tell us who you are.</CardDescription>
+              <CardTitle className="font-headline text-3xl font-bold">Gabung dengan Emploi</CardTitle>
+              <CardDescription>Pertama, beri tahu kami siapa Anda.</CardDescription>
             </CardHeader>
             <CardContent className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <Button
@@ -42,8 +42,8 @@ function SignUpPageContent() {
                 onClick={() => handleRoleSelection('seeker')}
               >
                 <User className="mb-4 h-12 w-12 text-primary" />
-                <span className="text-lg font-semibold">I'm a Job Seeker</span>
-                <span className="mt-1 text-sm text-muted-foreground">Find my next role</span>
+                <span className="text-lg font-semibold">Saya Pencari Kerja</span>
+                <span className="mt-1 text-sm text-muted-foreground">Temukan peran saya berikutnya</span>
               </Button>
               <Button
                 variant="outline"
@@ -51,8 +51,8 @@ function SignUpPageContent() {
                 onClick={() => handleRoleSelection('employer')}
               >
                 <Building className="mb-4 h-12 w-12 text-primary" />
-                <span className="text-lg font-semibold">I'm an Employer</span>
-                 <span className="mt-1 text-sm text-muted-foreground">Hire top talent</span>
+                <span className="text-lg font-semibold">Saya Perusahaan</span>
+                 <span className="mt-1 text-sm text-muted-foreground">Rekrut talenta terbaik</span>
               </Button>
             </CardContent>
           </>
@@ -69,7 +69,7 @@ function SignUpPageContent() {
 
 export default function SignUpPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Memuat...</div>}>
       <SignUpPageContent />
     </Suspense>
   );

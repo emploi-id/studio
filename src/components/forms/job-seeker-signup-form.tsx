@@ -11,9 +11,9 @@ import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: 'Name is required.' }),
-  email: z.string().email({ message: 'Invalid email address.' }),
-  password: z.string().min(8, { message: 'Password must be at least 8 characters.' }),
+  name: z.string().min(2, { message: 'Nama wajib diisi.' }),
+  email: z.string().email({ message: 'Alamat email tidak valid.' }),
+  password: z.string().min(8, { message: 'Kata sandi harus minimal 8 karakter.' }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -34,7 +34,7 @@ export default function JobSeekerSignUpForm({ onBack }: Props) {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
-    alert('Account created successfully! Welcome to emploi.');
+    alert('Akun berhasil dibuat! Selamat datang di Emploi.');
     form.reset();
   };
 
@@ -44,11 +44,11 @@ export default function JobSeekerSignUpForm({ onBack }: Props) {
         <Button variant="ghost" size="icon" className="absolute left-4 top-4" onClick={onBack}>
           <ArrowLeft />
         </Button>
-        <CardTitle className="font-headline text-3xl font-bold">Create Your Account</CardTitle>
+        <CardTitle className="font-headline text-3xl font-bold">Buat Akun Anda</CardTitle>
         <CardDescription>
-          Join as a Job Seeker to find your dream job. Already have an account?{' '}
+          Bergabunglah sebagai Pencari Kerja untuk menemukan pekerjaan impian Anda. Sudah punya akun?{' '}
           <Link href="/login" className="font-medium text-primary hover:underline">
-            Sign in.
+            Masuk.
           </Link>
         </CardDescription>
       </CardHeader>
@@ -60,9 +60,9 @@ export default function JobSeekerSignUpForm({ onBack }: Props) {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Full Name</FormLabel>
+                  <FormLabel>Nama Lengkap</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. John Doe" {...field} />
+                    <Input placeholder="cth. John Doe" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -73,9 +73,9 @@ export default function JobSeekerSignUpForm({ onBack }: Props) {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email Address</FormLabel>
+                  <FormLabel>Alamat Email</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="e.g. johndoe@example.com" {...field} />
+                    <Input type="email" placeholder="cth. johndoe@example.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -86,7 +86,7 @@ export default function JobSeekerSignUpForm({ onBack }: Props) {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Kata Sandi</FormLabel>
                   <FormControl>
                     <Input type="password" placeholder="••••••••" {...field} />
                   </FormControl>
@@ -95,7 +95,7 @@ export default function JobSeekerSignUpForm({ onBack }: Props) {
               )}
             />
             <Button type="submit" className="w-full">
-              Sign Up
+              Daftar
             </Button>
           </form>
         </Form>

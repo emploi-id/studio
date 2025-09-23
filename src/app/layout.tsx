@@ -16,7 +16,7 @@ const ptSans = PT_Sans({
 
 export const metadata: Metadata = {
   title: 'emploi',
-  description: 'Find your dream job with emploi, the AI-powered job matching platform.',
+  description: 'Temukan pekerjaan impian Anda dengan Emploi, platform pencocokan pekerjaan bertenaga AI.',
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="id" suppressHydrationWarning>
       <body className={`${ptSans.variable} font-body antialiased`}>
         <div className="flex min-h-screen flex-col">
           <Header />

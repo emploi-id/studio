@@ -5,20 +5,20 @@ export default function CommunityPage() {
     <div className="container mx-auto max-w-4xl px-4 py-12">
       <div className="text-center">
         <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Community
+          Komunitas
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Connect with peers, share insights, and grow your professional network.
+          Terhubung dengan rekan-rekan, berbagi wawasan, dan kembangkan jaringan profesional Anda.
         </p>
       </div>
 
       <Card className="mt-12">
         <CardHeader>
-          <CardTitle>Join the Conversation</CardTitle>
+          <CardTitle>Gabung dalam Percakapan</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground">
-            Our community forums and groups are coming soon. Stay tuned for a space to connect with other professionals, ask questions, and share your experiences in the job market.
+            Forum dan grup komunitas kami akan segera hadir. Nantikan ruang untuk terhubung dengan para profesional lain, mengajukan pertanyaan, dan berbagi pengalaman Anda di pasar kerja.
           </p>
         </CardContent>
       </Card>

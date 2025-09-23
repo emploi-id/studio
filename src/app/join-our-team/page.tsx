@@ -5,19 +5,19 @@ import Link from 'next/link';
 
 const openPositions = [
   {
-    title: 'Senior Frontend Engineer',
-    location: 'Remote',
-    description: 'We are looking for an experienced Frontend Engineer to help build the future of job searching.',
+    title: 'Insinyur Frontend Senior',
+    location: 'Jarak Jauh',
+    description: 'Kami mencari Insinyur Frontend berpengalaman untuk membantu membangun masa depan pencarian kerja.',
   },
   {
-    title: 'AI/ML Specialist',
+    title: 'Spesialis AI/ML',
     location: 'San Francisco, CA',
-    description: 'Join our AI team to develop cutting-edge models for job matching and recommendations.',
+    description: 'Bergabunglah dengan tim AI kami untuk mengembangkan model-model canggih untuk pencocokan pekerjaan dan rekomendasi.',
   },
   {
-    title: 'Product Designer',
+    title: 'Desainer Produk',
     location: 'New York, NY',
-    description: 'Design beautiful, intuitive, and effective user experiences for our platform.',
+    description: 'Rancang pengalaman pengguna yang indah, intuitif, dan efektif untuk platform kami.',
   },
 ]
 
@@ -26,40 +26,40 @@ export default function JoinOurTeamPage() {
     <div className="container mx-auto max-w-4xl px-4 py-12">
       <div className="text-center">
         <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Join Our Team
+          Bergabung dengan Tim Kami
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          We're on a mission to revolutionize the job market. Be a part of our journey.
+          Kami dalam misi untuk merevolusi pasar kerja. Jadilah bagian dari perjalanan kami.
         </p>
       </div>
 
       <div className="mt-12">
         <h2 className="text-center font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-          Why Work With Us?
+          Mengapa Bekerja Dengan Kami?
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
           <Card className="text-center">
             <CardHeader>
-              <CardTitle>Impact</CardTitle>
+              <CardTitle>Dampak</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Make a tangible difference in people's careers and lives.</p>
+              <p className="text-muted-foreground">Buat perbedaan nyata dalam karir dan kehidupan orang-orang.</p>
             </CardContent>
           </Card>
           <Card className="text-center">
             <CardHeader>
-              <CardTitle>Innovation</CardTitle>
+              <CardTitle>Inovasi</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Work with cutting-edge AI and a modern tech stack.</p>
+              <p className="text-muted-foreground">Bekerja dengan AI canggih dan tumpukan teknologi modern.</p>
             </CardContent>
           </Card>
           <Card className="text-center">
             <CardHeader>
-              <CardTitle>Culture</CardTitle>
+              <CardTitle>Budaya</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">A collaborative, supportive, and remote-friendly environment.</p>
+              <p className="text-muted-foreground">Lingkungan yang kolaboratif, suportif, dan ramah jarak jauh.</p>
             </CardContent>
           </Card>
         </div>
@@ -67,7 +67,7 @@ export default function JoinOurTeamPage() {
 
       <div className="mt-16">
         <h2 className="text-center font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-          Open Positions
+          Posisi Terbuka
         </h2>
         <div className="mt-8 space-y-6">
           {openPositions.map((position) => (
@@ -79,7 +79,7 @@ export default function JoinOurTeamPage() {
                 </div>
                 <Link href="/jobs">
                   <Button variant="outline">
-                    View Details <ArrowRight className="ml-2 h-4 w-4" />
+                    Lihat Detail <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
               </CardHeader>

@@ -15,7 +15,7 @@ import Link from 'next/link';
 
 const initialState: ChatState = {
   messages: [
-    { role: 'model', content: [{ text: "Hello! I'm the emploi assistant. How can I help you find your dream job today?" }] },
+    { role: 'model', content: [{ text: "Halo! Saya asisten Emploi. Bagaimana saya bisa membantu Anda menemukan pekerjaan impian Anda hari ini?" }] },
   ],
 };
 
@@ -24,7 +24,7 @@ function SubmitButton() {
   return (
     <Button type="submit" size="icon" disabled={pending}>
       {pending ? <Loader className="animate-spin" /> : <Send />}
-      <span className="sr-only">Send message</span>
+      <span className="sr-only">Kirim pesan</span>
     </Button>
   );
 }
@@ -147,11 +147,11 @@ export default function Chatbot() {
               <Link href="/" className="flex items-center">
                 <span className="font-headline text-xl font-bold lowercase">emploi</span>
               </Link>
-              <CardTitle className="text-xl">Assistant</CardTitle>
+              <CardTitle className="text-xl">Asisten</CardTitle>
             </div>
             <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
               <X />
-              <span className="sr-only">Close chat</span>
+              <span className="sr-only">Tutup obrolan</span>
             </Button>
           </CardHeader>
           <CardContent className="flex h-[500px] flex-col">
@@ -213,7 +213,7 @@ export default function Chatbot() {
             >
               <Input
                 name="message"
-                placeholder="Type a message..."
+                placeholder="Ketik pesan..."
                 autoComplete="off"
               />
               <SubmitButton />

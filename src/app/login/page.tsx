@@ -12,13 +12,13 @@ import { LogIn, User, Building, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 const jobSeekerSchema = z.object({
-  email: z.string().email({ message: 'Invalid email address.' }),
-  password: z.string().min(1, { message: 'Password is required.' }),
+  email: z.string().email({ message: 'Alamat email tidak valid.' }),
+  password: z.string().min(1, { message: 'Kata sandi wajib diisi.' }),
 });
 
 const employerSchema = z.object({
-  memberId: z.string().min(1, { message: 'Member ID is required.' }),
-  password: z.string().min(1, { message: 'Password is required.' }),
+  memberId: z.string().min(1, { message: 'ID Anggota wajib diisi.' }),
+  password: z.string().min(1, { message: 'Kata sandi wajib diisi.' }),
   referralCode: z.string().optional(),
 });
 
@@ -40,14 +40,14 @@ export default function LoginPage() {
   });
 
   const onJobSeekerSubmit: SubmitHandler<JobSeekerFormValues> = (data) => {
-    console.log('Job Seeker Login:', data);
-    alert('You have successfully signed in as a Job Seeker!');
+    console.log('Login Pencari Kerja:', data);
+    alert('Anda telah berhasil masuk sebagai Pencari Kerja!');
     jobSeekerForm.reset();
   };
 
   const onEmployerSubmit: SubmitHandler<EmployerFormValues> = (data) => {
-    console.log('Employer Login:', data);
-    alert('You have successfully signed in as an Employer!');
+    console.log('Login Perusahaan:', data);
+    alert('Anda telah berhasil masuk sebagai Perusahaan!');
     employerForm.reset();
   };
   
@@ -61,8 +61,8 @@ export default function LoginPage() {
         {!role ? (
           <>
             <CardHeader className="text-center">
-              <CardTitle className="font-headline text-3xl font-bold">Sign In</CardTitle>
-              <CardDescription>First, tell us who you are.</CardDescription>
+              <CardTitle className="font-headline text-3xl font-bold">Masuk</CardTitle>
+              <CardDescription>Pertama, beri tahu kami siapa Anda.</CardDescription>
             </CardHeader>
             <CardContent className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <Button
@@ -71,7 +71,7 @@ export default function LoginPage() {
                 onClick={() => setRole('seeker')}
               >
                 <User className="mb-4 h-12 w-12 text-primary" />
-                <span className="text-lg font-semibold">I'm a Job Seeker</span>
+                <span className="text-lg font-semibold">Saya Pencari Kerja</span>
               </Button>
               <Button
                 variant="outline"
@@ -79,13 +79,13 @@ export default function LoginPage() {
                 onClick={() => setRole('employer')}
               >
                 <Building className="mb-4 h-12 w-12 text-primary" />
-                <span className="text-lg font-semibold">I'm an Employer</span>
+                <span className="text-lg font-semibold">Saya Perusahaan</span>
               </Button>
             </CardContent>
              <div className="px-6 pb-6 text-center text-sm">
-                Don't have an account?{' '}
+                Belum punya akun?{' '}
                 <Link href="/signup" className="font-medium text-primary hover:underline">
-                    Sign up
+                    Daftar
                 </Link>
             </div>
           </>
@@ -95,11 +95,11 @@ export default function LoginPage() {
                 <Button variant="ghost" size="icon" className="absolute left-4 top-4" onClick={handleBack}>
                     <ArrowLeft />
                 </Button>
-                <CardTitle className="font-headline text-3xl font-bold">Job Seeker Sign In</CardTitle>
+                <CardTitle className="font-headline text-3xl font-bold">Masuk Pencari Kerja</CardTitle>
                 <CardDescription>
-                  Welcome back to emploi. Don't have an account?{' '}
+                  Selamat datang kembali di Emploi. Belum punya akun?{' '}
                   <Link href="/signup" className="font-medium text-primary hover:underline">
-                    Sign up.
+                    Daftar.
                   </Link>
                 </CardDescription>
             </CardHeader>
@@ -111,9 +111,9 @@ export default function LoginPage() {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email Address</FormLabel>
+                        <FormLabel>Alamat Email</FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="e.g. johndoe@example.com" {...field} />
+                          <Input type="email" placeholder="cth. johndoe@example.com" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -124,7 +124,7 @@ export default function LoginPage() {
                     name="password"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Password</FormLabel>
+                        <FormLabel>Kata Sandi</FormLabel>
                         <FormControl>
                           <Input type="password" placeholder="••••••••" {...field} />
                         </FormControl>
@@ -134,13 +134,13 @@ export default function LoginPage() {
                   />
                   <Button type="submit" className="w-full">
                     <LogIn className="mr-2 h-4 w-4" />
-                    Sign In
+                    Masuk
                   </Button>
                 </form>
               </Form>
               <div className="mt-4 text-center text-sm">
                   <button onClick={() => setRole('employer')} className="text-primary hover:underline">
-                    Sign in as an Employer
+                    Masuk sebagai Perusahaan
                   </button>
               </div>
             </CardContent>
@@ -151,9 +151,9 @@ export default function LoginPage() {
                 <Button variant="ghost" size="icon" className="absolute left-4 top-4" onClick={handleBack}>
                     <ArrowLeft />
                 </Button>
-                <CardTitle className="font-headline text-3xl font-bold">Employer Sign In</CardTitle>
+                <CardTitle className="font-headline text-3xl font-bold">Masuk Perusahaan</CardTitle>
                 <CardDescription>
-                  Welcome back to emploi.
+                  Selamat datang kembali di Emploi.
                 </CardDescription>
             </CardHeader>
             <CardContent>
@@ -164,9 +164,9 @@ export default function LoginPage() {
                     name="memberId"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Member ID</FormLabel>
+                        <FormLabel>ID Anggota</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your Member ID" {...field} />
+                          <Input placeholder="ID Anggota Anda" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -177,7 +177,7 @@ export default function LoginPage() {
                     name="password"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Password</FormLabel>
+                        <FormLabel>Kata Sandi</FormLabel>
                         <FormControl>
                           <Input type="password" placeholder="••••••••" {...field} />
                         </FormControl>
@@ -190,9 +190,9 @@ export default function LoginPage() {
                     name="referralCode"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Referral Code (Optional)</FormLabel>
+                        <FormLabel>Kode Referensi (Opsional)</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter referral code" {...field} />
+                          <Input placeholder="Masukkan kode referensi" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -200,13 +200,13 @@ export default function LoginPage() {
                   />
                   <Button type="submit" className="w-full">
                     <LogIn className="mr-2 h-4 w-4" />
-                    Sign In
+                    Masuk
                   </Button>
                 </form>
               </Form>
               <div className="mt-4 text-center text-sm">
                   <button onClick={() => setRole('seeker')} className="text-primary hover:underline">
-                    Sign in as a Job Seeker
+                    Masuk sebagai Pencari Kerja
                   </button>
               </div>
             </CardContent>

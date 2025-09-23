@@ -6,20 +6,20 @@ import { Button } from '@/components/ui/button';
 const tools = [
   {
     icon: PenSquare,
-    title: 'AI Resume Polisher',
-    description: 'Get AI-powered feedback to optimize your resume for each job application.',
+    title: 'Pemoles Resume AI',
+    description: 'Dapatkan masukan bertenaga AI untuk mengoptimalkan resume Anda untuk setiap lamaran pekerjaan.',
     href: '/insights/resume-polisher',
   },
   {
     icon: Wand2,
-    title: 'Skills Matcher',
-    description: 'Match your skills and experience to the perfect job opportunities.',
+    title: 'Pencocok Keterampilan',
+    description: 'Cocokkan keterampilan dan pengalaman Anda dengan peluang kerja yang sempurna.',
     href: '/insights/skills-matcher',
   },
   {
     icon: Star,
-    title: 'Personalized Recommendations',
-    description: 'Receive job recommendations tailored to your unique profile and preferences.',
+    title: 'Rekomendasi yang Dipersonalisasi',
+    description: 'Terima rekomendasi pekerjaan yang disesuaikan dengan profil dan preferensi unik Anda.',
     href: '/insights/recommendations',
   },
 ];
@@ -29,10 +29,10 @@ export default function InsightsPage() {
     <div className="container mx-auto px-4 py-12">
       <div className="mb-12 text-center">
         <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          AI-Powered Career Tools
+          Alat Karir Bertenaga AI
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Leverage the power of artificial intelligence to accelerate your job search and enhance your career profile.
+          Manfaatkan kekuatan kecerdasan buatan untuk mempercepat pencarian kerja Anda dan meningkatkan profil karir Anda.
         </p>
       </div>
 
@@ -51,7 +51,7 @@ export default function InsightsPage() {
             <div className="p-6 pt-0">
                 <Link href={tool.href}>
                     <Button variant="outline" className="w-full">
-                        Use Tool <ArrowRight className="ml-2 h-4 w-4" />
+                        Gunakan Alat <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                 </Link>
             </div>

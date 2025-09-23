@@ -12,15 +12,15 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import Link from 'next/link';
 
 const formSchema = z.object({
-  companyName: z.string().min(2, { message: 'Company name is required.' }),
+  companyName: z.string().min(2, { message: 'Nama perusahaan wajib diisi.' }),
   referralCode: z.string().optional(),
-  companyAssets: z.string().min(1, { message: 'Please select company assets.' }),
-  email: z.string().email({ message: 'Invalid email address.' }),
-  contactName: z.string().min(2, { message: 'Contact PIC is required.' }),
-  jobTitle: z.string().min(2, { message: 'Job title is required.' }),
+  companyAssets: z.string().min(1, { message: 'Silakan pilih aset perusahaan.' }),
+  email: z.string().email({ message: 'Alamat email tidak valid.' }),
+  contactName: z.string().min(2, { message: 'PIC Kontak wajib diisi.' }),
+  jobTitle: z.string().min(2, { message: 'Jabatan wajib diisi.' }),
   phoneNumber: z.string().optional(),
   mobileNumber: z.string().optional(),
-  password: z.string().min(8, { message: 'Password must be at least 8 characters.' }),
+  password: z.string().min(8, { message: 'Kata sandi harus minimal 8 karakter.' }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -48,7 +48,7 @@ export default function EmployerSignUpForm({ onBack, onSuccess }: Props) {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
-    alert('Employer account created successfully! Welcome to emploi.');
+    alert('Akun perusahaan berhasil dibuat! Selamat datang di Emploi.');
     form.reset();
     if (onSuccess) {
       onSuccess();
@@ -61,11 +61,11 @@ export default function EmployerSignUpForm({ onBack, onSuccess }: Props) {
         <Button variant="ghost" size="icon" className="absolute left-4 top-4" onClick={onBack}>
           <ArrowLeft />
         </Button>
-        <CardTitle className="font-headline text-3xl font-bold">Create Company Account</CardTitle>
+        <CardTitle className="font-headline text-3xl font-bold">Buat Akun Perusahaan</CardTitle>
         <CardDescription>
-          Join as an Employer to find top talent. Already have an account?{' '}
+          Bergabunglah sebagai Perusahaan untuk menemukan talenta terbaik. Sudah punya akun?{' '}
           <Link href="/login" className="font-medium text-primary hover:underline">
-            Sign in.
+            Masuk.
           </Link>
         </CardDescription>
       </CardHeader>
@@ -77,9 +77,9 @@ export default function EmployerSignUpForm({ onBack, onSuccess }: Props) {
               name="companyName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Company Name</FormLabel>
+                  <FormLabel>Nama Perusahaan</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. Innovate Inc." {...field} />
+                    <Input placeholder="cth. Innovate Inc." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -90,9 +90,9 @@ export default function EmployerSignUpForm({ onBack, onSuccess }: Props) {
               name="referralCode"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Referral Code (Optional)</FormLabel>
+                  <FormLabel>Kode Referensi (Opsional)</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter referral code" {...field} />
+                    <Input placeholder="Masukkan kode referensi" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -103,7 +103,7 @@ export default function EmployerSignUpForm({ onBack, onSuccess }: Props) {
               name="companyAssets"
               render={({ field }) => (
                 <FormItem className="space-y-3">
-                  <FormLabel>Company Assets</FormLabel>
+                  <FormLabel>Aset Perusahaan</FormLabel>
                   <FormControl>
                     <RadioGroup
                       onValueChange={field.onChange}
@@ -147,7 +147,7 @@ export default function EmployerSignUpForm({ onBack, onSuccess }: Props) {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="e.g. jane.doe@company.com" {...field} />
+                    <Input type="email" placeholder="cth. jane.doe@company.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -158,9 +158,9 @@ export default function EmployerSignUpForm({ onBack, onSuccess }: Props) {
               name="contactName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Contact PIC</FormLabel>
+                  <FormLabel>Kontak PIC</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. Jane Doe" {...field} />
+                    <Input placeholder="cth. Jane Doe" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -171,9 +171,9 @@ export default function EmployerSignUpForm({ onBack, onSuccess }: Props) {
               name="jobTitle"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Job Title</FormLabel>
+                  <FormLabel>Jabatan</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. Hiring Manager" {...field} />
+                    <Input placeholder="cth. Manajer Perekrutan" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -185,9 +185,9 @@ export default function EmployerSignUpForm({ onBack, onSuccess }: Props) {
                 name="phoneNumber"
                 render={({ field }) => (
                     <FormItem>
-                    <FormLabel>Phone Number (Optional)</FormLabel>
+                    <FormLabel>Nomor Telepon (Opsional)</FormLabel>
                     <FormControl>
-                        <Input placeholder="+1 (555) 123-4567" {...field} />
+                        <Input placeholder="+62 (XXX) XXX-XXXX" {...field} />
                     </FormControl>
                     <FormMessage />
                     </FormItem>
@@ -198,9 +198,9 @@ export default function EmployerSignUpForm({ onBack, onSuccess }: Props) {
                 name="mobileNumber"
                 render={({ field }) => (
                     <FormItem>
-                    <FormLabel>Mobile Number (Optional)</FormLabel>
+                    <FormLabel>Nomor Ponsel (Opsional)</FormLabel>
                     <FormControl>
-                        <Input placeholder="+1 (555) 987-6543" {...field} />
+                        <Input placeholder="+62 XXX-XXXX-XXXX" {...field} />
                     </FormControl>
                     <FormMessage />
                     </FormItem>
@@ -212,7 +212,7 @@ export default function EmployerSignUpForm({ onBack, onSuccess }: Props) {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Kata Sandi</FormLabel>
                   <FormControl>
                     <Input type="password" placeholder="••••••••" {...field} />
                   </FormControl>
@@ -221,7 +221,7 @@ export default function EmployerSignUpForm({ onBack, onSuccess }: Props) {
               )}
             />
             <Button type="submit" className="w-full">
-              Create Company Account
+              Buat Akun Perusahaan
             </Button>
           </form>
         </Form>

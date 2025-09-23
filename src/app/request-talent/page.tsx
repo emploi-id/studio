@@ -26,9 +26,9 @@ export default function RequestTalentPage() {
     <div className="container mx-auto max-w-2xl px-4 py-12">
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="font-headline text-3xl font-bold">Post a Job</CardTitle>
+          <CardTitle className="font-headline text-3xl font-bold">Posting Pekerjaan</CardTitle>
           <CardDescription>
-            Are you a new or existing member?
+            Apakah Anda anggota baru atau yang sudah ada?
           </CardDescription>
         </CardHeader>
         <CardContent className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -38,14 +38,14 @@ export default function RequestTalentPage() {
                 onClick={() => setShowSignUp(true)}
             >
                 <UserPlus className="mb-4 h-12 w-12 text-primary" />
-                <span className="text-lg font-semibold">I'm a New Member</span>
-                <span className="mt-1 text-sm text-muted-foreground">Create a company account</span>
+                <span className="text-lg font-semibold">Saya Anggota Baru</span>
+                <span className="mt-1 text-sm text-muted-foreground">Buat akun perusahaan</span>
             </Button>
             <Link href="/post-a-job" passHref>
                 <Button variant="outline" className="h-auto w-full flex-col p-6">
                     <LogIn className="mb-4 h-12 w-12 text-primary" />
-                    <span className="text-lg font-semibold">I'm an Existing Member</span>
-                    <span className="mt-1 text-sm text-muted-foreground">Proceed to post a job</span>
+                    <span className="text-lg font-semibold">Saya Anggota Lama</span>
+                    <span className="mt-1 text-sm text-muted-foreground">Lanjutkan untuk memposting pekerjaan</span>
                 </Button>
             </Link>
         </CardContent>

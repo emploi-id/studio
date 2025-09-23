@@ -22,23 +22,23 @@ export default function Home() {
           <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
             <div className="text-center lg:text-left">
               <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                Find Your Dream Job with emploi
+                Temukan Pekerjaan Impian Anda dengan Emploi
               </h1>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                Our AI-powered platform connects you with the perfect
-                career opportunity. Explore jobs, get resume feedback, and
-                land your next role.
+                Platform bertenaga AI kami menghubungkan Anda dengan
+                peluang karir yang sempurna. Jelajahi pekerjaan, dapatkan umpan balik resume, dan
+                dapatkan peran Anda berikutnya.
               </p>
               <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
                 <Link href="/jobs">
                   <Button size="lg">
-                    Browse Jobs <ArrowRight className="ml-2" />
+                    Telusuri Pekerjaan <ArrowRight className="ml-2" />
                   </Button>
                 </Link>
                 {isAdmin && (
                   <Link href="/insights">
                     <Button size="lg" variant="secondary">
-                      AI Career Tools
+                      Alat Karir AI
                     </Button>
                   </Link>
                 )}
@@ -64,10 +64,10 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Featured Jobs
+              Pekerjaan Unggulan
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Explore some of the most exciting roles available right now.
+              Jelajahi beberapa peran paling menarik yang tersedia saat ini.
             </p>
           </div>
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -78,7 +78,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Link href="/jobs">
               <Button variant="outline">
-                View All Jobs <ArrowRight className="ml-2" />
+                Lihat Semua Pekerjaan <ArrowRight className="ml-2" />
               </Button>
             </Link>
           </div>
@@ -89,10 +89,10 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Top Employers
+              Perusahaan Teratas
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Discover great places to work.
+              Temukan tempat-tempat hebat untuk bekerja.
             </p>
           </div>
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -103,7 +103,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Link href="/employers">
               <Button variant="outline">
-                View All Employers <ArrowRight className="ml-2" />
+                Lihat Semua Perusahaan <ArrowRight className="ml-2" />
               </Button>
             </Link>
           </div>

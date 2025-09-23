@@ -17,7 +17,7 @@ export async function polishResumeAction(
   formData: FormData
 ): Promise<PolishResumeState> {
   const schema = z.object({
-    resumeText: z.string().min(1, 'Resume text cannot be empty.'),
+    resumeText: z.string().min(1, 'Teks resume tidak boleh kosong.'),
     jobDescription: z.string().optional(),
   });
 
@@ -40,7 +40,7 @@ export async function polishResumeAction(
       error: '',
     };
   } catch (e) {
-    const error = e instanceof Error ? e.message : 'An unexpected error occurred.';
+    const error = e instanceof Error ? e.message : 'Terjadi kesalahan tak terduga.';
     return {
       suggestions: '',
       error,
@@ -59,8 +59,8 @@ export async function matchSkillsAction(
   formData: FormData
 ): Promise<MatchSkillsState> {
   const schema = z.object({
-    jobSeekerProfile: z.string().min(1, 'Profile cannot be empty.'),
-    jobPostings: z.string().min(1, 'Job postings are required.'),
+    jobSeekerProfile: z.string().min(1, 'Profil tidak boleh kosong.'),
+    jobPostings: z.string().min(1, 'Postingan pekerjaan diperlukan.'),
   });
 
   const validatedFields = schema.safeParse({
@@ -82,7 +82,7 @@ export async function matchSkillsAction(
       error: '',
     };
   } catch (e) {
-    const error = e instanceof Error ? e.message : 'An unexpected error occurred.';
+    const error = e instanceof Error ? e.message : 'Terjadi kesalahan tak terduga.';
     return {
       matchedJobs: '',
       error,
@@ -126,7 +126,7 @@ export async function chatAction(
       messages: [...newMessages, modelMessage],
     };
   } catch (e) {
-    const error = e instanceof Error ? e.message : 'An unexpected error occurred.';
+    const error = e instanceof Error ? e.message : 'Terjadi kesalahan tak terduga.';
     const errorMessage: Message = {
       role: 'model',
       content: [{ text: `Error: ${error}` }],
