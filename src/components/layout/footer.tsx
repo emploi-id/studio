@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
           <div className="grid grid-cols-2 gap-x-8 gap-y-4 text-center text-sm font-medium md:grid-cols-4 md:text-left">
             <div className="flex flex-col space-y-2">
-                <h4 className="font-bold text-primary-foreground">Pencarian Lowongan</h4>
+                <h4 className="font-bold text-primary-foreground">Cari Kerja</h4>
                 <Link href="/jobs" className="text-primary-foreground/80 hover:text-primary-foreground">Cari Lowongan</Link>
             </div>
             <div className="flex flex-col space-y-2">

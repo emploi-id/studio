@@ -20,7 +20,7 @@ const isAdmin = false;
 const navLinks = [
   { href: '/', label: 'Beranda' },
   {
-    label: 'Pencarian Lowongan',
+    label: 'Cari Kerja',
     href: '/jobs',
     dropdown: [{ href: '/jobs', label: 'Cari Lowongan' }],
   },
