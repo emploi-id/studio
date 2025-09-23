@@ -40,11 +40,11 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-8 flex flex-col-reverse items-center justify-between gap-4 border-t border-primary-foreground/20 pt-8 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-primary-foreground/20 pt-8 sm:flex-row">
           <p className="text-sm text-primary-foreground/80">
             &copy; {new Date().getFullYear()} emploi. All rights reserved.
           </p>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center gap-2 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
             <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10" asChild>
               <Link href="#" aria-label="Instagram">
                 <Instagram className="h-4 w-4" />
