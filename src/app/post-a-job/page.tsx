@@ -73,7 +73,7 @@ export default function PostAJobPage() {
       <Card>
         <CardHeader>
           <CardTitle className="font-headline text-3xl font-bold">
-            Posting Pekerjaan
+            Posting Lowongan
           </CardTitle>
           <CardDescription>
             Isi formulir di bawah ini untuk membuat daftar pekerjaan Anda. Kami akan membantu Anda
@@ -257,7 +257,7 @@ export default function PostAJobPage() {
 
 
               <Button type="submit" className="w-full" size="lg">
-                Kirim Postingan Pekerjaan
+                Kirim Postingan Lowongan
               </Button>
             </form>
           </Form>

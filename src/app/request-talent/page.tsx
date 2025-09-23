@@ -26,7 +26,7 @@ export default function RequestTalentPage() {
     <div className="container mx-auto max-w-2xl px-4 py-12">
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="font-headline text-3xl font-bold">Posting Pekerjaan</CardTitle>
+          <CardTitle className="font-headline text-3xl font-bold">Posting Lowongan</CardTitle>
           <CardDescription>
             Apakah Anda anggota baru atau yang sudah ada?
           </CardDescription>
@@ -45,7 +45,7 @@ export default function RequestTalentPage() {
                 <Button variant="outline" className="h-auto w-full flex-col p-6">
                     <LogIn className="mb-4 h-12 w-12 text-primary" />
                     <span className="text-lg font-semibold">Saya Anggota Lama</span>
-                    <span className="mt-1 text-sm text-muted-foreground">Lanjutkan untuk memposting pekerjaan</span>
+                    <span className="mt-1 text-sm text-muted-foreground">Lanjutkan untuk memposting lowongan</span>
                 </Button>
             </Link>
         </CardContent>

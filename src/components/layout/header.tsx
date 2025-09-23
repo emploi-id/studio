@@ -20,16 +20,16 @@ const isAdmin = false;
 const navLinks = [
   { href: '/', label: 'Beranda' },
   {
-    label: 'Pencarian Kerja',
+    label: 'Pencarian Lowongan',
     href: '/jobs',
-    dropdown: [{ href: '/jobs', label: 'Cari Pekerjaan' }],
+    dropdown: [{ href: '/jobs', label: 'Cari Lowongan' }],
   },
   {
     label: 'Perusahaan',
     href: '/employers',
     dropdown: [
       { href: '/employers', label: 'Cari Perusahaan' },
-      { href: '/request-talent', label: 'Posting Pekerjaan' },
+      { href: '/request-talent', label: 'Posting Lowongan' },
     ],
   },
   {
@@ -219,7 +219,7 @@ export default function Header() {
                 variant="outline"
                 className="mr-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90"
               >
-                Posting Pekerjaan
+                Posting Lowongan
               </Button>
             </Link>
             <Link href="/signup" passHref>

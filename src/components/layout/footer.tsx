@@ -18,13 +18,13 @@ export default function Footer() {
           </div>
           <div className="grid grid-cols-2 gap-x-8 gap-y-4 text-center text-sm font-medium md:grid-cols-4 md:text-left">
             <div className="flex flex-col space-y-2">
-                <h4 className="font-bold text-primary-foreground">Pencarian Kerja</h4>
-                <Link href="/jobs" className="text-primary-foreground/80 hover:text-primary-foreground">Cari Pekerjaan</Link>
+                <h4 className="font-bold text-primary-foreground">Pencarian Lowongan</h4>
+                <Link href="/jobs" className="text-primary-foreground/80 hover:text-primary-foreground">Cari Lowongan</Link>
             </div>
             <div className="flex flex-col space-y-2">
                 <h4 className="font-bold text-primary-foreground">Perusahaan</h4>
                 <Link href="/employers" className="text-primary-foreground/80 hover:text-primary-foreground">Cari Perusahaan</Link>
-                <Link href="/request-talent" className="text-primary-foreground/80 hover:text-primary-foreground">Posting Pekerjaan</Link>
+                <Link href="/request-talent" className="text-primary-foreground/80 hover:text-primary-foreground">Posting Lowongan</Link>
             </div>
              <div className="flex flex-col space-y-2">
                 <h4 className="font-bold text-primary-foreground">Pengembangan Karir</h4>
