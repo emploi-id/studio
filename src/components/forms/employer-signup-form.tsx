@@ -137,7 +137,7 @@ export default function EmployerSignUpForm({ onBack }: Props) {
               name="contactName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Contact Person</FormLabel>
+                  <FormLabel>Contact PIC</FormLabel>
                   <FormControl>
                     <Input placeholder="e.g. Jane Doe" {...field} />
                   </FormControl>
