@@ -18,7 +18,7 @@ export default function RequestTalentPage() {
             <Link href="/signup">
                 <Button variant="outline" className="h-auto w-full flex-col p-6">
                     <UserPlus className="mb-4 h-12 w-12 text-primary" />
-                    <span className="text-lg font-semibold">New Member</span>
+                    <span className="text-lg font-semibold">I'm a New Member</span>
                     <span className="mt-1 text-sm text-muted-foreground">Create a company account</span>
                 </Button>
             </Link>
