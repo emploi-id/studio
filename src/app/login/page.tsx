@@ -17,9 +17,8 @@ const jobSeekerSchema = z.object({
 });
 
 const employerSchema = z.object({
-  email: z.string().email({ message: 'Invalid email address.' }),
-  password: z.string().min(1, { message: 'Password is required.' }),
   memberId: z.string().min(1, { message: 'Member ID is required.' }),
+  password: z.string().min(1, { message: 'Password is required.' }),
   referralCode: z.string().optional(),
 });
 
@@ -37,7 +36,7 @@ export default function LoginPage() {
 
   const employerForm = useForm<EmployerFormValues>({
     resolver: zodResolver(employerSchema),
-    defaultValues: { email: '', password: '', memberId: '', referralCode: '' },
+    defaultValues: { memberId: '', password: '', referralCode: '' },
   });
 
   const onJobSeekerSubmit: SubmitHandler<JobSeekerFormValues> = (data) => {
@@ -148,19 +147,6 @@ export default function LoginPage() {
             <CardContent>
               <Form {...employerForm}>
                 <form onSubmit={employerForm.handleSubmit(onEmployerSubmit)} className="space-y-6">
-                  <FormField
-                    control={employerForm.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email Address</FormLabel>
-                        <FormControl>
-                          <Input type="email" placeholder="e.g. contact@company.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
                    <FormField
                     control={employerForm.control}
                     name="memberId"
@@ -174,19 +160,6 @@ export default function LoginPage() {
                       </FormItem>
                     )}
                   />
-                   <FormField
-                    control={employerForm.control}
-                    name="referralCode"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Referral Code (Optional)</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Enter referral code" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
                   <FormField
                     control={employerForm.control}
                     name="password"
@@ -195,6 +168,19 @@ export default function LoginPage() {
                         <FormLabel>Password</FormLabel>
                         <FormControl>
                           <Input type="password" placeholder="••••••••" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                   <FormField
+                    control={employerForm.control}
+                    name="referralCode"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Referral Code (Optional)</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Enter referral code" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
