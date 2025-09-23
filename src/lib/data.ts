@@ -164,7 +164,6 @@ export const jobLocations = [
   "Jakarta",
   "Tangerang",
   "Tangerang Selatan",
-  "San Francisco, CA",
   "New York, NY",
   "Austin, TX",
   "Boston, MA",
