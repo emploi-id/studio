@@ -141,7 +141,7 @@ export default function JobSearchPage() {
          <div className="mt-4 flex justify-end">
           <Button variant="ghost" onClick={handleResetFilters}>
             <X className="mr-2 h-4 w-4" />
-            Setel Ulang Filter
+            Hapus Filter
           </Button>
         </div>
       </div>
