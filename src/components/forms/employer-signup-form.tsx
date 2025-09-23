@@ -13,6 +13,8 @@ const formSchema = z.object({
   companyName: z.string().min(2, { message: 'Company name is required.' }),
   contactName: z.string().min(2, { message: 'Contact name is required.' }),
   memberId: z.string().optional(),
+  phone: z.string().optional(),
+  jobTitle: z.string().min(2, { message: 'Job title is required.' }),
   email: z.string().email({ message: 'Invalid email address.' }),
   password: z.string().min(8, { message: 'Password must be at least 8 characters.' }),
 });
@@ -30,6 +32,8 @@ export default function EmployerSignUpForm({ onBack }: Props) {
       companyName: '',
       contactName: '',
       memberId: '',
+      phone: '',
+      jobTitle: '',
       email: '',
       password: '',
     },
@@ -87,6 +91,32 @@ export default function EmployerSignUpForm({ onBack }: Props) {
                   <FormLabel>Member ID (Optional)</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter your member ID" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone Number (Optional)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="+1 (555) 123-4567" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="jobTitle"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Job Title</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g. Hiring Manager" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
