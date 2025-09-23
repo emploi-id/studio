@@ -84,9 +84,9 @@ export default function EmployerSignUpForm({ onBack }: Props) {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="<5M">>= 5 M</SelectItem>
+                      <SelectItem value="<5M">&lt; 5 M</SelectItem>
                       <SelectItem value="5M-10M">5 M - 10 M</SelectItem>
-                      <SelectItem value=">10M">> 10 M</SelectItem>
+                      <SelectItem value=">10M">&gt; 10 M</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
