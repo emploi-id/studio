@@ -42,7 +42,7 @@ export default function RequestTalentPage() {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
-    alert('Your request has been submitted! We will be in touch shortly.');
+    alert('Your job has been posted! We will be in touch shortly.');
     form.reset();
   };
 
@@ -50,7 +50,7 @@ export default function RequestTalentPage() {
     <div className="container mx-auto max-w-2xl px-4 py-12">
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline text-3xl font-bold">Request Talent</CardTitle>
+          <CardTitle className="font-headline text-3xl font-bold">Post a Job</CardTitle>
           <CardDescription>
             Tell us who you're looking for, and we'll connect you with top talent.
           </CardDescription>
@@ -141,7 +141,7 @@ export default function RequestTalentPage() {
                 )}
               />
               <Button type="submit" className="w-full">
-                Submit Request
+                Submit Job
               </Button>
             </form>
           </Form>

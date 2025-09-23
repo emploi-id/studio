@@ -22,26 +22,32 @@ const navLinks = [
   {
     label: 'Job Search',
     href: '/jobs',
-    dropdown: [
-      { href: '/jobs', label: 'Find a Job' },
-    ],
+    dropdown: [{ href: '/jobs', label: 'Find a Job' }],
   },
   {
     label: 'Employers',
     href: '/employers',
     dropdown: [
-        { href: '/employers', label: 'Find a Company' },
-        { href: '/request-talent', label: 'Request Talent' },
+      { href: '/employers', label: 'Find a Company' },
+      { href: '/request-talent', label: 'Post a Job' },
     ],
   },
   {
     label: 'Career Development',
-    href: '/insights',
+    href: '#',
     dropdown: [
       { href: '/insights', label: 'Overview', admin: true },
-      { href: '/insights/resume-polisher', label: 'AI Resume Polisher', admin: true },
+      {
+        href: '/insights/resume-polisher',
+        label: 'AI Resume Polisher',
+        admin: true,
+      },
       { href: '/insights/skills-matcher', label: 'Skills Matcher', admin: true },
-      { href: '/insights/recommendations', label: 'Personalized Recommendations', admin: true },
+      {
+        href: '/insights/recommendations',
+        label: 'Personalized Recommendations',
+        admin: true,
+      },
       { href: '/career-advise', label: 'Career Advise' },
       { href: '/events', label: 'Events' },
       { href: '/training', label: 'Training' },
@@ -98,7 +104,9 @@ const NavLink = ({
   dropdown?: { href: string; label: string; admin?: boolean }[];
 }) => {
   if (dropdown && href) {
-    const visibleDropdownItems = dropdown.filter(item => !item.admin || isAdmin);
+    const visibleDropdownItems = dropdown.filter(
+      (item) => !item.admin || isAdmin
+    );
     return (
       <div className="flex items-center">
         <NavLinkContent href={href} label={label} dropdown={dropdown} />
@@ -136,7 +144,6 @@ const NavLink = ({
   return null;
 };
 
-
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-primary-foreground/20 bg-primary text-primary-foreground">
@@ -151,7 +158,11 @@ export default function Header() {
         <div className="flex flex-1 md:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-primary-foreground/10"
+              >
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Open Menu</span>
               </Button>
@@ -166,15 +177,17 @@ export default function Header() {
                     <div key={link.label}>
                       <p className="text-lg font-medium">{link.label}</p>
                       <div className="ml-4 mt-2 flex flex-col space-y-2">
-                        {link.dropdown.filter(item => !item.admin || isAdmin).map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className="text-base font-medium text-muted-foreground"
-                          >
-                            {item.label}
-                          </Link>
-                        ))}
+                        {link.dropdown
+                          .filter((item) => !item.admin || isAdmin)
+                          .map((item) => (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              className="text-base font-medium text-muted-foreground"
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
                       </div>
                     </div>
                   ) : (
@@ -200,13 +213,16 @@ export default function Header() {
 
         <div className="flex items-center justify-end">
           <nav className="flex items-center">
-            <Link href="/employers" passHref>
-                <Button variant="outline" className="mr-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-                    For Employers
-                </Button>
+            <Link href="/request-talent" passHref>
+              <Button
+                variant="outline"
+                className="mr-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+              >
+                Post a Job
+              </Button>
             </Link>
             <Link href="/signup" passHref>
-                <Button variant="secondary">Sign Up</Button>
+              <Button variant="secondary">Sign Up</Button>
             </Link>
           </nav>
         </div>
