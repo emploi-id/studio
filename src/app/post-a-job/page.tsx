@@ -3,7 +3,6 @@
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -19,12 +18,7 @@ import {
 
 const formSchema = z.object({
   memberId: z.string().min(1, { message: 'Member ID is required.' }),
-  companyName: z.string().min(2, { message: 'Company name is required.' }),
-  contactName: z.string().min(2, { message: 'Contact name is required.' }),
-  email: z.string().email({ message: 'Invalid email address.' }),
-  phone: z.string().optional(),
-  roleTitle: z.string().min(2, { message: 'Role title is required.' }),
-  jobDescription: z.string().min(10, { message: 'Job description must be over 10 characters.' }),
+  password: z.string().min(8, { message: 'Password must be at least 8 characters.' }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -34,18 +28,13 @@ export default function PostAJobPage() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       memberId: '',
-      companyName: '',
-      contactName: '',
-      email: '',
-      phone: '',
-      roleTitle: '',
-      jobDescription: '',
+      password: '',
     },
   });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
-    alert('Your job has been posted! We will be in touch shortly.');
+    alert('You have submitted the form!');
     form.reset();
   };
 
@@ -74,90 +63,21 @@ export default function PostAJobPage() {
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="companyName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Company Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="e.g. Innovate Inc." {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="contactName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Contact Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="e.g. John Doe" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input type="email" placeholder="e.g. contact@company.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Phone Number (Optional)</FormLabel>
-                    <FormControl>
-                      <Input placeholder="+1 (555) 123-4567" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
                <FormField
                 control={form.control}
-                name="roleTitle"
+                name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Role Title</FormLabel>
+                    <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g. Senior Software Engineer" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="jobDescription"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Job Description & Requirements</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Describe the role, responsibilities, and qualifications you're looking for..."
-                        className="min-h-[150px]"
-                        {...field}
-                      />
+                      <Input type="password" placeholder="••••••••" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
               <Button type="submit" className="w-full">
-                Submit Job
+                Submit
               </Button>
             </form>
           </Form>
