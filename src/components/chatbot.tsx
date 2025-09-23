@@ -31,9 +31,14 @@ function SubmitButton() {
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const [state, formAction] = useActionState(chatAction, initialState);
   const formRef = useRef<HTMLFormElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -47,6 +52,10 @@ export default function Chatbot() {
   const handleFormAction = (formData: FormData) => {
     formAction(formData);
     formRef.current?.reset();
+  }
+
+  if (!isMounted) {
+    return null;
   }
 
   if (!isOpen) {
