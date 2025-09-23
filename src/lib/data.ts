@@ -164,9 +164,5 @@ export const jobLocations = [
   "Jakarta",
   "Tangerang",
   "Tangerang Selatan",
-  "New York, NY",
-  "Austin, TX",
-  "Boston, MA",
-  "Chicago, IL",
   "Remote"
 ];
