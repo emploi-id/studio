@@ -1,94 +1,60 @@
 'use client';
 
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { User, Building } from 'lucide-react';
+import JobSeekerSignUpForm from '@/components/forms/job-seeker-signup-form';
+import EmployerSignUpForm from '@/components/forms/employer-signup-form';
 
-const formSchema = z.object({
-  name: z.string().min(2, { message: 'Name is required.' }),
-  email: z.string().email({ message: 'Invalid email address.' }),
-  password: z.string().min(8, { message: 'Password must be at least 8 characters.' }),
-});
-
-type FormValues = z.infer<typeof formSchema>;
+type UserRole = 'seeker' | 'employer' | null;
 
 export default function SignUpPage() {
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      password: '',
-    },
-  });
+  const [role, setRole] = useState<UserRole>(null);
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
-    alert('Account created successfully! Welcome to emploi.');
-    form.reset();
+  const handleRoleSelection = (selectedRole: NonNullable<UserRole>) => {
+    setRole(selectedRole);
+  };
+
+  const handleBack = () => {
+    setRole(null);
   };
 
   return (
     <div className="container mx-auto max-w-lg px-4 py-12">
       <Card>
-        <CardHeader className="text-center">
-          <CardTitle className="font-headline text-3xl font-bold">Create an Account</CardTitle>
-          <CardDescription>
-            Join emploi to find your dream job today.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Full Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="e.g. John Doe" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email Address</FormLabel>
-                    <FormControl>
-                      <Input type="email" placeholder="e.g. johndoe@example.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input type="password" placeholder="••••••••" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full">
-                Sign Up
+        {!role ? (
+          <>
+            <CardHeader className="text-center">
+              <CardTitle className="font-headline text-3xl font-bold">Join emploi</CardTitle>
+              <CardDescription>First, tell us who you are.</CardDescription>
+            </CardHeader>
+            <CardContent className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <Button
+                variant="outline"
+                className="h-auto flex-col p-6"
+                onClick={() => handleRoleSelection('seeker')}
+              >
+                <User className="mb-4 h-12 w-12 text-primary" />
+                <span className="text-lg font-semibold">I'm a Job Seeker</span>
+                <span className="mt-1 text-sm text-muted-foreground">Find my next role</span>
               </Button>
-            </form>
-          </Form>
-        </CardContent>
+              <Button
+                variant="outline"
+                className="h-auto flex-col p-6"
+                onClick={() => handleRoleSelection('employer')}
+              >
+                <Building className="mb-4 h-12 w-12 text-primary" />
+                <span className="text-lg font-semibold">I'm an Employer</span>
+                 <span className="mt-1 text-sm text-muted-foreground">Hire top talent</span>
+              </Button>
+            </CardContent>
+          </>
+        ) : role === 'seeker' ? (
+          <JobSeekerSignUpForm onBack={handleBack} />
+        ) : (
+          <EmployerSignUpForm onBack={handleBack} />
+        )}
       </Card>
     </div>
   );
