@@ -21,7 +21,6 @@ const navLinks = [
     href: '/about',
     dropdown: [
       { href: '/about', label: 'About emploi' },
-      { href: '/career-advise', label: 'Career Advise' },
       { href: '/join-our-team', label: 'Join Our Team' },
       { href: '/contact', label: 'Contact' },
     ],
@@ -49,6 +48,7 @@ const navLinks = [
       { href: '/insights/resume-polisher', label: 'AI Resume Polisher' },
       { href: '/insights/skills-matcher', label: 'Skills Matcher' },
       { href: '/insights/recommendations', label: 'Personalized Recommendations' },
+      { href: '/career-advise', label: 'Career Advise' },
       { href: '/events', label: 'Events' },
       { href: '/training', label: 'Training' },
       { href: '/community', label: 'Community' },
