@@ -11,7 +11,7 @@ export default function RequestTalentPage() {
         <CardHeader className="text-center">
           <CardTitle className="font-headline text-3xl font-bold">Post a Job</CardTitle>
           <CardDescription>
-            Are you a new or existing employer?
+            Are you a new or existing member?
           </CardDescription>
         </CardHeader>
         <CardContent className="grid grid-cols-1 gap-6 md:grid-cols-2">
