@@ -135,7 +135,7 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu */}
-        <div className="md:hidden">
+        <div className="flex flex-1 md:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10">
@@ -185,14 +185,16 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center justify-end md:w-auto">
+        <div className="flex items-center justify-end">
           <nav className="flex items-center">
             <Link href="/employers" passHref>
                 <Button variant="outline" className="mr-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90">
                     For Employers
                 </Button>
             </Link>
-            <Button variant="secondary">Sign Up</Button>
+            <Link href="/signup" passHref>
+                <Button variant="secondary">Sign Up</Button>
+            </Link>
           </nav>
         </div>
       </div>
