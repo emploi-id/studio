@@ -1,6 +1,5 @@
 
 import Link from 'next/link';
-import Logo from '@/components/icons/logo';
 import { Instagram, Facebook, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -11,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row md:items-start">
           <div className="flex flex-col items-center gap-4 md:items-start">
             <Link href="/" className="flex items-center">
-                <Logo />
+                <span className="font-headline text-xl font-bold lowercase">emploi</span>
             </Link>
             <p className="max-w-xs text-center text-sm text-primary-foreground/80 md:text-left">
               Your AI-powered partner in finding the perfect career match.

@@ -11,7 +11,6 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { chatAction, ChatState } from '@/app/actions';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback } from './ui/avatar';
-import Logo from './icons/logo';
 import Link from 'next/link';
 
 const initialState: ChatState = {
@@ -146,7 +145,7 @@ export default function Chatbot() {
           <CardHeader className="flex flex-row items-center justify-between">
             <div className="flex items-center gap-2">
               <Link href="/" className="flex items-center">
-                <Logo />
+                <span className="font-headline text-xl font-bold lowercase">emploi</span>
               </Link>
               <CardTitle className="text-xl">Assistant</CardTitle>
             </div>

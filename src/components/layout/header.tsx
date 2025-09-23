@@ -13,7 +13,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
-import Logo from '@/components/icons/logo';
 
 // TODO: Replace with actual authentication check
 const isAdmin = false;
@@ -151,7 +150,7 @@ export default function Header() {
       <div className="container flex h-16 items-center">
         <div className="mr-6">
           <Link href="/" className="flex items-center">
-            <Logo />
+            <span className="font-headline text-xl font-bold lowercase">emploi</span>
           </Link>
         </div>
 
@@ -170,7 +169,7 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side="left">
               <Link href="/" className="flex items-center">
-                <Logo />
+                <span className="font-headline text-xl font-bold lowercase">emploi</span>
               </Link>
               <div className="mt-8 flex flex-col space-y-4">
                 {navLinks.map((link) =>
