@@ -27,9 +27,10 @@ type FormValues = z.infer<typeof formSchema>;
 
 type Props = {
   onBack: () => void;
+  onSuccess?: () => void;
 };
 
-export default function EmployerSignUpForm({ onBack }: Props) {
+export default function EmployerSignUpForm({ onBack, onSuccess }: Props) {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,6 +50,9 @@ export default function EmployerSignUpForm({ onBack }: Props) {
     console.log(data);
     alert('Employer account created successfully! Welcome to emploi.');
     form.reset();
+    if (onSuccess) {
+      onSuccess();
+    }
   };
 
   return (
