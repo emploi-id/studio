@@ -124,7 +124,7 @@ export default function EmployerSignUpForm({ onBack }: Props) {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Work Email Address</FormLabel>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input type="email" placeholder="e.g. jane.doe@company.com" {...field} />
                   </FormControl>
