@@ -14,6 +14,9 @@ import {
 import { cn } from '@/lib/utils';
 import Logo from '@/components/icons/logo';
 
+// TODO: Replace with actual authentication check
+const isAdmin = false;
+
 const navLinks = [
   { href: '/', label: 'Home' },
   {
@@ -35,10 +38,10 @@ const navLinks = [
     label: 'Career Development',
     href: '/insights',
     dropdown: [
-      { href: '/insights', label: 'Overview' },
-      { href: '/insights/resume-polisher', label: 'AI Resume Polisher' },
-      { href: '/insights/skills-matcher', label: 'Skills Matcher' },
-      { href: '/insights/recommendations', label: 'Personalized Recommendations' },
+      { href: '/insights', label: 'Overview', admin: true },
+      { href: '/insights/resume-polisher', label: 'AI Resume Polisher', admin: true },
+      { href: '/insights/skills-matcher', label: 'Skills Matcher', admin: true },
+      { href: '/insights/recommendations', label: 'Personalized Recommendations', admin: true },
       { href: '/career-advise', label: 'Career Advise' },
       { href: '/events', label: 'Events' },
       { href: '/training', label: 'Training' },
@@ -57,12 +60,12 @@ const navLinks = [
   },
 ];
 
-const NavLink = ({
+const NavLinkContent = ({
   href,
   label,
   dropdown,
 }: {
-  href?: string;
+  href: string;
   label: string;
   dropdown?: { href: string; label: string }[];
 }) => {
@@ -70,59 +73,69 @@ const NavLink = ({
   const isActive = href ? pathname === href : false;
   const isDropdownActive = dropdown?.some((item) => pathname === item.href);
 
+  return (
+    <Link
+      href={href}
+      className={cn(
+        'text-sm font-medium transition-colors hover:text-primary-foreground',
+        isActive || isDropdownActive
+          ? 'text-primary-foreground'
+          : 'text-primary-foreground/80'
+      )}
+    >
+      {label}
+    </Link>
+  );
+};
+
+const NavLink = ({
+  href,
+  label,
+  dropdown,
+}: {
+  href?: string;
+  label: string;
+  dropdown?: { href: string; label: string; admin?: boolean }[];
+}) => {
   if (dropdown && href) {
+    const visibleDropdownItems = dropdown.filter(item => !item.admin || isAdmin);
     return (
       <div className="flex items-center">
-        <Link
-          href={href}
-          className={cn(
-            'text-sm font-medium transition-colors hover:text-primary-foreground',
-            isActive || isDropdownActive ? 'text-primary-foreground' : 'text-primary-foreground/80'
-          )}
-        >
-          {label}
-        </Link>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className={cn(
-                'group h-auto w-6 shrink-0 flex items-center gap-1 text-sm font-medium transition-colors focus:bg-transparent focus:outline-none focus-visible:ring-0 hover:bg-primary-foreground/10',
-                isDropdownActive ? 'text-primary-foreground' : 'text-primary-foreground/80'
-              )}
-            >
-              <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            {dropdown.map((item) => (
-              <DropdownMenuItem key={item.href} asChild>
-                <Link href={item.href}>{item.label}</Link>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <NavLinkContent href={href} label={label} dropdown={dropdown} />
+        {visibleDropdownItems.length > 0 && (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className={cn(
+                  'group h-auto w-6 shrink-0 flex items-center gap-1 text-sm font-medium transition-colors focus:bg-transparent focus:outline-none focus-visible:ring-0 hover:bg-primary-foreground/10',
+                  'text-primary-foreground/80'
+                )}
+              >
+                <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              {visibleDropdownItems.map((item) => (
+                <DropdownMenuItem key={item.href} asChild>
+                  <Link href={item.href}>{item.label}</Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
       </div>
     );
   }
 
   if (href) {
-    return (
-      <Link
-        href={href}
-        className={cn(
-          'text-sm font-medium transition-colors hover:text-primary-foreground',
-          isActive ? 'text-primary-foreground' : 'text-primary-foreground/80'
-        )}
-      >
-        {label}
-      </Link>
-    );
+    return <NavLinkContent href={href} label={label} />;
   }
 
   return null;
 };
+
 
 export default function Header() {
   return (
@@ -153,7 +166,7 @@ export default function Header() {
                     <div key={link.label}>
                       <p className="text-lg font-medium">{link.label}</p>
                       <div className="ml-4 mt-2 flex flex-col space-y-2">
-                        {link.dropdown.map((item) => (
+                        {link.dropdown.filter(item => !item.admin || isAdmin).map((item) => (
                           <Link
                             key={item.href}
                             href={item.href}
