@@ -13,6 +13,7 @@ import Link from 'next/link';
 
 const formSchema = z.object({
   companyName: z.string().min(2, { message: 'Company name is required.' }),
+  referralCode: z.string().optional(),
   companyAssets: z.string().min(1, { message: 'Please select company assets.' }),
   email: z.string().email({ message: 'Invalid email address.' }),
   contactName: z.string().min(2, { message: 'Contact PIC is required.' }),
@@ -33,6 +34,7 @@ export default function EmployerSignUpForm({ onBack }: Props) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       companyName: '',
+      referralCode: '',
       companyAssets: '',
       email: '',
       contactName: '',
@@ -74,6 +76,19 @@ export default function EmployerSignUpForm({ onBack }: Props) {
                   <FormLabel>Company Name</FormLabel>
                   <FormControl>
                     <Input placeholder="e.g. Innovate Inc." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="referralCode"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Referral Code (Optional)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter referral code" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
