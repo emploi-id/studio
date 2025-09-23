@@ -57,6 +57,19 @@ export default function EmployerSignUpForm({ onBack }: Props) {
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <FormField
+              control={form.control}
+              name="memberId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Member ID (Optional)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter your member ID" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
              <FormField
               control={form.control}
               name="companyName"
@@ -78,19 +91,6 @@ export default function EmployerSignUpForm({ onBack }: Props) {
                   <FormLabel>Contact Name</FormLabel>
                   <FormControl>
                     <Input placeholder="e.g. Jane Doe" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="memberId"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Member ID (Optional)</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your member ID" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
