@@ -18,6 +18,7 @@ import {
 } from '@/components/ui/form';
 
 const formSchema = z.object({
+  memberId: z.string().optional(),
   companyName: z.string().min(2, { message: 'Company name is required.' }),
   contactName: z.string().min(2, { message: 'Contact name is required.' }),
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -32,6 +33,7 @@ export default function PostAJobPage() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      memberId: '',
       companyName: '',
       contactName: '',
       email: '',
@@ -59,6 +61,19 @@ export default function PostAJobPage() {
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <FormField
+                control={form.control}
+                name="memberId"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Member ID (Optional)</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter your member ID" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="companyName"
