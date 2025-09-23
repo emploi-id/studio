@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/form';
 
 const formSchema = z.object({
-  memberId: z.string().optional(),
+  memberId: z.string().min(1, { message: 'Member ID is required.' }),
   companyName: z.string().min(2, { message: 'Company name is required.' }),
   contactName: z.string().min(2, { message: 'Contact name is required.' }),
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -66,7 +66,7 @@ export default function PostAJobPage() {
                 name="memberId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Member ID (Optional)</FormLabel>
+                    <FormLabel>Member ID</FormLabel>
                     <FormControl>
                       <Input placeholder="Enter your member ID" {...field} />
                     </FormControl>
