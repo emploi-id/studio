@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useSearchParams } from 'react';
+import { useState, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { User, Building } from 'lucide-react';
@@ -66,8 +67,8 @@ function SignUpPageContent() {
 
 export default function SignUpPage() {
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Loading...</div>}>
       <SignUpPageContent />
-    </React.Suspense>
+    </Suspense>
   );
 }
