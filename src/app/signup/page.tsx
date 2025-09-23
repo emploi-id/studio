@@ -1,16 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useSearchParams } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { User, Building } from 'lucide-react';
 import JobSeekerSignUpForm from '@/components/forms/job-seeker-signup-form';
 import EmployerSignUpForm from '@/components/forms/employer-signup-form';
+import React from 'react';
 
 type UserRole = 'seeker' | 'employer' | null;
 
-export default function SignUpPage() {
-  const [role, setRole] = useState<UserRole>(null);
+function SignUpPageContent() {
+  const searchParams = useSearchParams();
+  const initialRole = searchParams.get('role') as UserRole;
+  const [role, setRole] = useState<UserRole>(initialRole);
 
   const handleRoleSelection = (selectedRole: NonNullable<UserRole>) => {
     setRole(selectedRole);
@@ -57,5 +60,14 @@ export default function SignUpPage() {
         )}
       </Card>
     </div>
+  );
+}
+
+
+export default function SignUpPage() {
+  return (
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <SignUpPageContent />
+    </React.Suspense>
   );
 }

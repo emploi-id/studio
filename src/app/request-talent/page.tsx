@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, UserPlus, LogIn } from 'lucide-react';
+import { UserPlus, LogIn } from 'lucide-react';
 
 export default function RequestTalentPage() {
   return (
