@@ -27,7 +27,7 @@ type EmployerFormValues = z.infer<typeof employerSchema>;
 type UserRole = 'seeker' | 'employer' | null;
 
 export default function LoginPage() {
-  const [role, setRole] = useState<UserRole>('seeker'); // Default to seeker
+  const [role, setRole] = useState<UserRole>(null);
 
   const jobSeekerForm = useForm<JobSeekerFormValues>({
     resolver: zodResolver(jobSeekerSchema),
@@ -92,6 +92,9 @@ export default function LoginPage() {
         ) : role === 'seeker' ? (
           <>
             <CardHeader className="relative text-center">
+                <Button variant="ghost" size="icon" className="absolute left-4 top-4" onClick={handleBack}>
+                    <ArrowLeft />
+                </Button>
                 <CardTitle className="font-headline text-3xl font-bold">Job Seeker Sign In</CardTitle>
                 <CardDescription>
                   Welcome back to emploi. Don't have an account?{' '}
@@ -145,6 +148,9 @@ export default function LoginPage() {
         ) : (
             <>
             <CardHeader className="relative text-center">
+                <Button variant="ghost" size="icon" className="absolute left-4 top-4" onClick={handleBack}>
+                    <ArrowLeft />
+                </Button>
                 <CardTitle className="font-headline text-3xl font-bold">Employer Sign In</CardTitle>
                 <CardDescription>
                   Welcome back to emploi.

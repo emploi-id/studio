@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name is required.' }),
@@ -44,7 +45,12 @@ export default function JobSeekerSignUpForm({ onBack }: Props) {
           <ArrowLeft />
         </Button>
         <CardTitle className="font-headline text-3xl font-bold">Create Your Account</CardTitle>
-        <CardDescription>Join as a Job Seeker to find your dream job.</CardDescription>
+        <CardDescription>
+          Join as a Job Seeker to find your dream job. Already have an account?{' '}
+          <Link href="/login" className="font-medium text-primary hover:underline">
+            Sign in.
+          </Link>
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>

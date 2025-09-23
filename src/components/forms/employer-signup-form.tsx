@@ -9,6 +9,7 @@ import { CardContent, CardHeader, CardTitle, CardDescription } from '@/component
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { ArrowLeft } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import Link from 'next/link';
 
 const formSchema = z.object({
   companyName: z.string().min(2, { message: 'Company name is required.' }),
@@ -53,7 +54,12 @@ export default function EmployerSignUpForm({ onBack }: Props) {
           <ArrowLeft />
         </Button>
         <CardTitle className="font-headline text-3xl font-bold">Create Company Account</CardTitle>
-        <CardDescription>Join as an Employer to find top talent.</CardDescription>
+        <CardDescription>
+          Join as an Employer to find top talent. Already have an account?{' '}
+          <Link href="/login" className="font-medium text-primary hover:underline">
+            Sign in.
+          </Link>
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
