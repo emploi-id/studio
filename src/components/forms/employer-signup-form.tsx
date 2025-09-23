@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { ArrowLeft } from 'lucide-react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 const formSchema = z.object({
   companyName: z.string().min(2, { message: 'Company name is required.' }),
@@ -75,20 +75,40 @@ export default function EmployerSignUpForm({ onBack }: Props) {
               control={form.control}
               name="companyAssets"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="space-y-3">
                   <FormLabel>Company Assets</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select asset range" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="<5M">&lt; 5 M</SelectItem>
-                      <SelectItem value="5M-10M">5 M - 10 M</SelectItem>
-                      <SelectItem value=">10M">&gt; 10 M</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <FormControl>
+                    <RadioGroup
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                      className="flex flex-col space-y-1"
+                    >
+                      <FormItem className="flex items-center space-x-3 space-y-0">
+                        <FormControl>
+                          <RadioGroupItem value="<5M" />
+                        </FormControl>
+                        <FormLabel className="font-normal">
+                          &lt; 5 M
+                        </FormLabel>
+                      </FormItem>
+                      <FormItem className="flex items-center space-x-3 space-y-0">
+                        <FormControl>
+                          <RadioGroupItem value="5M-10M" />
+                        </FormControl>
+                        <FormLabel className="font-normal">
+                          5 M - 10 M
+                        </FormLabel>
+                      </FormItem>
+                      <FormItem className="flex items-center space-x-3 space-y-0">
+                        <FormControl>
+                          <RadioGroupItem value=">10M" />
+                        </FormControl>
+                        <FormLabel className="font-normal">
+                          &gt; 10 M
+                        </FormLabel>
+                      </FormItem>
+                    </RadioGroup>
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
