@@ -35,8 +35,8 @@ export default function Footer() {
                 <Link href="/resources" className="text-primary-foreground/80 hover:text-primary-foreground">Sumber Daya</Link>
             </div>
             <div className="flex flex-col space-y-2">
-                <h4 className="font-bold text-primary-foreground">Tentang Emploi</h4>
-                <Link href="/about" className="text-primary-foreground/80 hover:text-primary-foreground">Tentang Emploi</Link>
+                <h4 className="font-bold text-primary-foreground">Tentang emploi</h4>
+                <Link href="/about" className="text-primary-foreground/80 hover:text-primary-foreground">Tentang emploi</Link>
                 <Link href="/join-our-team" className="text-primary-foreground/80 hover:text-primary-foreground">Bergabung dengan Tim Kami</Link>
                 <Link href="/contact" className="text-primary-foreground/80 hover:text-primary-foreground">Kontak</Link>
             </div>

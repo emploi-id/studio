@@ -56,10 +56,10 @@ const navLinks = [
     ],
   },
   {
-    label: 'Tentang Emploi',
+    label: 'Tentang emploi',
     href: '/about',
     dropdown: [
-      { href: '/about', label: 'Tentang Emploi' },
+      { href: '/about', label: 'Tentang emploi' },
       { href: '/join-our-team', label: 'Bergabung dengan Tim Kami' },
       { href: '/contact', label: 'Kontak' },
     ],
@@ -156,7 +156,7 @@ export default function Header() {
         
 
         {/* Mobile Menu */}
-        <div className="flex flex-1 md:hidden">
+        <div className="flex flex-1 items-center justify-end md:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button
@@ -212,7 +212,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center justify-end">
+        <div className="hidden items-center justify-end md:flex">
           <nav className="flex items-center">
             <Link href="/request-talent" passHref>
               <Button
