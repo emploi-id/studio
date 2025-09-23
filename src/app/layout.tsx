@@ -3,7 +3,6 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
-import Chatbot from '@/components/chatbot';
 
 export const metadata: Metadata = {
   title: 'emploi',
@@ -31,7 +30,6 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
-        <Chatbot />
         <Toaster />
       </body>
     </html>
