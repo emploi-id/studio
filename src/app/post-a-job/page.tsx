@@ -138,7 +138,6 @@ export default function PostAJobPage() {
                           <SelectItem value="Part-Time">Part-Time</SelectItem>
                           <SelectItem value="Contract">Contract</SelectItem>
                           <SelectItem value="Internship">Internship</SelectItem>
-                           <SelectItem value="Remote">Remote</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
