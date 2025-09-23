@@ -27,7 +27,7 @@ type EmployerFormValues = z.infer<typeof employerSchema>;
 type UserRole = 'seeker' | 'employer' | null;
 
 export default function LoginPage() {
-  const [role, setRole] = useState<UserRole>(null);
+  const [role, setRole] = useState<UserRole>('seeker'); // Default to seeker
 
   const jobSeekerForm = useForm<JobSeekerFormValues>({
     resolver: zodResolver(jobSeekerSchema),
@@ -92,11 +92,13 @@ export default function LoginPage() {
         ) : role === 'seeker' ? (
           <>
             <CardHeader className="relative text-center">
-                <Button variant="ghost" size="icon" className="absolute left-4 top-4" onClick={handleBack}>
-                    <ArrowLeft />
-                </Button>
                 <CardTitle className="font-headline text-3xl font-bold">Job Seeker Sign In</CardTitle>
-                <CardDescription>Welcome back to emploi.</CardDescription>
+                <CardDescription>
+                  Welcome back to emploi. Don't have an account?{' '}
+                  <Link href="/signup" className="font-medium text-primary hover:underline">
+                    Sign up.
+                  </Link>
+                </CardDescription>
             </CardHeader>
             <CardContent>
               <Form {...jobSeekerForm}>
@@ -133,16 +135,20 @@ export default function LoginPage() {
                   </Button>
                 </form>
               </Form>
+              <div className="mt-4 text-center text-sm">
+                  <button onClick={() => setRole('employer')} className="text-primary hover:underline">
+                    Sign in as an Employer
+                  </button>
+              </div>
             </CardContent>
           </>
         ) : (
             <>
             <CardHeader className="relative text-center">
-                <Button variant="ghost" size="icon" className="absolute left-4 top-4" onClick={handleBack}>
-                    <ArrowLeft />
-                </Button>
                 <CardTitle className="font-headline text-3xl font-bold">Employer Sign In</CardTitle>
-                <CardDescription>Welcome back to emploi.</CardDescription>
+                <CardDescription>
+                  Welcome back to emploi.
+                </CardDescription>
             </CardHeader>
             <CardContent>
               <Form {...employerForm}>
@@ -192,6 +198,11 @@ export default function LoginPage() {
                   </Button>
                 </form>
               </Form>
+              <div className="mt-4 text-center text-sm">
+                  <button onClick={() => setRole('seeker')} className="text-primary hover:underline">
+                    Sign in as a Job Seeker
+                  </button>
+              </div>
             </CardContent>
           </>
         )}
