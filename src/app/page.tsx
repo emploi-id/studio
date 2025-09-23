@@ -24,6 +24,9 @@ import JobCard from '@/components/job-card';
 import EmployerCard from '@/components/employer-card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
+// TODO: Replace with actual authentication check
+const isAdmin = false;
+
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero');
 
@@ -47,11 +50,13 @@ export default function Home() {
                     Browse Jobs <ArrowRight className="ml-2" />
                   </Button>
                 </Link>
-                <Link href="/insights">
-                  <Button size="lg" variant="secondary">
-                    AI Career Tools
-                  </Button>
-                </Link>
+                {isAdmin && (
+                  <Link href="/insights">
+                    <Button size="lg" variant="secondary">
+                      AI Career Tools
+                    </Button>
+                  </Link>
+                )}
               </div>
             </div>
             <div className="relative h-80 w-full lg:h-full">
