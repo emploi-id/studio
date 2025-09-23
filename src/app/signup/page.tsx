@@ -55,19 +55,6 @@ function SignUpPageContent() {
                  <span className="mt-1 text-sm text-muted-foreground">Hire top talent</span>
               </Button>
             </CardContent>
-            <div className="flex items-center px-6 pb-6">
-                <Separator className="flex-1" />
-                <span className="px-4 text-sm text-muted-foreground">OR</span>
-                <Separator className="flex-1" />
-            </div>
-             <div className="px-6 pb-6 text-center">
-                <p className="text-sm text-muted-foreground mb-2">Already have an account?</p>
-                <Link href="/login" passHref>
-                    <Button variant="secondary" className="w-full">
-                        <LogIn className="mr-2 h-4 w-4" /> Sign In
-                    </Button>
-                </Link>
-            </div>
           </>
         ) : role === 'seeker' ? (
           <JobSeekerSignUpForm onBack={handleBack} />
