@@ -17,15 +17,6 @@ import Logo from '@/components/icons/logo';
 const navLinks = [
   { href: '/', label: 'Home' },
   {
-    label: 'About Us',
-    href: '/about',
-    dropdown: [
-      { href: '/about', label: 'About emploi' },
-      { href: '/join-our-team', label: 'Join Our Team' },
-      { href: '/contact', label: 'Contact' },
-    ],
-  },
-  {
     label: 'Job Search',
     href: '/jobs',
     dropdown: [
@@ -53,6 +44,15 @@ const navLinks = [
       { href: '/training', label: 'Training' },
       { href: '/community', label: 'Community' },
       { href: '/resources', label: 'Resources' },
+    ],
+  },
+  {
+    label: 'About Us',
+    href: '/about',
+    dropdown: [
+      { href: '/about', label: 'About emploi' },
+      { href: '/join-our-team', label: 'Join Our Team' },
+      { href: '/contact', label: 'Contact' },
     ],
   },
 ];
