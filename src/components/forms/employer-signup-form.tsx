@@ -15,8 +15,9 @@ const formSchema = z.object({
   companyName: z.string().min(2, { message: 'Company name is required.' }),
   companyAssets: z.string().min(1, { message: 'Please select company assets.' }),
   email: z.string().email({ message: 'Invalid email address.' }),
-  contactName: z.string().min(2, { message: 'Contact name is required.' }),
-  phone: z.string().optional(),
+  contactName: z.string().min(2, { message: 'Contact PIC is required.' }),
+  phoneNumber: z.string().optional(),
+  mobileNumber: z.string().optional(),
   jobTitle: z.string().min(2, { message: 'Job title is required.' }),
   password: z.string().min(8, { message: 'Password must be at least 8 characters.' }),
 });
@@ -35,7 +36,8 @@ export default function EmployerSignUpForm({ onBack }: Props) {
       companyAssets: '',
       email: '',
       contactName: '',
-      phone: '',
+      phoneNumber: '',
+      mobileNumber: '',
       jobTitle: '',
       password: '',
     },
@@ -119,7 +121,7 @@ export default function EmployerSignUpForm({ onBack }: Props) {
                 </FormItem>
               )}
             />
-            <FormField
+             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
@@ -147,12 +149,25 @@ export default function EmployerSignUpForm({ onBack }: Props) {
             />
             <FormField
               control={form.control}
-              name="phone"
+              name="phoneNumber"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Phone Number (Optional)</FormLabel>
                   <FormControl>
                     <Input placeholder="+1 (555) 123-4567" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="mobileNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Mobile Number (Optional)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="+1 (555) 987-6543" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
