@@ -61,11 +61,10 @@ export default function Chatbot() {
   if (!isOpen) {
     return (
       <Button
-        className="fixed bottom-4 right-4 h-16 w-16 rounded-full bg-green-600 shadow-lg hover:bg-green-700"
+        className="fixed bottom-4 right-4 rounded-full bg-green-600 px-6 py-4 text-lg font-semibold shadow-lg hover:bg-green-700"
         onClick={() => setIsOpen(true)}
       >
-        <Bot className="h-8 w-8" />
-        <span className="sr-only">Open chat</span>
+        Chat Me
       </Button>
     );
   }
