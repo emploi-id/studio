@@ -31,7 +31,14 @@ const navLinks = [
     href: '/jobs',
     dropdown: [
       { href: '/jobs', label: 'Find a Job' },
-      { href: '/employers', label: 'Find a Company' },
+    ],
+  },
+  {
+    label: 'Employers',
+    href: '/employers',
+    dropdown: [
+        { href: '/employers', label: 'Find a Company' },
+        { href: '/request-talent', label: 'Request Talent' },
     ],
   },
   {
@@ -44,7 +51,6 @@ const navLinks = [
       { href: '/insights/recommendations', label: 'Personalized Recommendations' },
     ],
   },
-  { href: '/request-talent', label: 'Request Talent' },
 ];
 
 const NavLink = ({
@@ -58,7 +64,7 @@ const NavLink = ({
 }) => {
   const pathname = usePathname();
   const isActive = href ? pathname === href : false;
-  const isDropdownActive = dropdown?.some((item) => pathname.startsWith(item.href));
+  const isDropdownActive = dropdown?.some((item) => pathname === item.href);
 
   if (dropdown && href) {
     return (
@@ -176,9 +182,9 @@ export default function Header() {
 
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center">
-            <Link href="/request-talent" passHref>
+            <Link href="/employers" passHref>
               <Button asChild variant="outline" className="mr-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-                <span>Request Talent</span>
+                <span>For Employers</span>
               </Button>
             </Link>
             <Button variant="secondary">Sign Up</Button>
