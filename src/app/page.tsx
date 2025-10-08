@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -8,12 +9,16 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { featuredJobs, topEmployers } from '@/lib/data';
 import JobCard from '@/components/job-card';
 import EmployerCard from '@/components/employer-card';
+import { useUser } from '@/firebase';
 
 // TODO: Replace with actual authentication check
-const isAdmin = false;
+
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero');
+  const { user } = useUser();
+  const isAdmin = !!user;
+
 
   return (
     <div className="flex flex-col">
