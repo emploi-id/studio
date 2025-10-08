@@ -1,0 +1,263 @@
+{
+  "entities": {
+    "UserProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserProfile",
+      "type": "object",
+      "description": "Represents a job seeker's profile within the EmployMatch application.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the UserProfile entity."
+        },
+        "firstName": {
+          "type": "string",
+          "description": "The first name of the user."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "The last name of the user."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the user.",
+          "format": "email"
+        },
+        "resumeUrl": {
+          "type": "string",
+          "description": "URL to the user's resume.",
+          "format": "uri"
+        },
+        "skills": {
+          "type": "array",
+          "description": "An array of skills possessed by the user.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "jobPreferenceIds": {
+          "type": "array",
+          "description": "References to JobPreferences. (Relationship: UserProfile 1:N JobPreference)",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "firstName",
+        "lastName",
+        "email"
+      ]
+    },
+    "EmployerProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "EmployerProfile",
+      "type": "object",
+      "description": "Represents an employer's profile, showcasing company information and available positions.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the EmployerProfile entity."
+        },
+        "companyName": {
+          "type": "string",
+          "description": "The name of the company."
+        },
+        "companyDescription": {
+          "type": "string",
+          "description": "A description of the company."
+        },
+        "cultureDescription": {
+          "type": "string",
+          "description": "A description of the company culture."
+        },
+        "websiteUrl": {
+          "type": "string",
+          "description": "URL to the company's website.",
+          "format": "uri"
+        },
+        "jobListingIds": {
+          "type": "array",
+          "description": "References to JobListings. (Relationship: EmployerProfile 1:N JobListing)",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "companyName",
+        "companyDescription"
+      ]
+    },
+    "JobListing": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "JobListing",
+      "type": "object",
+      "description": "Represents a job vacancy, including details about the position and the employer.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the JobListing entity."
+        },
+        "employerId": {
+          "type": "string",
+          "description": "Reference to EmployerProfile. (Relationship: EmployerProfile 1:N JobListing)"
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the job."
+        },
+        "description": {
+          "type": "string",
+          "description": "A detailed description of the job."
+        },
+        "category": {
+          "type": "string",
+          "description": "The category of the job."
+        },
+        "location": {
+          "type": "string",
+          "description": "The location of the job."
+        },
+        "salary": {
+          "type": "number",
+          "description": "The salary for the job."
+        },
+        "requiredSkills": {
+          "type": "array",
+          "description": "An array of skills required for the job.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "employerId",
+        "title",
+        "description"
+      ]
+    },
+    "JobPreference": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "JobPreference",
+      "type": "object",
+      "description": "Represents a job seeker's preferences, which are used to match them with suitable job opportunities.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the JobPreference entity."
+        },
+        "category": {
+          "type": "string",
+          "description": "The preferred job category."
+        },
+        "location": {
+          "type": "string",
+          "description": "The preferred job location."
+        },
+        "salaryExpectation": {
+          "type": "number",
+          "description": "The user's salary expectations."
+        },
+        "preferredSkills": {
+          "type": "array",
+          "description": "An array of skills the user prefers to use in their job.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "category",
+        "location"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/userProfiles/{userProfileId}",
+        "definition": {
+          "entityName": "UserProfile",
+          "schema": {
+            "$ref": "#/backend/entities/UserProfile"
+          },
+          "description": "Stores job seeker profiles. Includes denormalized data if needed for specific queries. Authorization is based on the `userProfileId` matching `request.auth.uid`.",
+          "params": [
+            {
+              "name": "userProfileId",
+              "description": "The unique identifier for the user profile, matching the Firebase Auth UID."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/employerProfiles/{employerProfileId}",
+        "definition": {
+          "entityName": "EmployerProfile",
+          "schema": {
+            "$ref": "#/backend/entities/EmployerProfile"
+          },
+          "description": "Stores employer profiles. Authorization is based on the `employerProfileId` which could be managed via a separate admin role collection.",
+          "params": [
+            {
+              "name": "employerProfileId",
+              "description": "The unique identifier for the employer profile."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/employerProfiles/{employerProfileId}/jobListings/{jobListingId}",
+        "definition": {
+          "entityName": "JobListing",
+          "schema": {
+            "$ref": "#/backend/entities/JobListing"
+          },
+          "description": "Stores job listings associated with an employer. Authorization is based on the `employerProfileId` to restrict access to the employer who owns this document. Includes denormalized data if needed for queries.",
+          "params": [
+            {
+              "name": "employerProfileId",
+              "description": "The unique identifier for the employer profile."
+            },
+            {
+              "name": "jobListingId",
+              "description": "The unique identifier for the job listing."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/userProfiles/{userProfileId}/jobPreferences/{jobPreferenceId}",
+        "definition": {
+          "entityName": "JobPreference",
+          "schema": {
+            "$ref": "#/backend/entities/JobPreference"
+          },
+          "description": "Stores job preferences for a user. Authorization is based on the `userProfileId` matching `request.auth.uid`.",
+          "params": [
+            {
+              "name": "userProfileId",
+              "description": "The unique identifier for the user profile, matching the Firebase Auth UID."
+            },
+            {
+              "name": "jobPreferenceId",
+              "description": "The unique identifier for the job preference."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure for EmployMatch is designed to prioritize authorization independence and enable efficient data retrieval for job seekers and employers. User profiles and employer profiles are stored in separate top-level collections for segregation and clear access control. Job listings are stored under their respective employer profiles, creating a hierarchical structure reflecting the one-to-many relationship. Job preferences are associated directly with user profiles, supporting personalized job recommendations. This design eliminates the need for complex `get()` calls in security rules, as authorization information is readily available within each document or can be inferred from the document path. The structure supports QAPs by enabling secure list operations, as each collection has a homogeneous security posture."
+  }
+}

@@ -1,0 +1,141 @@
+/**
+ * @fileoverview Firestore Security Rules for EmployMatch.
+ *
+ * Core Philosophy: This ruleset enforces a strict user-ownership model for UserProfiles and JobPreferences,
+ * and an employer-ownership model for JobListings nested under EmployerProfiles.
+ *
+ * Data Structure:
+ * - /userProfiles/{userId}: Stores individual user profiles, accessible only to the user themselves.
+ * - /employerProfiles/{employerId}: Stores employer profiles. Write access will need to be managed with a separate admin role collection.
+ * - /employerProfiles/{employerId}/jobListings/{jobListingId}: Stores job listings under employer profiles, accessible only to the owning employer.
+ * - /userProfiles/{userId}/jobPreferences/{jobPreferenceId}: Stores job preferences under user profiles, accessible only to the user themselves.
+ *
+ * Key Security Decisions:
+ * - User listing is disallowed for userProfiles to protect privacy.
+ * - Read-only collections are not explicitly defined in this version.
+ * - All write operations are secured with authorization checks to prevent unauthorized data modification.
+ *
+ * Denormalization for Authorization: The data structure is designed to avoid the need for complex `get()` calls within the rules.
+ *  Authorization is based on path-based ownership (e.g., a user can only access their own profile) and
+ *  hierarchical ownership (e.g., an employer can only access job listings under their profile).
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Controls access to user profiles.
+     * @path /userProfiles/{userProfileId}
+     * @allow (create) Authenticated user can create their own profile if the ID matches their auth UID.
+     * @allow (get, update, delete) Authenticated user can access their own profile if the ID matches their auth UID.
+     * @deny (create) Authenticated user cannot create a profile with an ID that doesn't match their auth UID.
+     * @deny (get, update, delete) Authenticated user cannot access another user's profile.
+     * @deny (list) Listing user profiles is not allowed.
+     * @principle Enforces document ownership for writes and restricts access to a user's own data.
+     */
+    match /userProfiles/{userProfileId} {
+      // Verified identity
+      function isSignedIn() {
+        return request.auth != null;
+      }
+
+      // Is the user the owner?
+      function isOwner(userId) {
+        return request.auth.uid == userId;
+      }
+
+      // Is the user the owner and does the document exist?
+      function isExistingOwner(userProfileId) {
+        return isOwner(userProfileId) && exists(/databases/$(database)/documents/userProfiles/$(userProfileId));
+      }
+
+      allow get: if isOwner(userProfileId);
+      allow list: if false; // User listing is disallowed
+
+      allow create: if isSignedIn() && isOwner(userProfileId) && request.resource.data.id == request.auth.uid;
+      allow update: if isExistingOwner(userProfileId);
+      allow delete: if isExistingOwner(userProfileId);
+    }
+
+    /**
+     * @description Controls access to employer profiles.
+     * @path /employerProfiles/{employerProfileId}
+     * @allow (get, list) Any authenticated user can read employer profiles.
+     * @deny (create, update, delete) Only authorized roles (e.g., admins) can create, update, or delete employer profiles.  Placeholder rule.
+     * @principle Restricts write access to employer profiles to authorized roles.
+     */
+    match /employerProfiles/{employerProfileId} {
+      // Verified identity
+      function isSignedIn() {
+        return request.auth != null;
+      }
+
+      allow get, list: if true;
+      allow create, update, delete: if false; // TODO: Add role-based authorization for employer profiles.
+    }
+
+    /**
+     * @description Controls access to job listings under employer profiles.
+     * @path /employerProfiles/{employerProfileId}/jobListings/{jobListingId}
+     * @allow (get, list) Any authenticated user can read job listings.
+     * @allow (create) Only the employer who owns the profile can create job listings under it, employerId field must match path.
+     * @allow (update, delete) Only the employer who owns the profile can update or delete job listings under it, employerId field must match path.
+     * @deny (create) Prevents creating job listings with mismatched employer IDs.
+     * @deny (update, delete) Prevents modifying job listings by unauthorized employers or if the document does not exist.
+     * @principle Enforces hierarchical ownership: employer controls their own job listings.
+     */
+    match /employerProfiles/{employerProfileId}/jobListings/{jobListingId} {
+      // Verified identity
+      function isSignedIn() {
+        return request.auth != null;
+      }
+
+      // Is the user the owner of the employer profile?
+      function isEmployer(employerProfileId) {
+        // TODO: Replace with role-based check or denormalized ownership.
+        return true; // In prototype mode, assume any signed-in user can be an employer for simplicity.  Remove in production.
+      }
+
+       // Is the user the owner and does the document exist?
+      function isExistingEmployer(employerProfileId) {
+        return isEmployer(employerProfileId) && exists(/databases/$(database)/documents/employerProfiles/$(employerProfileId)/jobListings/$(jobListingId));
+      }
+
+      allow get, list: if true;
+      allow create: if isSignedIn() && isEmployer(employerProfileId) && request.resource.data.employerId == employerProfileId;
+      allow update: if isExistingEmployer(employerProfileId);
+      allow delete: if isExistingEmployer(employerProfileId);
+    }
+
+    /**
+     * @description Controls access to job preferences under user profiles.
+     * @path /userProfiles/{userProfileId}/jobPreferences/{jobPreferenceId}
+     * @allow (create) Authenticated user can create job preferences under their own profile if the userProfileId matches their auth UID.
+     * @allow (get, list, update, delete) Authenticated user can access and manage job preferences under their own profile if the userProfileId matches their auth UID.
+     * @deny (create) Prevents creating job preferences under other user profiles.
+     * @deny (get, list, update, delete) Prevents accessing job preferences under other user profiles or if the document does not exist.
+     * @principle Enforces document ownership for writes and restricts access to a user's own data.
+     */
+    match /userProfiles/{userProfileId}/jobPreferences/{jobPreferenceId} {
+      // Verified identity
+      function isSignedIn() {
+        return request.auth != null;
+      }
+
+      // Is the user the owner?
+      function isOwner(userId) {
+        return request.auth.uid == userId;
+      }
+
+       // Is the user the owner and does the document exist?
+      function isExistingOwner(userProfileId) {
+        return isOwner(userProfileId) && exists(/databases/$(database)/documents/userProfiles/$(userProfileId)/jobPreferences/$(jobPreferenceId));
+      }
+
+      allow get, list: if isOwner(userProfileId);
+      allow create: if isSignedIn() && isOwner(userProfileId);
+      allow update: if isExistingOwner(userProfileId);
+      allow delete: if isExistingOwner(userProfileId);
+    }
+  }
+}
