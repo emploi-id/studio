@@ -27,6 +27,15 @@ import { Skeleton } from '@/components/ui/skeleton';
 const navLinks = [
   { href: '/', label: 'Beranda' },
   {
+    label: 'Tentang emploi',
+    href: '/about',
+    dropdown: [
+      { href: '/about', label: 'Tentang emploi' },
+      { href: '/join-our-team', label: 'Bergabung dengan Tim Kami' },
+      { href: '/contact', label: 'Kontak' },
+    ],
+  },
+  {
     label: 'Cari Kerja',
     href: '/jobs',
     dropdown: [{ href: '/jobs', label: 'Cari Lowongan' }],
@@ -60,15 +69,6 @@ const navLinks = [
       { href: '/training', label: 'Pelatihan' },
       { href: '/community', label: 'Komunitas' },
       { href: '/resources', label: 'Sumber Daya' },
-    ],
-  },
-  {
-    label: 'Tentang emploi',
-    href: '/about',
-    dropdown: [
-      { href: '/about', label: 'Tentang emploi' },
-      { href: '/join-our-team', label: 'Bergabung dengan Tim Kami' },
-      { href: '/contact', label: 'Kontak' },
     ],
   },
 ];
