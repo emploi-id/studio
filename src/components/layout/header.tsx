@@ -5,7 +5,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, ChevronDown, User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,7 +27,6 @@ import {
 } from 'firebase/auth';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Skeleton } from '@/components/ui/skeleton';
-
 
 const navLinks = [
   { href: '/', label: 'Beranda' },
@@ -58,7 +62,11 @@ const navLinks = [
         label: 'Pemoles Resume AI',
         admin: true,
       },
-      { href: '/insights/skills-matcher', label: 'Pencocok Keterampilan', admin: true },
+      {
+        href: '/insights/skills-matcher',
+        label: 'Pencocok Keterampilan',
+        admin: true,
+      },
       {
         href: '/insights/recommendations',
         label: 'Rekomendasi yang Dipersonalisasi',
@@ -185,21 +193,26 @@ const UserNav = () => {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative h-10 w-auto px-2">
             <Avatar className="h-8 w-8">
-              <AvatarImage src={user.photoURL || undefined} alt={user.displayName || 'User'} />
+              <AvatarImage
+                src={user.photoURL || undefined}
+                alt={user.displayName || 'User'}
+              />
               <AvatarFallback>
-                {user.displayName
-                  ? user.displayName.charAt(0)
-                  : <User />}
+                {user.displayName ? user.displayName.charAt(0) : <User />}
               </AvatarFallback>
             </Avatar>
-            <span className='ml-2 font-medium text-primary-foreground hidden lg:inline'>{user.displayName}</span>
-             <ChevronDown className="ml-1 h-4 w-4 text-primary-foreground/80" />
+            <span className="ml-2 font-medium text-primary-foreground hidden lg:inline">
+              {user.displayName}
+            </span>
+            <ChevronDown className="ml-1 h-4 w-4 text-primary-foreground/80" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" forceMount>
           <DropdownMenuItem disabled>
             <div className="flex flex-col space-y-1">
-              <p className="text-sm font-medium leading-none">{user.displayName}</p>
+              <p className="text-sm font-medium leading-none">
+                {user.displayName}
+              </p>
               <p className="text-xs leading-none text-muted-foreground">
                 {user.email}
               </p>
@@ -232,7 +245,6 @@ const UserNav = () => {
   );
 };
 
-
 export default function Header() {
   const { user } = useUser();
   const isAdmin = !!user;
@@ -242,10 +254,11 @@ export default function Header() {
       <div className="container flex h-16 items-center">
         <div className="mr-6 flex items-center">
           <Link href="/" className="flex items-center">
-            <span className="font-headline text-xl font-bold lowercase">emploi</span>
+            <span className="font-headline text-xl font-bold lowercase">
+              emploi
+            </span>
           </Link>
         </div>
-        
 
         {/* Mobile Menu */}
         <div className="flex flex-1 items-center justify-end md:hidden">
@@ -261,13 +274,16 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
+              <SheetTitle className="sr-only">Menu</SheetTitle>
               <Link href="/" className="flex items-center">
-                <span className="font-headline text-xl font-bold lowercase">emploi</span>
+                <span className="font-headline text-xl font-bold lowercase">
+                  emploi
+                </span>
               </Link>
               <div className="mt-8 flex flex-col space-y-4">
                 {navLinks.map((link) =>
                   link.dropdown ? (
-                    <div key={link.label}>
+                    <div key={link.href || link.label}>
                       <p className="text-lg font-medium">{link.label}</p>
                       <div className="ml-4 mt-2 flex flex-col space-y-2">
                         {link.dropdown
