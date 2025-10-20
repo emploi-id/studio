@@ -13,7 +13,7 @@ export default function Footer() {
                 <span className="font-headline text-xl font-bold lowercase">emploi</span>
             </Link>
             <p className="max-w-xs text-center text-sm text-primary-foreground/80 md:text-left">
-              Memaksimalkan talenta melalui teknologi dan nilai-nilai integritas, loyalitas, profesionalisme dan keterbukaan dalam pengembangan karir.
+              Menghubungkan talenta melalui teknologi dan nilai-nilai integritas, loyalitas,, profesionalisme dan keterbukaan.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-x-8 gap-y-4 text-center text-sm font-medium md:grid-cols-4 md:text-left">
