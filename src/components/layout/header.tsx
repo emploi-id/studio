@@ -300,7 +300,7 @@ export default function Header() {
 
         <nav className="hidden flex-1 items-center justify-center space-x-6 text-sm font-medium md:flex">
           {navLinks.map((link) => (
-            <NavLink key={link.label} {...link} />
+            <NavLink key={link.href || link.label} {...link} />
           ))}
         </nav>
 
