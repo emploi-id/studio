@@ -158,6 +158,15 @@ const UserNav = () => {
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
 
+  const handleSignInWithGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error('Error signing in with Google', error);
+    }
+  };
+
   const handleSignOut = async () => {
     try {
       await signOut(auth);
