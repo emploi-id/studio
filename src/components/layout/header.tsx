@@ -158,15 +158,6 @@ const UserNav = () => {
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
 
-  const handleSignIn = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      await signInWithPopup(auth, provider);
-    } catch (error) {
-      console.error('Error signing in with Google', error);
-    }
-  };
-
   const handleSignOut = async () => {
     try {
       await signOut(auth);
@@ -217,13 +208,14 @@ const UserNav = () => {
 
   return (
     <div className="flex items-center gap-2">
-      <Button
-        onClick={handleSignIn}
-        variant="outline"
-        className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
-      >
-        Masuk dengan Google
-      </Button>
+      <Link href="/login" passHref>
+        <Button
+          variant="outline"
+          className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+        >
+          Masuk
+        </Button>
+      </Link>
       <Link href="/signup" passHref>
         <Button variant="secondary">Daftar</Button>
       </Link>
